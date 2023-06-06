@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RegistrationStepsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,4 +22,18 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
+
 require __DIR__.'/auth.php';
+
+
+// Registration Steps
+
+
+Route::get('/create-step-one', [RegistrationStepsController::class,'createStepOne'])->name('create.step.one');
+Route::post('/create-step-one', [RegistrationStepsController::class,'postCreateStepOne'])->name('create.step.one.post');
+
+Route::get('/create-step-two', [RegistrationStepsController::class,'createStepTwo'])->name('create.step.two');
+Route::post('/create-step-two', [RegistrationStepsController::class,'postCreateStepTwo'])->name('create.step.two.post');
+
+Route::get('/create-step-three', [RegistrationStepsController::class,'createStepThree'])->name('create.step.three');
+Route::post('/create-step-three', [RegistrationStepsController::class,'postCreateStepThree'])->name('create.step.three.post');
