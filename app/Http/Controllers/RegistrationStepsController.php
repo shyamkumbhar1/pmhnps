@@ -11,7 +11,7 @@ class RegistrationStepsController extends Controller
     {
 
 
-        return view('Registration.create-step-one',);
+        return view('Registration.create-step-one');
     }
 
     public function postCreateStepOne(Request $request)
@@ -77,7 +77,7 @@ class RegistrationStepsController extends Controller
         $user->fill($validatedData);
         $request->session()->put('UserData', $user);
 
-        return "User Register Succfully";
+        return "User Register Successfully";
     }
 
 }
