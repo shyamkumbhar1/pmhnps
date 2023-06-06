@@ -29,10 +29,10 @@
                     @else
                         <a href="{{ route('login') }}" class="text-sm text-gray-700 underline dark:text-gray-500">Log in</a>
 
-                        {{-- @if (Route::has('register'))
+                        @if (Route::has('register'))
                             <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline dark:text-gray-500">Register</a>
-                        @endif --}}
-                        <a href="{{ route('create.step.one') }}" class="ml-4 text-sm text-gray-700 underline dark:text-gray-500">Register</a>
+                        @endif
+                        {{-- <a href="{{ route('create.step.one') }}" class="ml-4 text-sm text-gray-700 underline dark:text-gray-500">Register</a> --}}
 
                     @endauth
                 </div>
