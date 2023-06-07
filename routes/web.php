@@ -1,6 +1,8 @@
 <?php
 
+use App\Models\TempRegister;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TempRegisterController;
 use App\Http\Controllers\RegistrationStepsController;
 
 /*
@@ -37,3 +39,9 @@ Route::post('/create-step-two', [RegistrationStepsController::class,'postCreateS
 
 Route::get('/create-step-three', [RegistrationStepsController::class,'createStepThree'])->name('create.step.three');
 Route::post('/create-step-three', [RegistrationStepsController::class,'postCreateStepThree'])->name('create.step.three.post');
+
+// User Register Temporary
+
+Route::get('/register-step-one', [TempRegisterController::class,'registerStepOne'])->name('register.step.one');
+Route::post('/register-step-one', [TempRegisterController::class,'postRegisterStepOne'])->name('register.step.one.post');
+
