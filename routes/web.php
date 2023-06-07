@@ -62,6 +62,13 @@ Route::post('/login', [TempRegisterController::class,'loginStore'])->name('login
 
 Route::get('/profile-page', [TempRegisterController::class,'profilePage'])->name('profile.page');
 Route::get('/remaining-detail', [TempRegisterController::class,'remainingDetailsCreate'])->name('remaining.details');
+Route::post('/remaining-detail', [TempRegisterController::class,'remainingDetailsStore'])->name('remaining.details.store');
+
+//Step 6  Remaining Details And Dashboard
+
+Route::get('/user-dashboard', [TempRegisterController::class,'userDashboard'])->name('user.dashboard');
+
+
 
 
 

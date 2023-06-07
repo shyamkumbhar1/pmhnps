@@ -33,7 +33,12 @@
                         <li><span class="fa fa-check me-2"></span>Details</li>
 
                     </ul>
-                    <div class="btn btn-primary"> <a href="{{route('thank_you')}}">get started</a> </div>
+                    <div class="btn btn-primary">
+                        @if (Route::has('register'))
+                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline dark:text-gray-500">Get Started</a>
+                        @endif
+
+                    </div>
                 </div>
             </div>
 

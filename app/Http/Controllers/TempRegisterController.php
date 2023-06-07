@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\TempRegister;
+use App\Models\RemainingDetails;
 use Illuminate\Http\Request;
 
 class TempRegisterController extends Controller
@@ -63,6 +64,27 @@ class TempRegisterController extends Controller
     public function remainingDetailsCreate (){
         return view('register.remaining-details');
 
+    }
+    public function remainingDetailsStore (Request $request){
+        $validatedData = $request->validate([
+            'phone_number' => 'nullable|string',
+            'professional_license_number' => 'nullable|string',
+            'state_of_licensure' => 'nullable|string',
+            'areas_of_expertise' => 'nullable|string',
+            'bio' => 'nullable|string',
+            'profile_picture' => 'nullable|string',
+            'work_address' => 'nullable|string',
+        ]);
+
+        RemainingDetails::create($validatedData);
+
+        // return "Profile created successfully";
+        return redirect('user-dashboard')->with('success', 'Profile created successfully!');
+
+    }
+
+    public function userDashboard(){
+        return view('register.dashboard');
     }
 
 }
