@@ -31,9 +31,38 @@ class TempRegisterController extends Controller
         $user->save();
         $message = "Please select Any Subscription Plan";
 
-        return view('register.step2', ['message' => $message]);
-        // return redirect()->back()->with('success', $message);
+        // return view('register.step2', ['message' => $message]);
+        return redirect('register-step-two')->with('success', $message);
     }
 
+    public function registerStepTwo()
+    {
+        return view('register.step2');
+    }
+    public function subscriptionPlan()
+    {
+        return view('register.step2');
+    }
+    public function loginCreate()
+    {
+        return view('register.login');
+    }
+    public function loginStore()
+    {
+        // return "user Login Successfully";
+        $message = "User Login Successfully";
+
+        return redirect('profile-page')->with('success', $message);
+
+    }
+
+    public function profilePage (){
+        return view('register.profile-page');
+
+    }
+    public function remainingDetailsCreate (){
+        return view('register.remaining-details');
+
+    }
 
 }

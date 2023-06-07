@@ -40,8 +40,31 @@ Route::post('/create-step-two', [RegistrationStepsController::class,'postCreateS
 Route::get('/create-step-three', [RegistrationStepsController::class,'createStepThree'])->name('create.step.three');
 Route::post('/create-step-three', [RegistrationStepsController::class,'postCreateStepThree'])->name('create.step.three.post');
 
+
 // User Register Temporary
 
 Route::get('/register-step-one', [TempRegisterController::class,'registerStepOne'])->name('register.step.one');
 Route::post('/register-step-one', [TempRegisterController::class,'postRegisterStepOne'])->name('register.step.one.post');
+Route::get('/register-step-two', [TempRegisterController::class,'registerStepTwo'])->name('register.step.two');
+
+
+
+// Subscription Plan
+
+Route::get('/subscription-plan', [TempRegisterController::class,'subscriptionPlan'])->name('subscription.plan');
+
+Route::view('thank_you','register.thank_you')->name('thank_you');
+// Step 4
+Route::get('/login', [TempRegisterController::class,'loginCreate'])->name('login');
+Route::post('/login', [TempRegisterController::class,'loginStore'])->name('loginStore');
+
+// Step 5 Profile Page
+
+Route::get('/profile-page', [TempRegisterController::class,'profilePage'])->name('profile.page');
+Route::get('/remaining-detail', [TempRegisterController::class,'remainingDetailsCreate'])->name('remaining.details');
+
+
+
+
+
 
