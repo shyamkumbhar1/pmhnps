@@ -3,6 +3,7 @@
 use App\Models\TempRegister;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TempRegisterController;
+use App\Http\Controllers\StripePaymentController;
 use App\Http\Controllers\RegistrationStepsController;
 
 /*
@@ -69,9 +70,11 @@ Route::post('/remaining-detail', [TempRegisterController::class,'remainingDetail
 Route::get('/user-dashboard', [TempRegisterController::class,'userDashboard'])->name('user.dashboard');
 
 
-
-
-
+// Payment getway
+Route::controller(StripePaymentController::class)->group(function(){
+    Route::get('stripe', 'stripe');
+    Route::post('stripe', 'stripePost')->name('stripe.post');
+});
 
 
 
