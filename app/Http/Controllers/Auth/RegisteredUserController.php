@@ -33,33 +33,36 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
         $request->validate([
             // 'full_name' => ['required', 'string', 'max:255'],
             // 'professional_title' => ['required', 'string', 'max:255'],
             // 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             // 'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'phone_number' => 'nullable|string',
-            'professional_license_number' => 'nullable|string',
-            'state_of_licensure' => 'nullable|string',
-            'areas_of_expertise' => 'nullable|string',
-            'bio' => 'nullable|string',
-            'profile_picture' => 'nullable|string',
-            'work_address' => 'nullable|string',
+            'phone_number' => 'required',
+            'professional_license_number' => 'required',
+            'state_of_licensure' => 'required',
+            'areas_of_expertise' => 'required',
+            'bio' => 'required',
+            'profile_picture' => '',
+            'work_address' => 'required'
         ]);
 
-        $user = User::create([
-            // 'full_name' => $request->full_name,
-            // 'professional_title' => $request->professional_title,
-            // 'email' => $request->email,
-            // 'password' => Hash::make($request->password),
-            'phone_number' => 'nullable|string',
-            'professional_license_number' => 'nullable|string',
-            'state_of_licensure' => 'nullable|string',
-            'areas_of_expertise' => 'nullable|string',
-            'bio' => 'nullable|string',
-            'profile_picture' => 'nullable|string',
-            'work_address' => 'nullable|string',
-        ]);
+        $user = User::create(
+            [
+                'full_name' => $request->full_name,
+                'professional_title' => $request->professional_title,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+                'phone_number' => $request->phone_number,
+                'professional_license_number' => $request->professional_license_number,
+               'state_of_licensure' => $request->state_of_licensure,
+                'areas_of_expertise' => implode($request->areas_of_expertise),
+                'bio' => $request->bio,
+                'profile_picture' => $request->profile_picture,
+                'work_address' => $request->work_address
+            ]
+        );
 
         event(new Registered($user));
 

@@ -77,4 +77,12 @@ Route::controller(StripePaymentController::class)->group(function(){
 });
 
 
+Route::get('clear-cache', function() {
+    Artisan::call('cache:clear');
+    Artisan::call('config:clear');
+    Artisan::call('view:clear');
+    // route clear
+    Artisan::call('route:clear');
 
+    return "Cache is cleared";
+});

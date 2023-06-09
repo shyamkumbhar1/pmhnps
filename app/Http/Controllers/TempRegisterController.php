@@ -31,6 +31,7 @@ class TempRegisterController extends Controller
         // Save the user to the database
         $user->save();
         $message = "Please select Any Subscription Plan";
+        
 
         // return view('register.step2', ['message' => $message]);
         return redirect('register-step-two')->with('success', $message);
