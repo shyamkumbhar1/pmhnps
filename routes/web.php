@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TempRegisterController;
 use App\Http\Controllers\StripePaymentController;
 use App\Http\Controllers\RegistrationStepsController;
+use App\Http\Controllers\ImageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -86,3 +87,7 @@ Route::get('clear-cache', function() {
 
     return "Cache is cleared";
 });
+
+
+Route::get('image-upload', [ ImageController::class, 'index' ]);
+Route::post('image-upload', [ ImageController::class, 'store' ])->name('image.store');

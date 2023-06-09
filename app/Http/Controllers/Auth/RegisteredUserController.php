@@ -34,7 +34,7 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
-        $user_id = $request->session()->get('user_id');
+                $user_id = $request->session()->get('user_id');
         $temp_User = TempRegister::where('id', $user_id)->first();
         $request->validate([
             'phone_number' => 'required',
@@ -42,10 +42,15 @@ class RegisteredUserController extends Controller
             'state_of_licensure' => 'required',
             'areas_of_expertise' => 'required',
             'bio' => 'required',
-            'profile_picture' => '',
+            'profile_picture' => 'required',
             'work_address' => 'required'
         ]);
         // dd($temp_User);
+
+        // Image Upload
+        $profile_picture_name = $request->file('profile_picture')->getClientOriginalName();
+
+        $path = $request->file('profile_picture')->store('public/Profile-Picture');
 
 
         $user = User::create(
@@ -59,7 +64,7 @@ class RegisteredUserController extends Controller
                'state_of_licensure' => $request->state_of_licensure,
                 'areas_of_expertise' => implode($request->areas_of_expertise),
                 'bio' => $request->bio,
-                'profile_picture' => $request->profile_picture,
+                'profile_picture' => $profile_picture_name,
                 'work_address' => $request->work_address
             ]
         );
