@@ -20,10 +20,20 @@
                 <x-input id="full_name" class="block w-full mt-1" type="text" name="full_name" :value="old('name')" required autofocus />
             </div>
             <div>
-                <x-label for="professional_title" :value="__('Professional Title')" />
+                <label for="professional_title">Professional Title</label>
 
-                <x-input id="professional_title" class="block w-full mt-1" type="text" name="professional_title" :value="old('name')" required autofocus />
+                <select id="professional_title" class="block w-full mt-1" name="professional_title" required>
+                    <option value="">Select Professional Title</option>
+                    <option value="DNP">DNP (Doctor of Nursing Practice)</option>
+                    <option value="MSN"> MSN (Master of Science in Nursing)</option>
+                    <option value="RN">RN (Registered Nurse)</option>
+                    <option value="PMHNP-BC">PMHNP-BC (Board Certified Psychiatric-Mental Health Nurse Practitioner)</option>
+                    <!-- Add more options as needed -->
+                    <option value="other">Other</option>
+                </select>
             </div>
+
+
 
             <!-- Email Address -->
             <div class="mt-4">
