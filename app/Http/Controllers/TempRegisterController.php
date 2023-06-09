@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\TempRegister;
-use App\Models\RemainingDetails;
 use Illuminate\Http\Request;
+use App\Models\RemainingDetails;
+use Illuminate\Support\Facades\Hash;
 
 class TempRegisterController extends Controller
 {
@@ -26,12 +27,18 @@ class TempRegisterController extends Controller
         $user->full_name = $validatedData['full_name'];
         $user->professional_title = $validatedData['professional_title'];
         $user->email = $validatedData['email'];
-        $user->password = $validatedData['password'];
+        $user->password = Hash::make($validatedData['password']);
 
         // Save the user to the database
         $user->save();
+
+
+        $request->session()->put('user_id', $user->id);
+        // dd($request->session()->get('user_id'));
+
+
         $message = "Please select Any Subscription Plan";
-        
+
 
         // return view('register.step2', ['message' => $message]);
         return redirect('register-step-two')->with('success', $message);

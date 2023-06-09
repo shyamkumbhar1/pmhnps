@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
 use App\Models\User;
-use App\Providers\RouteServiceProvider;
-use Illuminate\Auth\Events\Registered;
+use App\Models\TempRegister;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rules;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rules;
+use Illuminate\Auth\Events\Registered;
+use App\Providers\RouteServiceProvider;
 
 class RegisteredUserController extends Controller
 {
@@ -33,12 +34,9 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
+        $user_id = $request->session()->get('user_id');
+        $temp_User = TempRegister::where('id', $user_id)->first();
         $request->validate([
-            // 'full_name' => ['required', 'string', 'max:255'],
-            // 'professional_title' => ['required', 'string', 'max:255'],
-            // 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            // 'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'phone_number' => 'required',
             'professional_license_number' => 'required',
             'state_of_licensure' => 'required',
@@ -47,13 +45,15 @@ class RegisteredUserController extends Controller
             'profile_picture' => '',
             'work_address' => 'required'
         ]);
+        // dd($temp_User);
+
 
         $user = User::create(
             [
-                'full_name' => $request->full_name,
-                'professional_title' => $request->professional_title,
-                'email' => $request->email,
-                'password' => Hash::make($request->password),
+                'full_name' => $temp_User->full_name,
+                'professional_title' => $temp_User->professional_title,
+                'email' => $temp_User->email,
+                'password' => $temp_User->password ,
                 'phone_number' => $request->phone_number,
                 'professional_license_number' => $request->professional_license_number,
                'state_of_licensure' => $request->state_of_licensure,
