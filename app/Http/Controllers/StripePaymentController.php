@@ -1,14 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
-require_once 'vendor/autoload.php';
-use Session;
-// use Stripe\Charge;
-// use Stripe\Charge;
+
 use Stripe\Charge;
+// use Stripe\Charge;
+// use Stripe\Charge;
 use Stripe\Stripe;
 use Stripe\Customer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class StripePaymentController extends Controller
 {
@@ -21,8 +21,8 @@ class StripePaymentController extends Controller
 
     public function stripePost(Request $request)
     {
-        // Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
-        Stripe::setApiKey('your_stripe_secret_key');
+        Stripe::setApiKey(env('STRIPE_SECRET'));
+        // Stripe::setApiKey('your_stripe_secret_key');
 
         Charge::create ([
                 "amount" => 100 * 100,
