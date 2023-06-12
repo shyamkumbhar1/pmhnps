@@ -91,3 +91,10 @@ Route::get('clear-cache', function() {
 
 Route::get('image-upload', [ ImageController::class, 'index' ]);
 Route::post('image-upload', [ ImageController::class, 'store' ])->name('image.store');
+
+Route::get('migration', function() {
+    Artisan::call('migrate:fresh');
+
+
+    return "Migration Run Successfully";
+});
