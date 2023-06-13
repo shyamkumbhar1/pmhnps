@@ -2,10 +2,11 @@
 
 use App\Models\TempRegister;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ImageController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TempRegisterController;
 use App\Http\Controllers\StripePaymentController;
 use App\Http\Controllers\RegistrationStepsController;
-use App\Http\Controllers\ImageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -92,3 +93,9 @@ Route::get('clear-cache', function() {
 Route::get('image-upload', [ ImageController::class, 'index' ]);
 Route::post('image-upload', [ ImageController::class, 'store' ])->name('image.store');
 
+// Profile Management
+
+
+// Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
+Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+Route::put('/profile/edit', [ProfileController::class, 'update'])->name('profile.update');
