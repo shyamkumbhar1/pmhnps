@@ -15,7 +15,7 @@
                     @endif
 
                     {{-- {{ __('You are logged in!') }} --}}
-                    <a href="{{route('plans.all')}}">Click Here For Subscription </a>
+                    <a href="##">Complete Your Profile</a>
                 </div>
             </div>
         </div>

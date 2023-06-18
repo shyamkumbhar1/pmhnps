@@ -34,6 +34,7 @@ Route::get('single-charge', function () {
 });
 
 Route::view('thankyou','strip.thankyou')->name('thankyou');
+Route::view('dashboard1','dashboard1')->name('dashboard1');
 Route::post('single-charge',[SubcriptionController::class,'singleCharge'])->name('single.charge');
 Route::get('plans/create',[SubcriptionController::class,'showPlanForm'])->name('plans.create');
 Route::post('plans/store',[SubcriptionController::class,'savePlan'])->name('plans.store');
