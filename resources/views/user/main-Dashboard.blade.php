@@ -14,8 +14,8 @@
                         </div>
                     @endif
 
-                    {{-- {{ __('You are logged in!') }} --}}
-                    <a href="{{route('remaining.details')}}">Complete Your Profile</a>
+                    {{ __(' Main Dashboard') }}
+
                 </div>
             </div>
         </div>

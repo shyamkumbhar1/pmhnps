@@ -24,7 +24,7 @@ class RemainingDetailsController extends Controller
      */
     public function create()
     {
-        //
+        return view('user.remaining-field');
     }
 
     /**
@@ -35,7 +35,44 @@ class RemainingDetailsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user =auth()->user()->id;
+
+
+
+        $request->validate([
+
+            'phone_number' => 'required',
+            'professional_license_number' => 'required',
+            'state_of_licensure' => 'required',
+            'areas_of_expertise' => 'required',
+            'bio' => 'required',
+            'profile_picture' => '',
+            'work_address' => 'required'
+        ]);
+
+        // Image Upload
+        // $profile_picture_name = $request->file('profile_picture')->getClientOriginalName();
+
+
+        // $path = $request->file('profile_picture')->store('public/Profile-Picture');
+        // dd($request->profile_picture,$profile_picture_name,$path);
+
+        $defaultImagePath = "public/Profile-Picture/pgBeIZNuHOeTh953DjfA2hOwSfBwQd7ixDameesb.png";
+
+        $RemainingDetails = RemainingDetails::create(
+            [
+                'user_id' => $user,
+                'phone_number' => $request->phone_number,
+                'phone_number' => $request->phone_number,
+                'professional_license_number' => $request->professional_license_number,
+               'state_of_licensure' => $request->state_of_licensure,
+                'areas_of_expertise' => implode($request->areas_of_expertise),
+                'bio' => $request->bio,
+                'profile_picture' => $defaultImagePath, // $profile_picture_name,
+                'work_address' => $request->work_address
+            ]
+        );
+        return to_route('main.Dashboard');
     }
 
     /**

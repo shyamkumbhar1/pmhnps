@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SubcriptionController;
+use App\Http\Controllers\RemainingDetailsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,3 +45,14 @@ Route::post('plans/process',[SubcriptionController::class,'processSubcription'])
 Route::get('subcription/all',[SubcriptionController::class,'allSubcription'])->name('subcription.all');
 Route::get('subcription/cancel',[SubcriptionController::class,'cancleSubcription'])->name('subcription.cancel');
 Route::get('subcription/resume',[SubcriptionController::class,'resumeSubcription'])->name('subcription.resume');
+
+
+// Remaining deatails save
+
+Route::get('remaining-details',[RemainingDetailsController::class,'create'])->name('remaining.details');
+Route::post('remaining-details',[RemainingDetailsController::class,'store'])->name('remaining.details.post');
+
+// Main Dashboard
+Route::get('main-Dashboard', function (){
+    return view('user.main-Dashboard');
+})->name('main.Dashboard');
