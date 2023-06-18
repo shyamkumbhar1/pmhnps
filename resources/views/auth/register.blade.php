@@ -11,8 +11,8 @@
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 
-                        <div class="row mb-3">
-                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
+                        <div class="mb-3 row">
+                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __(' Full Name') }}</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
@@ -24,8 +24,22 @@
                                 @enderror
                             </div>
                         </div>
+                        <div class="mb-3 row">
+                            <label for="professional_title" class="col-md-4 col-form-label text-md-end">Professional Title</label>
+                            <div class="col-md-6">
+                            <select id="professional_title" class="block w-full mt-1 form-control" name="professional_title" required>
+                                <option value="">Select Professional Title</option>
+                                <option value="DNP">DNP (Doctor of Nursing Practice)</option>
+                                <option value="MSN"> MSN (Master of Science in Nursing)</option>
+                                <option value="RN">RN (Registered Nurse)</option>
+                                <option value="PMHNP-BC">PMHNP-BC (Board Certified Psychiatric-Mental Health Nurse Practitioner)</option>
+                                <!-- Add more options as needed -->
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        </div>
 
-                        <div class="row mb-3">
+                        <div class="mb-3 row">
                             <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
 
                             <div class="col-md-6">
@@ -39,7 +53,7 @@
                             </div>
                         </div>
 
-                        <div class="row mb-3">
+                        <div class="mb-3 row">
                             <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
@@ -53,7 +67,7 @@
                             </div>
                         </div>
 
-                        <div class="row mb-3">
+                        <div class="mb-3 row">
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
 
                             <div class="col-md-6">
@@ -61,7 +75,7 @@
                             </div>
                         </div>
 
-                        <div class="row mb-0">
+                        <div class="mb-0 row">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Register') }}
