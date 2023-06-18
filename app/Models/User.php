@@ -2,15 +2,16 @@
 
 namespace App\Models;
 
+use Laravel\Cashier\Billable;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable,Billable;
 
     /**
      * The attributes that are mass assignable.
@@ -18,17 +19,9 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'full_name',
-        'professional_title',
+        'name',
         'email',
         'password',
-        'phone_number',
-        'professional_license_number',
-        'state_of_licensure',
-        'areas_of_expertise',
-        'bio',
-        'profile_picture',
-        'work_address',
     ];
 
     /**
