@@ -13,11 +13,12 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
+                        <h1> Complete Remaining details :</h1>
                     {{-- {{ __('You are logged in!') }} --}}
                     <form method="POST" action="{{ route('remaining.details.post') }}" enctype="multipart/form-data">
                         @csrf
                         <div>
+
                             <x-label for="phone_number" :value="__('Phone Number')" />
 
                             <x-input id="phone_number" class="block w-full mt-1" type="text" name="phone_number" :value="old('phone_number')"

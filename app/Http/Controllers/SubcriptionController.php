@@ -124,8 +124,8 @@ class SubcriptionController extends Controller
         }
 
         $request->session()->flash('alert-success', 'You are subscribed Successfully');
-        return to_route('thankyou', $plan);
-        return to_route('thankyou', $plan);
+
+        return to_route('thankyou', $plan)->withMessage('message');
     }
     public function allSubcription (){
 

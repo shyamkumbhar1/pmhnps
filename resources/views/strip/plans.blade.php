@@ -130,9 +130,9 @@
 
     <section class="ftco-section bg-light">
         <div class="container">
-            <div class="row justify-content-center pb-5 mb-3">
-                <div class="col-md-7 heading-section text-center ftco-animate fadeInUp ftco-animated">
-                    <h2>Affordable Packages</h2>
+            <div class="pb-5 mb-3 row justify-content-center">
+                <div class="text-center col-md-7 heading-section ftco-animate fadeInUp ftco-animated">
+                    <h2>Please Subscribe Your Self</h2>
                 </div>
             </div>
             <div class="row">
@@ -151,17 +151,17 @@
                     <div class="block-7">
                         <div class="img"
                             style="background-image: url(https://www.bootdey.com/image/350x280/FFB6C1/000000);"></div>
-                        <div class="text-center p-4">
+                        <div class="p-4 text-center">
                             <span class="excerpt d-block">Basic</span>
                             <span class="price"><sup>$</sup> <span class="number">49</span> <sub>/mos</sub></span>
-                            <ul class="pricing-text mb-5">
-                                <li><span class="fa fa-check mr-2"></span>5 Dog Walk</li>
-                                <li><span class="fa fa-check mr-2"></span>3 Vet Visit</li>
-                                <li><span class="fa fa-check mr-2"></span>3 Pet Spa</li>
-                                <li><span class="fa fa-check mr-2"></span>Free Supports</li>
+                            <ul class="mb-5 pricing-text">
+                                <li><span class="mr-2 fa fa-check"></span>5 Dog Walk</li>
+                                <li><span class="mr-2 fa fa-check"></span>3 Vet Visit</li>
+                                <li><span class="mr-2 fa fa-check"></span>3 Pet Spa</li>
+                                <li><span class="mr-2 fa fa-check"></span>Free Supports</li>
                             </ul>
                             <a href="{{ route('plans.checkout', $basic->plan_id) }}"
-                                class="btn btn-primary d-block px-2 py-3">Get Started</a>
+                                class="px-2 py-3 btn btn-primary d-block">Get Started</a>
                         </div>
                     </div>
                 </div>
@@ -169,17 +169,17 @@
                     <div class="block-7">
                         <div class="img"
                             style="background-image: url(https://www.bootdey.com/image/350x280/87CEFA/000000);"></div>
-                        <div class="text-center p-4">
+                        <div class="p-4 text-center">
                             <span class="excerpt d-block">Professional</span>
                             <span class="price"><sup>$</sup> <span class="number">79</span> <sub>/mos</sub></span>
-                            <ul class="pricing-text mb-5">
-                                <li><span class="fa fa-check mr-2"></span>5 Dog Walk</li>
-                                <li><span class="fa fa-check mr-2"></span>3 Vet Visit</li>
-                                <li><span class="fa fa-check mr-2"></span>3 Pet Spa</li>
-                                <li><span class="fa fa-check mr-2"></span>Free Supports</li>
+                            <ul class="mb-5 pricing-text">
+                                <li><span class="mr-2 fa fa-check"></span>5 Dog Walk</li>
+                                <li><span class="mr-2 fa fa-check"></span>3 Vet Visit</li>
+                                <li><span class="mr-2 fa fa-check"></span>3 Pet Spa</li>
+                                <li><span class="mr-2 fa fa-check"></span>Free Supports</li>
                             </ul>
                             <a href="{{ route('plans.checkout', $professional->plan_id) }}"
-                                class="btn btn-primary d-block px-2 py-3">Get Started</a>
+                                class="px-2 py-3 btn btn-primary d-block">Get Started</a>
 
                         </div>
                     </div>
@@ -188,17 +188,17 @@
                     <div class="block-7">
                         <div class="img"
                             style="background-image: url(https://www.bootdey.com/image/350x280/FF7F50/000000);"></div>
-                        <div class="text-center p-4">
+                        <div class="p-4 text-center">
                             <span class="excerpt d-block">Enterprise</span>
                             <span class="price"><sup>$</sup> <span class="number">109</span> <sub>/mos</sub></span>
-                            <ul class="pricing-text mb-5">
-                                <li><span class="fa fa-check mr-2"></span>5 Dog Walk</li>
-                                <li><span class="fa fa-check mr-2"></span>3 Vet Visit</li>
-                                <li><span class="fa fa-check mr-2"></span>3 Pet Spa</li>
-                                <li><span class="fa fa-check mr-2"></span>Free Supports</li>
+                            <ul class="mb-5 pricing-text">
+                                <li><span class="mr-2 fa fa-check"></span>5 Dog Walk</li>
+                                <li><span class="mr-2 fa fa-check"></span>3 Vet Visit</li>
+                                <li><span class="mr-2 fa fa-check"></span>3 Pet Spa</li>
+                                <li><span class="mr-2 fa fa-check"></span>Free Supports</li>
                             </ul>
                             <a href="{{ route('plans.checkout', $enterprise->plan_id) }}"
-                                class="btn btn-primary d-block px-2 py-3">Get Started</a>
+                                class="px-2 py-3 btn btn-primary d-block">Get Started</a>
 
                         </div>
                     </div>
