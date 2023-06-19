@@ -6,17 +6,13 @@ use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\SubcriptionController;
 use App\Http\Controllers\RemainingDetailsController;
 
-Route::get('migration', function() {
-       Artisan::call('migrate:fresh');
-
-       return "Migration Run Successfully";
-    });
 
 Route::get('/', function () {
     return view('welcome');
 });
 
 Auth::routes();
+Artisan::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
