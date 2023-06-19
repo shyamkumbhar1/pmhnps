@@ -31,7 +31,7 @@
                     </script>
                 @endif
 
-                <button class="btn btn-outline-success"><a href="{{ 'dashboard1' }}">Go to Dashboard</a></button>
+                <button class="btn btn-outline-success"><a href="{{ 'remaining.details' }}">Complete Your Profile</a></button>
 
             </div>
         </div>
