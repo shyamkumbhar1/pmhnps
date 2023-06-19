@@ -30,7 +30,7 @@
                 <div class="card-header">{{ __('Dashboard') }}</div>
 {{-- {{$plan}} --}}
 <h4>Your Subcription  Plan is {{strtoupper($plan->name)}} </h4>
-<h4>Your Subcription  Plan Price is £ {{$plan->amount}} </h4>
+<h4>Your Subcription  Plan Price is $ {{$plan->amount}} </h4>
                 <div class="card-body">
                     @if (session('alert-success'))
                         <div class="alert alert-success" role="alert">
@@ -63,7 +63,7 @@
                             @endforeach
                         </div>
                         @endif
-                        <div class="form-group text-center"><br>
+                        <div class="text-center form-group"><br>
                             <button  id="card-button" data-secret="{{ $intent->client_secret }}" class="btn btn-lg btn-success btn-block">Process Subcription</button>
                         </div>
                     </form>
