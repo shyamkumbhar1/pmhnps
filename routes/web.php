@@ -7,6 +7,12 @@ use App\Http\Controllers\SubcriptionController;
 use App\Http\Controllers\RemainingDetailsController;
 
 
+Route::get('/clear-cache', function () {
+    Artisan::call('cache:clear');
+    Artisan::call('route:clear');
+
+    return "Cache cleared successfully";
+ });
 Route::get('/', function () {
     return view('welcome');
 });
