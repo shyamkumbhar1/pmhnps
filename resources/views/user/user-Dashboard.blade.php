@@ -15,6 +15,7 @@
                     @endif
 
                     {{ __(' Main Dashboard') }}
+                    <a href="{{route('user.Dashboard.edit')}}">Edit Profile</a>
 
                 </div>
             </div>

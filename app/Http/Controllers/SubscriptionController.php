@@ -11,7 +11,7 @@ use Laravel\Cashier\Subscription;
 use PhpParser\Node\Stmt\TryCatch;
 use App\Models\Plan as ModelsPlan;
 
-class SubcriptionController extends Controller
+class SubscriptionController extends Controller
 {
     public function singleCharge(Request $request)
     {
@@ -119,7 +119,7 @@ class SubcriptionController extends Controller
             )->create($paymentMethod != null ? $paymentMethod->id : '');
         } catch (Exception $th) {
             return back()->withErrors([
-                'error' => 'unable to create subcription due to this issue ' . $th->getMessage()
+                'error' => 'unable to create subscription due to this issue ' . $th->getMessage()
             ]);
         }
 

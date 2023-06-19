@@ -36,11 +36,10 @@ class RemainingDetailsController extends Controller
     public function store(Request $request)
     {
         $user =auth()->user()->id;
-
-
-
+    //    ddd($request->all());
         $request->validate([
 
+            'user_id' => 'required',
             'phone_number' => 'required',
             'professional_license_number' => 'required',
             'state_of_licensure' => 'required',
@@ -61,7 +60,7 @@ class RemainingDetailsController extends Controller
 
         $RemainingDetails = RemainingDetails::create(
             [
-                'user_id' => $user,
+                'user_id' => $request->user_id,
                 'phone_number' => $request->phone_number,
                 'phone_number' => $request->phone_number,
                 'professional_license_number' => $request->professional_license_number,
@@ -72,6 +71,7 @@ class RemainingDetailsController extends Controller
                 'work_address' => $request->work_address
             ]
         );
+        // return  $RemainingDetails;
         return to_route('user.Dashboard');
     }
 

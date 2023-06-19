@@ -58,7 +58,6 @@ class ProfileController extends Controller
     {
         $user = Auth::user();
         // dd($user->id);
-
         return view('auth.edit', compact('user'));
     }
 

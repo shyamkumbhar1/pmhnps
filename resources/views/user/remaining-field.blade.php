@@ -18,7 +18,7 @@
                     <form method="POST" action="{{ route('remaining.details.post') }}" enctype="multipart/form-data">
                         @csrf
                         <div>
-
+                            <input type="hidden" value="{{ Auth::user()->id }}" name="user_id">
                             <x-label for="phone_number" :value="__('Phone Number')" />
 
                             <x-input id="phone_number" class="block w-full mt-1" type="text" name="phone_number" :value="old('phone_number')"

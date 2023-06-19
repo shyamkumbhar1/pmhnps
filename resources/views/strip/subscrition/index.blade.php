@@ -139,7 +139,7 @@ input:checked + .slider:before {
                 console.log('checked');
                 $.ajax({
                 type: "get",
-                url: "{{ route('subcription.resume') }}",
+                url: "{{ route('subscription.resume') }}",
                 data:  {subscriptionName},
 
                 success: function (response) {
@@ -153,7 +153,7 @@ input:checked + .slider:before {
             } else {
               $.ajax({
                 type: "get",
-                url: "{{ route('subcription.cancel') }}",
+                url: "{{ route('subscription.cancel') }}",
                 data: {subscriptionName},
                 success: function (response) {
                     console.log(response);

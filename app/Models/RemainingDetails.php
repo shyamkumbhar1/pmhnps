@@ -9,7 +9,7 @@ class RemainingDetails extends Model
 {
     use HasFactory;
     protected $fillable = [
-        // 'user_id',
+        'user_id',
         'phone_number',
         'professional_license_number',
         'state_of_licensure',

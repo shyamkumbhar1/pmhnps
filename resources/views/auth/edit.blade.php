@@ -11,13 +11,14 @@
         <h1><strong>Update Your Details :</strong> </h1>
 
         <form method="POST" action="{{ route('profile.update') }}" enctype="multipart/form-data">
+
             @csrf
             @method('PUT')
             <!-- Name -->
             <div>
-                <x-label for="full_name" :value="__('Full Name')" />
+                <x-label for="name" :value="__('Full Name')" />
 
-                <x-input id="full_name" class="block w-full mt-1" type="text" name="full_name" :value="old('full_name',$user->full_name)" required autofocus />
+                <x-input id="name" class="block w-full mt-1" type="text" name="name" :value="old('name',$user->name)" required autofocus />
             </div>
             <div>
                 <label for="professional_title">Professional Title</label>
