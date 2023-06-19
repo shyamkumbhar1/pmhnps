@@ -18,7 +18,7 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-Artisan::routes();
+// Artisan::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
