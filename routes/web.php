@@ -56,4 +56,5 @@ Route::post('remaining-details',[RemainingDetailsController::class,'store'])->na
 Route::get('user-Dashboard',[UserDashboardController::class,'index'])->name('user.Dashboard');
 Route::get('user-Dashboard-edit',[UserDashboardController::class,'edit'])->name('user.Dashboard.edit');
 Route::put('user-Dashboard-update',[UserDashboardController::class,'update'])->name('user.Dashboard.update');
+Route::get('my-subscription',[UserDashboardController::class,'mySubscription'])->name('user.my.subscription');
 

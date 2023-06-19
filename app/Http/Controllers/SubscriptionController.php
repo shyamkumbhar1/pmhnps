@@ -128,9 +128,10 @@ class SubscriptionController extends Controller
         return to_route('thankyou', $plan)->withMessage('message');
     }
     public function allSubcription (){
-
         // $subscriptions = auth()->user()->subscriptions;
         $subscriptions = Subscription::where('user_id',auth()->id())->get();
+// dd($subscriptions);
+// $subscription->plan->name
 
         // dd($subscriptions);
         return view('strip.subscrition.index',compact('subscriptions'));

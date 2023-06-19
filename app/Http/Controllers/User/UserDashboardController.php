@@ -62,10 +62,6 @@ class UserDashboardController extends Controller
         $id = Auth::user()->id;
         $user = User::find($id);
         $remaining_details = RemainingDetails::where('user_id',$id)->get();
-// dd($remaining_details);
-
-
-
 
         $user->name = $request->name;
         $user->professional_title = $request->professional_title;
@@ -88,6 +84,10 @@ class UserDashboardController extends Controller
     }
 
 
+    public function mySubscription ()
+    {
+        return "test";
+    }
     public function destroy($id)
     {
         //
