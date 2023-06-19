@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\User;
 
 use App\Models\User;
-use App\Models\RemainingDetails;
 use Illuminate\Http\Request;
+use App\Models\RemainingDetails;
+use Laravel\Cashier\Subscription;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
@@ -86,7 +87,8 @@ class UserDashboardController extends Controller
 
     public function mySubscription ()
     {
-        return "test";
+        $subscriptions = Subscription::where('user_id',auth()->id())->get();
+        return view('user.my-subscription',compact('subscriptions'));
     }
     public function destroy($id)
     {

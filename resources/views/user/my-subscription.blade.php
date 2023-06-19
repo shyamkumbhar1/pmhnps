@@ -75,8 +75,8 @@ input:checked + .slider:before {
     </style>
   </head>
   <body>
-    <h1>Your Subcriptions</h1>
-    {{ $subscriptions }}
+    <h1>My Subcriptions</h1>
+    {{-- {{ $subscriptions }} --}}
 
     <div class="container">
      @if (count($subscriptions)>0)
@@ -87,8 +87,8 @@ input:checked + .slider:before {
             <th scope="col">Subscription Name</th>
             <th scope="col">Price </th>
             <th scope="col">Quantity</th>
-            <th scope="col">Trial Start At</th>
-               <th scope="col">Auto Renew</th>
+            {{-- <th scope="col">Trial Start At</th>
+               <th scope="col">Auto Renew</th> --}}
           </tr>
         </thead>
         <tbody>
@@ -99,9 +99,9 @@ input:checked + .slider:before {
                 <th scope="row">{{ $subscription->name }}</th>
                 <th scope="row">{{ $subscription->plan->amount }}</th>
                 <th scope="row">{{ $subscription->quantity }}</th>
-                <th scope="row">{{ $subscription->created_at }}</th>
+                {{-- <th scope="row">{{ $subscription->created_at }}</th> --}}
 
-               <th>
+               {{-- <th>
                 <label class="switch">
                     @if ($subscription->ends_at == null)
                     <input type="checkbox" id="switcher" checked value="{{ $subscription->name }}">
@@ -112,7 +112,7 @@ input:checked + .slider:before {
                     @endif
                     <span class="slider round"></span>
                   </label>
-               </th>
+               </th> --}}
 
               </tr>
             @endforeach
