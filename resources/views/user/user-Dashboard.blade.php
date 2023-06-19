@@ -13,6 +13,11 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                    @if (session('success'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('success') }}
+                        </div>
+                    @endif
 
                     {{ __(' Main Dashboard') }}
                     <a href="{{route('user.Dashboard.edit')}}">Edit Profile</a>

@@ -82,8 +82,8 @@ class UserDashboardController extends Controller
 
 
         $user->save();
-        return "update";
-        return redirect()->route('dashboard')
+        // return "update";
+        return to_route('user.Dashboard')
             ->with('success', 'User updated successfully');
     }
 
