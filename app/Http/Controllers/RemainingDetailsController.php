@@ -72,7 +72,7 @@ class RemainingDetailsController extends Controller
                 'work_address' => $request->work_address
             ]
         );
-        return to_route('main.Dashboard');
+        return to_route('user.Dashboard');
     }
 
     /**

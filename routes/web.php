@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\SubcriptionController;
 use App\Http\Controllers\RemainingDetailsController;
+use App\Http\Controllers\User\UserDashboradController;
 
 
 Route::get('/clear-cache', function () {
@@ -51,7 +52,6 @@ Route::get('subcription/resume',[SubcriptionController::class,'resumeSubcription
 Route::get('remaining-details',[RemainingDetailsController::class,'create'])->name('remaining.details');
 Route::post('remaining-details',[RemainingDetailsController::class,'store'])->name('remaining.details.post');
 
-// Main Dashboard
-Route::get('main-Dashboard', function (){
-    return view('user.main-Dashboard');
-})->name('main.Dashboard');
+// User main  Dashboard
+Route::get('user-Dashboard',[UserDashboradController::class,'index'])->name('user.Dashboard')->name('user.Dashboard');
+
