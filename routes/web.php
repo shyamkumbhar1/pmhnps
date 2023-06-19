@@ -14,6 +14,12 @@ Route::get('/clear-cache', function () {
 
     return "Cache cleared successfully";
  });
+Route::get('/migrate', function () {
+    Artisan::call('migrate');
+
+
+    return "Migration run successfully";
+ });
 Route::get('/', function () {
     return view('welcome');
 });
