@@ -20,7 +20,10 @@
                     @endif
 
                     {{ __(' Main Dashboard') }}
-                    <a href="{{route('user.Dashboard.edit')}}">Edit Profile</a>
+                    <div>
+                        <a href="{{route('user.Dashboard.edit')}}"><button>Edit Profile</button></a>
+                    <a href="###"><button>My Subscription</button></a>
+                    </div>
 
                 </div>
             </div>
