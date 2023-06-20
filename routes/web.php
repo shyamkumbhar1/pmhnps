@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
+use App\Http\Controllers\DropdownController;
 use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\RemainingDetailsController;
 use App\Http\Controllers\User\UserDashboardController;
@@ -64,3 +65,7 @@ Route::get('user-Dashboard-edit',[UserDashboardController::class,'edit'])->name(
 Route::put('user-Dashboard-update',[UserDashboardController::class,'update'])->name('user.Dashboard.update');
 Route::get('my-subscription',[UserDashboardController::class,'mySubscription'])->name('user.my.subscription');
 
+//State Country city Dropdown
+Route::get('dropdown', [DropdownController::class, 'index']);
+Route::post('api/fetch-states', [DropdownController::class, 'fetchState']);
+Route::post('api/fetch-cities', [DropdownController::class, 'fetchCity']);
