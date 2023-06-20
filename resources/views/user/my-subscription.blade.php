@@ -85,10 +85,9 @@ input:checked + .slider:before {
           <tr>
             <th scope="col">Plan Name</th>
             <th scope="col">Subscription Name</th>
-            <th scope="col">Price </th>
-            <th scope="col">Quantity</th>
-            {{-- <th scope="col">Trial Start At</th>
-               <th scope="col">Auto Renew</th> --}}
+            <th scope="col">Amount </th>
+                       <th scope="col">Trial Start At</th>
+               {{-- <th scope="col">Auto Renew</th> --}}
           </tr>
         </thead>
         <tbody>
@@ -98,8 +97,7 @@ input:checked + .slider:before {
                 <th scope="row">{{ $subscription->plan->name }}</th>
                 <th scope="row">{{ $subscription->name }}</th>
                 <th scope="row">{{ $subscription->plan->amount }}</th>
-                <th scope="row">{{ $subscription->quantity }}</th>
-                {{-- <th scope="row">{{ $subscription->created_at }}</th> --}}
+                <th scope="row">{{ $subscription->created_at }}</th>
 
                {{-- <th>
                 <label class="switch">
