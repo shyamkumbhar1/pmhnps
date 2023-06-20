@@ -21,6 +21,11 @@
                         @csrf
                         @method('PUT')
                         <!-- Name -->
+                        {{-- <div>
+                            <x-label for="profile_picture" :value="__('Profile Picture')" />
+
+                            <input id="profile_picture" class="block w-full mt-1" type="file" name="profile_picture" accept="image/*"  />
+                        </div> --}}
                         <div>
                             <x-label for="name" :value="__('Full Name')" />
 
@@ -60,9 +65,9 @@
 
                             <select id="state_of_licensure" class="block w-full mt-1" name="state_of_licensure" required>
                                 <option value="">Select State of Licensure</option>
-                                <option value="ME" {{ old('state_of_licensure', $user->professional_license_number) === 'ME' ? 'selected' : '' }}>Maine (ME)</option>
+                                <option value="ME" {{ old('state_of_licensure', $user->state_of_licensure) === 'ME' ? 'selected' : '' }}>Maine (ME)</option>
                                 <!-- Add more options as needed -->
-                                <option value="other" {{ old('state_of_licensure', $user->professional_license_number) === 'other' ? 'selected' : '' }}>Other</option>
+                                <option value="other" {{ old('state_of_licensure', $user->state_of_licensure) === 'other' ? 'selected' : '' }}>Other</option>
                             </select>
                         </div>
 
