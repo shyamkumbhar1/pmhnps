@@ -27,7 +27,7 @@
                     <script>
                         setTimeout(function() {
                             window.location.href = "{{route('remaining.details')}}"
-                        }, 5000); // 2 second
+                        }, 3000); // 3 second
                     </script>
                 @endif
 

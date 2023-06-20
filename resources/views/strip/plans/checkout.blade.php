@@ -1,6 +1,15 @@
-@extends('layouts.app')
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-@section('styles')
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Remaining details</title>
+    <style>
 <style>
     .StripeElement {
         background-color: white;
@@ -21,8 +30,7 @@
         background-color: #fefde5 !important;
     }
 </style>
-@endsection
-@section('content')
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -73,9 +81,7 @@
         </div>
     </div>
 </div>
-@endsection
 
-@section('scripts')
 <script src="https://js.stripe.com/v3/"></script>
 <script>
     var stripe = Stripe('{{ env('STRIPE_KEY') }}');
@@ -137,4 +143,6 @@
         form.submit();
     }
 </script>
-@endsection
+</body>
+</html>
+
