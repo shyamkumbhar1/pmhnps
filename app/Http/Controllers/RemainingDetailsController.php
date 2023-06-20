@@ -36,7 +36,6 @@ class RemainingDetailsController extends Controller
     public function store(Request $request)
     {
         $user =auth()->user()->id;
-    //    ddd($request->all());
         $request->validate([
 
             'user_id' => 'required',

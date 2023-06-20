@@ -15,6 +15,7 @@
                     @endif
                     <h1><strong>Update Your Details :</strong>
 {{-- {{print_r($remaining_filed)}} --}}
+
                     </h1>
                     <form method="POST" action="{{ route('user.Dashboard.update') }}" enctype="multipart/form-data">
                         @csrf
@@ -43,14 +44,14 @@
                         <div>
                             <x-label for="phone_number" :value="__('Phone Number')" />
 
-                            <x-input id="phone_number" class="block w-full mt-1" type="text" name="phone_number" :value="old('phone_number', $remaining_filed['phone_number'])"
+                            <x-input id="phone_number" class="block w-full mt-1" type="text" name="phone_number" :value="old('phone_number', $user->professional_title)"
                                 placeholder="Phone Number" required autofocus />
                         </div>
                         <div>
                             <x-label for="professional_license_number" :value="__('Professional License Number')" />
 
                             <x-input id="professional_license_number" class="block w-full mt-1" type="text"
-                                name="professional_license_number" :value="old('professional_license_number', $remaining_filed['professional_license_number'])"
+                                name="professional_license_number" :value="old('professional_license_number', $user->professional_license_number)"
                                 placeholder="Professional License Number" required />
                         </div>
 
@@ -59,9 +60,9 @@
 
                             <select id="state_of_licensure" class="block w-full mt-1" name="state_of_licensure" required>
                                 <option value="">Select State of Licensure</option>
-                                <option value="ME" {{ old('state_of_licensure', $remaining_filed['state_of_licensure']) === 'ME' ? 'selected' : '' }}>Maine (ME)</option>
+                                <option value="ME" {{ old('state_of_licensure', $user->professional_license_number) === 'ME' ? 'selected' : '' }}>Maine (ME)</option>
                                 <!-- Add more options as needed -->
-                                <option value="other" {{ old('state_of_licensure', $remaining_filed['state_of_licensure']) === 'other' ? 'selected' : '' }}>Other</option>
+                                <option value="other" {{ old('state_of_licensure', $user->professional_license_number) === 'other' ? 'selected' : '' }}>Other</option>
                             </select>
                         </div>
 
@@ -84,7 +85,7 @@
                         <div>
                             <x-label for="bio" :value="__('Bio')" />
 
-                            <textarea id="bio" class="block w-full mt-1" name="bio" placeholder="Bio" required>{{ old('bio', $remaining_filed['bio']) }}</textarea>
+                            <textarea id="bio" class="block w-full mt-1" name="bio" placeholder="Bio" required>{{ old('bio', $user->bio) }}</textarea>
                         </div>
 
                         {{-- <div>
@@ -97,8 +98,49 @@
                             <x-label for="work_address" :value="__('Work Address')" />
 
                             <x-input id="work_address" class="block w-full mt-1" type="text" name="work_address"
-                                :value="old('work_address', $remaining_filed['work_address'])" placeholder="Work Address" required />
+                                :value="old('work_address', $user->work_address)" placeholder="Work Address" required />
                         </div>
+                        <div>
+                            <x-label for="address_line1" :value="__('Address Line 1')" />
+
+                            <x-input id="address_line1" class="block w-full mt-1" type="text" name="address_line1"
+                                :value="old('address_line1', $user->address_line1)" placeholder="Work Addres 1" required />
+                        </div>
+                        <div>
+                            <x-label for="address_line2" :value="__('Address Line 2')" />
+
+                            <x-input id="address_line2" class="block w-full mt-1" type="text" name="address_line2"
+                                :value="old('address_line2', $user->address_line2)" placeholder="Work Address 2" required />
+                        </div>
+
+                        <div>
+                            <x-label for="country-dropdown" :value="__('Country')" />
+                            <select id="country-dropdown" id="country" class="form-control" name="country">
+                                <option value="">-- Select Country --</option>
+                                @foreach ($countries as $data)
+                                <option value="{{ $data->id }}">
+                                    {{ $data->name }}
+                                </option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="mb-3 form-group">
+                            <x-label for="state-dropdown" :value="__('State')" />
+                            <select id="state-dropdown" id="state" class="form-control" name="state">
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <x-label for="city-dropdown" :value="__('City')" />
+                            <select id="city-dropdown" class="form-control" name="city">
+                            </select>
+                        </div>
+                        <div>
+                            <x-label for="postal_code" :value="__('Postal Code')" />
+
+                            <x-input id="postal_code" class="block w-full mt-1" type="text" name="postal_code"
+                                :value="old('postal_code', $user->postal_code)" placeholder="Postal Code" required />
+                        </div>
+
 
                         <div class="flex items-center justify-end mt-4">
 
@@ -114,4 +156,67 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('scripts')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+
+        /*------------------------------------------
+        --------------------------------------------
+        Country Dropdown Change Event
+        --------------------------------------------
+        --------------------------------------------*/
+        $('#country-dropdown').on('change', function () {
+            var idCountry = this.value;
+            $("#state-dropdown").html('');
+            $.ajax({
+                url: "{{url('api/fetch-states')}}",
+                type: "POST",
+                data: {
+                    country_id: idCountry,
+                    _token: '{{csrf_token()}}'
+                },
+                dataType: 'json',
+                success: function (result) {
+                    $('#state-dropdown').html('<option value="">-- Select State --</option>');
+                    $.each(result.states, function (key, value) {
+                        $("#state-dropdown").append('<option value="' + value
+                            .id + '">' + value.name + '</option>');
+                    });
+                    $('#city-dropdown').html('<option value="">-- Select City --</option>');
+                }
+            });
+        });
+
+        /*------------------------------------------
+        --------------------------------------------
+        State Dropdown Change Event
+        --------------------------------------------
+        --------------------------------------------*/
+        $('#state-dropdown').on('change', function () {
+            var idState = this.value;
+            $("#city-dropdown").html('');
+            $.ajax({
+                url: "{{url('api/fetch-cities')}}",
+                type: "POST",
+                data: {
+                    state_id: idState,
+                    _token: '{{csrf_token()}}'
+                },
+                dataType: 'json',
+                success: function (res) {
+                    $('#city-dropdown').html('<option value="">-- Select City --</option>');
+                    $.each(res.cities, function (key, value) {
+                        $("#city-dropdown").append('<option value="' + value
+                            .id + '">' + value.name + '</option>');
+                    });
+                }
+            });
+        });
+
+    });
+</script>
+
 @endsection

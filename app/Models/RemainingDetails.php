@@ -17,5 +17,11 @@ class RemainingDetails extends Model
         'bio',
         'profile_picture',
         'work_address',
+        'address_line1',
+        'address_line2',
+         'country',
+         'state',
+          'city',
+          'postal_code'
     ];
 }
