@@ -6,6 +6,7 @@ use Throwable;
 use App\Models\City;
 use App\Models\User;
 use App\Models\State;
+use App\Models\Review;
 use App\Models\Country;
 use Illuminate\Http\Request;
 use App\Models\RemainingDetails;
@@ -104,7 +105,7 @@ class UserDashboardController extends Controller
 
 
         $user->save();
-       
+
         return to_route('user.Dashboard')
             ->with('success', 'User updated successfully');
     }
@@ -115,8 +116,9 @@ class UserDashboardController extends Controller
         $subscriptions = Subscription::where('user_id', auth()->id())->get();
         return view('user.my-subscription', compact('subscriptions'));
     }
-    public function destroy($id)
+    public function myReviews()
     {
-        //
+        $reviews = Review::all();
+        return view('user.my-reviews',compact('reviews'));
     }
 }

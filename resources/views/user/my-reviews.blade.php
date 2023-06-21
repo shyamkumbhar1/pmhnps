@@ -2,12 +2,12 @@
 
 @extends('layouts.app')
 @section('styles')
-    <style>
-        .star {
-            color: gold;
-            font-size: 24px;
-        }
-    </style>
+<style>
+    .star {
+    color: gold;
+    font-size: 24px;
+}
+</style>
 @endsection
 @section('content')
     <div class="container">
@@ -25,9 +25,8 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>Practitioners Id</th>
                                     <th>Patient Id</th>
-
+                                    <th>PMHNP Id</th>
                                     <th>Rating</th>
                                     <th>Comment</th>
                                     <th>Approved</th>
@@ -37,7 +36,7 @@
                                 @foreach ($reviews as $review)
                                     <tr>
                                         <td>{{ $review->user_id }}</td>
-                                        <td>{{ $review->patient_id }}</td>
+                                        <td>2</td>
                                         <td>
                                             <!-- Displaying stars -->
                                             @for ($i = 1; $i <= 5; $i++)

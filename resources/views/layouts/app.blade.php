@@ -63,10 +63,15 @@
                                         {{ __('Update Profile') }}
 
                                     </a>
-                                 
+
                                     <a class="dropdown-item" href="{{ route('user.my.subscription') }}"
                                       >
                                         {{ __('My Subscription') }}
+
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('user.my.reviews') }}"
+                                      >
+                                        {{ __('My Reviews') }}
 
                                     </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
