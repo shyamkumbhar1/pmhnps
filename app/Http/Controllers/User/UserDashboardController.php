@@ -118,7 +118,9 @@ class UserDashboardController extends Controller
     }
     public function myReviews()
     {
-        $reviews = Review::all();
+        $user_id = auth()->user()->id;
+        // dd($user_id);
+        $reviews = Review::where('user_id',$user_id)->get();
         return view('user.my-reviews',compact('reviews'));
     }
 }

@@ -14,8 +14,8 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Reviews</div>
-                    <a href="{{ route('reviews.create') }}">Add Reviews</a>
+                    <div class="card-header"> My Reviews</div>
+                    {{-- <a href="{{ route('reviews.create') }}">Add Reviews</a> --}}
 
                     <div class="card-body">
                         @if (session('success'))
