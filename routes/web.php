@@ -3,7 +3,9 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\DropdownController;
+use App\Http\Controllers\ReviewRatingController;
 use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\RemainingDetailsController;
 use App\Http\Controllers\User\UserDashboardController;
@@ -69,3 +71,10 @@ Route::get('my-subscription',[UserDashboardController::class,'mySubscription'])-
 Route::get('dropdown', [DropdownController::class, 'index']);
 Route::post('api/fetch-states', [DropdownController::class, 'fetchState']);
 Route::post('api/fetch-cities', [DropdownController::class, 'fetchCity']);
+
+
+// Review section
+Route::get('/reviews', [ReviewController::class,'index'])->name('reviews.index');
+Route::get('/reviews/create', [ReviewController::class,'create'])->name('reviews.create');
+Route::post('/reviews', [ReviewController::class,'store'])->name('reviews.store');
+
