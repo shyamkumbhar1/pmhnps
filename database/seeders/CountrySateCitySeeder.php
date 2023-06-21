@@ -29,16 +29,16 @@ class CountrySateCitySeeder extends Seeder
         City::create(['state_id' => $state->id, 'name' => 'Miami']);
         City::create(['state_id' => $state->id, 'name' => 'Tampa']);
 
-        /*------------------------------------------
-        --------------------------------------------
-        India Country Data
-        --------------------------------------------
-        --------------------------------------------*/
-        $country = Country::create(['name' => 'India']);
+        // /*------------------------------------------
+        // --------------------------------------------
+        // India Country Data
+        // --------------------------------------------
+        // --------------------------------------------*/
+        // $country = Country::create(['name' => 'India']);
 
-        $state = State::create(['country_id' => $country->id, 'name' => 'Gujarat']);
+        // $state = State::create(['country_id' => $country->id, 'name' => 'Gujarat']);
 
-        City::create(['state_id' => $state->id, 'name' => 'Rajkot']);
-        City::create(['state_id' => $state->id, 'name' => 'Surat']);
+        // City::create(['state_id' => $state->id, 'name' => 'Rajkot']);
+        // City::create(['state_id' => $state->id, 'name' => 'Surat']);
     }
 }
