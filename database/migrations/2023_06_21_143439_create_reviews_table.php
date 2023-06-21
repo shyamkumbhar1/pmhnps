@@ -16,13 +16,14 @@ return new class extends Migration
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id')->nullable();
-            $table->integer('patient_id')->nullable();
+            $table->unsignedBigInteger('patient_id')->nullable();
             $table->unsignedInteger('rating');
             $table->text('comment');
             $table->timestamps();
 
             // Define foreign key constraint if necessary
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('patient_id')->references('id')->on('patients')->onDelete('cascade');
 
 
         });
