@@ -83,13 +83,8 @@ Route::get('/reviews/create', [ReviewController::class,'create'])->name('reviews
 Route::post('/reviews', [ReviewController::class,'store'])->name('reviews.store');
 
 
+
 // Contact Us Section
-// Route::get('/contact-form', [CaptchaServiceController::class, 'index']);
-// Route::post('/captcha-validation', [CaptchaServiceController::class, 'capthcaFormValidate']);
-// Route::get('/reload-captcha', [CaptchaServiceController::class, 'reloadCaptcha']);
-
-
-//Send Form Data to mail
 Route::get('/contact', [ContactUsFormController::class, 'createForm']);
 Route::post('/contact', [ContactUsFormController::class, 'ContactUsForm'])->name('contact.store');
 Route::post('/captcha-validation', [ContactUsFormController::class, 'capthcaFormValidate']);
