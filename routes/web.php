@@ -36,19 +36,11 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // Subcription
-// Route::view('single-charge','strip.single-charge');
-Route::get('single-charge', function () {
-    $user = auth()->user();
-    return view('strip.single-charge',[
-
-    'intent' => $user->createSetupIntent(),
-    ]
-);
-});
 
 Route::view('thankyou','strip.thankyou')->name('thankyou');
 Route::view('dashboard1','dashboard1')->name('dashboard1');
 Route::post('single-charge',[SubscriptionController::class,'singleCharge'])->name('single.charge');
+Route::get('single-charge',[SubscriptionController::class,'singleChargeGet'])->name('single.charge');
 Route::get('plans/create',[SubscriptionController::class,'showPlanForm'])->name('plans.create');
 Route::post('plans/store',[SubscriptionController::class,'savePlan'])->name('plans.store');
 Route::get('plans',[SubscriptionController::class,'allPlan'])->name('plans.all');

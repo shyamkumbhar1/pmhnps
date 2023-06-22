@@ -13,6 +13,17 @@ use App\Models\Plan as ModelsPlan;
 
 class SubscriptionController extends Controller
 {
+    public function singleChargeGet(Request $request)
+    {
+
+        $user = auth()->user();
+        return view('strip.single-charge',[
+
+        'intent' => $user->createSetupIntent(),
+        ]
+    );
+
+    }
     public function singleCharge(Request $request)
     {
 
