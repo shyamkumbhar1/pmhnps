@@ -22,7 +22,9 @@ class ContactUsFormController extends Controller
             'email' => 'required|email',
             'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
             'subject' => 'required',
-            'message' => 'required'
+            'message' => 'required',
+            'captcha' => 'required|captcha'
+
         ]);
         //  Store data in database
         Contact::create($request->all());
@@ -39,5 +41,11 @@ class ContactUsFormController extends Controller
             $message->to('shyamkumbhar743@gmail.com', 'Admin')->subject($request->get('subject'));
         });
         return back()->with('success', 'We have received your message and would like to thank you for writing to us.');
+    }
+
+  
+    public function reloadCaptcha()
+    {
+        return response()->json(['captcha'=> captcha_img()]);
     }
 }
