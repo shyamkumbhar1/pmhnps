@@ -7,6 +7,7 @@ use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\DropdownController;
 use App\Http\Controllers\ReviewRatingController;
 use App\Http\Controllers\SubscriptionController;
+use App\Http\Controllers\CaptchaServiceController;
 use App\Http\Controllers\RemainingDetailsController;
 use App\Http\Controllers\User\UserDashboardController;
 
@@ -79,3 +80,8 @@ Route::get('/reviews', [ReviewController::class,'index'])->name('reviews.index')
 Route::get('/reviews/create', [ReviewController::class,'create'])->name('reviews.create');
 Route::post('/reviews', [ReviewController::class,'store'])->name('reviews.store');
 
+
+// Contact Us Section
+Route::get('/contact-form', [CaptchaServiceController::class, 'index']);
+Route::post('/captcha-validation', [CaptchaServiceController::class, 'capthcaFormValidate']);
+Route::get('/reload-captcha', [CaptchaServiceController::class, 'reloadCaptcha']);
