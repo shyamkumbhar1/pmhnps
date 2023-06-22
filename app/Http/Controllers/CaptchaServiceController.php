@@ -15,6 +15,7 @@ class CaptchaServiceController extends Controller
             'username' => 'required',
             'captcha' => 'required|captcha'
         ]);
+        return "test";
     }
     public function reloadCaptcha()
     {
