@@ -25,7 +25,8 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>Patient Id</th>
+                                    <th>Name</th>
+                                    <th>email</th>
                                     <th>Rating</th>
                                     <th>Comment</th>
                                     <th>Approved</th>
@@ -35,7 +36,8 @@
                                 @foreach ($reviews as $review)
                                     <tr>
 
-                                        <td> {{$review->patient_id}}</td>
+                                        <td> {{$review->name}}</td>
+                                        <td> {{$review->email}}</td>
                                         <td>
                                             <!-- Displaying stars -->
                                             @for ($i = 1; $i <= 5; $i++)

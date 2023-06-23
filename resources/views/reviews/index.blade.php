@@ -26,7 +26,8 @@
                             <thead>
                                 <tr>
                                     <th>Practitioners Id</th>
-                                    <th>Patient Id</th>
+                                    <th>Patient Name</th>
+                                    <th>Patient Email </th>
 
                                     <th>Rating</th>
                                     <th>Comment</th>
@@ -37,7 +38,8 @@
                                 @foreach ($reviews as $review)
                                     <tr>
                                         <td>{{ $review->user_id }}</td>
-                                        <td>{{ $review->patient_id }}</td>
+                                        <td>{{ $review->name }}</td>
+                                        <td>{{ $review->email }}</td>
                                         <td>
                                             <!-- Displaying stars -->
                                             @for ($i = 1; $i <= 5; $i++)

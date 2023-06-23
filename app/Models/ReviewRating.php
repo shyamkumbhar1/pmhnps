@@ -9,7 +9,10 @@ class ReviewRating extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'comment',
-        'rating'
+        'name',
+        'email',
+        'contact',
+        'rating',
+        'patient_ip_address',
     ];
 }
