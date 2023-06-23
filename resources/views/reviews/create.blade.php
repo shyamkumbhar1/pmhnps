@@ -50,6 +50,10 @@
                                 <label for="comment">Comment:</label>
                                 <textarea name="comment" id="comment" rows="5" class="form-control" value="{{ old('comment') }}" ></textarea>
                             </div>
+                            <div class="form-group">
+                                {!! NoCaptcha::renderJs() !!}
+                                {!! NoCaptcha::display() !!}
+                            </div>
 
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary">Submit</button>
