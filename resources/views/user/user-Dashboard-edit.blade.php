@@ -13,7 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <h1><strong>Update Your Details :</strong>
+                    <h1><strong>Update Your Details fgggg :</strong>
 {{-- {{print_r($remaining_filed)}} --}}
 
                     </h1>
@@ -109,6 +109,11 @@
 
                             <textarea id="address_line1" class="block w-full mt-1" type="text" name="address_line1"
                                 placeholder="Work Addres 1" required />{{ old('bio', $user->address_line1) }}</textarea>
+                        </div>
+                        <div>
+                            <x-label for="profile_picture" :value="__('Profile Picture')" />
+
+                            <input id="profile_picture" class="block w-full mt-1" type="file" name="profile_picture" accept="image/*"  />
                         </div>
                         <div>
                             <x-label for="address_line2" :value="__('Address Line 2')" />

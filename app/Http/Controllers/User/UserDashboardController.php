@@ -75,8 +75,13 @@ class UserDashboardController extends Controller
         // dd($request->all());
 
         $validator=  $request->validate([
-            'phone_number' => 'required',
-           'postal_code'=> 'required '
+            'address_line1' => 'required',
+           'address_line2'=> 'required ',
+           'country'=> 'required ',
+           'state'=> 'required ',
+           'city'=> 'required ',
+           'city'=> 'required ',
+           'postal_code'=> 'required ',
 
         ]);
 
@@ -105,6 +110,7 @@ class UserDashboardController extends Controller
 
 
         $user->save();
+       
 
         return to_route('user.Dashboard')
             ->with('success', 'User updated successfully');

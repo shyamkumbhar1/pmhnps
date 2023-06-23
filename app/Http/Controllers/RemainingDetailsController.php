@@ -8,7 +8,7 @@ use App\Models\RemainingDetails;
 
 class RemainingDetailsController extends Controller
 {
-  
+
 
 
     public function create()
@@ -71,7 +71,7 @@ class RemainingDetailsController extends Controller
 
         // fetch Data from session
         $remainingDetails = $request->session()->get('remainingDetails');
-        dd($remainingDetails);
+      
 
 
 
