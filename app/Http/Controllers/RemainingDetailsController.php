@@ -8,32 +8,15 @@ use App\Models\RemainingDetails;
 
 class RemainingDetailsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
+  
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
         return view('user.remaining-field');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
         $user_id =auth()->user()->id;
@@ -50,13 +33,15 @@ class RemainingDetailsController extends Controller
         ]);
 
         // Image Upload
-        // $profile_picture_name = $request->file('profile_picture')->getClientOriginalName();
+       if ($request->hasFile('profile_picture')) {
+        $profile_picture_name = $request->file('profile_picture')->getClientOriginalName();
 
 
-        // $path = $request->file('profile_picture')->store('public/Profile-Picture');
-        // dd($request->profile_picture,$profile_picture_name,$path);
+        $ImagePath = $request->file('profile_picture')->storeAs('public/Profile-Picture',$profile_picture_name);
 
-        $defaultImagePath = "public/Profile-Picture/pgBeIZNuHOeTh953DjfA2hOwSfBwQd7ixDameesb.png";
+       }
+
+        $defaultImagePath = "public/Profile-Picture/default-image.jfif";
 
         $RemainingDetails = RemainingDetails::create(
             [
@@ -67,7 +52,7 @@ class RemainingDetailsController extends Controller
                'state_of_licensure' => $request->state_of_licensure,
                 'areas_of_expertise' => implode($request->areas_of_expertise),
                 'bio' => $request->bio,
-                'profile_picture' => $defaultImagePath, // $profile_picture_name,
+                'profile_picture' => ($request->hasFile('profile_picture'))?$ImagePath :$defaultImagePath,
                 'work_address' => $request->work_address
             ]
         );
@@ -80,12 +65,13 @@ class RemainingDetailsController extends Controller
             'state_of_licensure' => $request->state_of_licensure,
             'areas_of_expertise' => implode($request->areas_of_expertise),
             'bio' => $request->bio,
-            'profile_picture' => $defaultImagePath,
+            'profile_picture' => ($request->hasFile('profile_picture'))?$ImagePath :$defaultImagePath,
             'work_address' => $request->work_address
         ]);
 
         // fetch Data from session
         $remainingDetails = $request->session()->get('remainingDetails');
+        dd($remainingDetails);
 
 
 
@@ -105,31 +91,9 @@ class RemainingDetailsController extends Controller
         }
 
 
-        
+
         return to_route('user.Dashboard');
     }
 
 
-    public function show(RemainingDetails $remainingDetails)
-    {
-
-    }
-
-
-    public function edit(RemainingDetails $remainingDetails)
-    {
-
-    }
-
-
-    public function update(Request $request, RemainingDetails $remainingDetails)
-    {
-
-    }
-
-
-    public function destroy(RemainingDetails $remainingDetails)
-    {
-
-    }
 }
