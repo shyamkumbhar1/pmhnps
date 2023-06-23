@@ -85,20 +85,29 @@ class UserDashboardController extends Controller
 
         ]);
 
-        $id = Auth::user()->id;
-        $user = User::find($id);
-        $remaining_details = RemainingDetails::where('user_id', $id)->get();
+        $user = Auth::user();
+
+
+
+
+          // Image Upload
+       if ($request->hasFile('profile_picture')) {
+        $profile_picture_name = $request->file('profile_picture')->getClientOriginalName();
+
+
+        $ImagePath = $request->file('profile_picture')->storeAs('public/Profile-Picture',$profile_picture_name);
+
+       }
+       $defaultImagePath = '';
 
         $user->name = $request->name;
         $user->professional_title = $request->professional_title;
-        // $user->email = $request->email;
-        // $user->password = $request->password;
         $user->phone_number = $request->phone_number;
         $user->professional_license_number = $request->professional_license_number;
         $user->state_of_licensure = $request->state_of_licensure;
         $user->areas_of_expertise = $request->areas_of_expertise;
         $user->bio = $request->bio;
-        $user->profile_picture = $request->profile_picture;
+        $user->profile_picture = ($request->hasFile('profile_picture'))?$ImagePath :$defaultImagePath;
         $user->work_address = $request->work_address;
         $user->address_line1 = $request->address_line1;
         $user->address_line2 = $request->address_line2;
@@ -110,7 +119,9 @@ class UserDashboardController extends Controller
 
 
         $user->save();
-       
+
+        // dd($user->profile_picture);
+
 
         return to_route('user.Dashboard')
             ->with('success', 'User updated successfully');

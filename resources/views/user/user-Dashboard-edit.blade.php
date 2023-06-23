@@ -113,7 +113,11 @@
                         <div>
                             <x-label for="profile_picture" :value="__('Profile Picture')" />
 
-                            <input id="profile_picture" class="block w-full mt-1" type="file" name="profile_picture" accept="image/*"  />
+                            <input id="profile_picture" class="block w-full mt-1" type="file" name="profile_picture" onchange="previewImage(event)"   />
+                            {{-- <input type="file" name="image" id="image" onchange="previewImage(event)"> --}}
+
+                            <img id="preview" src="#" alt="Preview" style="display: none; max-width: 200px; max-height: 200px;">
+
                         </div>
                         <div>
                             <x-label for="address_line2" :value="__('Address Line 2')" />
@@ -227,5 +231,17 @@
 
     });
 </script>
+<script>
+    function previewImage(event) {
+        var reader = new FileReader();
+        reader.onload = function() {
+            var output = document.getElementById('preview');
+            output.src = reader.result;
+            output.style.display = 'block';
+        };
+        reader.readAsDataURL(event.target.files[0]);
+    }
+</script>
+
 
 @endsection
