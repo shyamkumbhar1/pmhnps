@@ -102,20 +102,19 @@
                         <div>
                             <x-label for="work_address" :value="__('Work Address')" />
 
-                            <x-input id="work_address" class="block w-full mt-1" type="text" name="work_address"
-                                :value="old('work_address', $user->work_address)" placeholder="Work Address" required />
+                            <textarea id="work_address" class="block w-full mt-1" type="text" name="work_address" placeholder="Work Address" required />{{ old('bio', $user->work_address) }}</textarea>
                         </div>
                         <div>
                             <x-label for="address_line1" :value="__('Address Line 1')" />
 
-                            <x-input id="address_line1" class="block w-full mt-1" type="text" name="address_line1"
-                                :value="old('address_line1', $user->address_line1)" placeholder="Work Addres 1" required />
+                            <textarea id="address_line1" class="block w-full mt-1" type="text" name="address_line1"
+                                placeholder="Work Addres 1" required />{{ old('bio', $user->address_line1) }}</textarea>
                         </div>
                         <div>
                             <x-label for="address_line2" :value="__('Address Line 2')" />
 
-                            <x-input id="address_line2" class="block w-full mt-1" type="text" name="address_line2"
-                                :value="old('address_line2', $user->address_line2)" placeholder="Work Address 2" required />
+                            <textarea id="address_line2" class="block w-full mt-1" type="text" name="address_line2"
+                                 placeholder="Work Address 2" required />{{ old('bio', $user->address_line2) }}</textarea>
                         </div>
 
                         <div>

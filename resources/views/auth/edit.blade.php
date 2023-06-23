@@ -91,7 +91,7 @@
             <div>
                 <x-label for="work_address" :value="__('Work Address')" />
 
-                <x-input id="work_address" class="block w-full mt-1" type="text" name="work_address"
+                <textarea id="work_address" class="block w-full mt-1" type="text" name="work_address"
                     :value="old('work_address', $user->work_address)" placeholder="Work Address" required />
             </div>
 
