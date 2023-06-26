@@ -11,4 +11,9 @@ class Country extends Model
     protected $fillable = [
         'name'
     ];
+
+    public function state()
+{
+    return $this->belongsTo(State::class);
+}
 }

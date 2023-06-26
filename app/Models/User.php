@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Country;
 use Laravel\Cashier\Billable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
@@ -13,33 +14,25 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable,Billable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
+
     protected $fillable = [
         'name',
         'professional_title',
         'email',
         'password',
     ];
+    public function country()
+{
+    return $this->belongsTo(Country::class);
+}
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
+
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
+
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];

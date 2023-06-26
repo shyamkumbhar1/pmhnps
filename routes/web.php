@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DropdownController;
+use App\Http\Controllers\FindPmhnpsController;
 use App\Http\Controllers\ReviewRatingController;
 use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\ContactUsFormController;
@@ -81,3 +82,8 @@ Route::get('/contact', [ContactUsFormController::class, 'createForm']);
 Route::post('/contact', [ContactUsFormController::class, 'ContactUsForm'])->name('contact.store');
 Route::post('/captcha-validation', [ContactUsFormController::class, 'capthcaFormValidate']);
 Route::get('/reload-captcha', [ContactUsFormController::class, 'reloadCaptcha']);
+
+
+// Find section
+Route::get('find-pmhnps',[FindPmhnpsController::class,'findPpmhnps'])->name('find.pmhnps');
+Route::post('find-pmhnps-post',[FindPmhnpsController::class,'findPpmhnpsPost'])->name('find.pmhnps.post');
