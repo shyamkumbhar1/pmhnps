@@ -23,7 +23,7 @@ class ContactUsFormController extends Controller
             'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
             'subject' => 'required',
             'message' => 'required',
-            'captcha' => 'required|captcha'
+            // 'captcha' => 'required|captcha'
 
         ]);
         //  Store data in database
@@ -43,7 +43,7 @@ class ContactUsFormController extends Controller
         return back()->with('success', 'We have received your message and would like to thank you for writing to us.');
     }
 
-  
+
     public function reloadCaptcha()
     {
         return response()->json(['captcha'=> captcha_img()]);

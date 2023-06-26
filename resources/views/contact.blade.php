@@ -54,20 +54,16 @@
 
             <div class="form-group">
                 <div class="captcha">
-                    <span>{!! captcha_img() !!}</span>
-                    <button type="button" class="btn btn-danger" class="reload" id="reload">
-                        &#x21bb;
-                    </button>
+                    {!! NoCaptcha::renderJs() !!}
+                    {!! NoCaptcha::display() !!}
                 </div>
             </div>
-            <div class="form-group">
-                <input id="captcha" type="text" class="form-control" placeholder="Enter Captcha" name="captcha">
-            </div>
+            
             <input type="submit" name="send" value="Submit" class="btn btn-dark btn-block">
         </form>
     </div>
 </body>
-<script type="text/javascript">
+{{-- <script type="text/javascript">
     $('#reload').click(function () {
         $.ajax({
             type: 'GET',
@@ -77,5 +73,5 @@
             }
         });
     });
-</script>
+</script> --}}
 </html>
