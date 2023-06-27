@@ -31,7 +31,7 @@
                     </script>
                 @endif
 
-                <button class="btn btn-outline-success"><a href="{{ 'remaining.details' }}">Complete Your Profile</a></button>
+                <button class="btn btn-outline-success"><a href="{{route('remaining.details')}}">Complete Your Profile</a></button>
 
             </div>
         </div>
