@@ -70,15 +70,13 @@
                                 <option value="other" {{ old('state_of_licensure', $user->state_of_licensure) === 'other' ? 'selected' : '' }}>Other</option>
                             </select>
                         </div>
-
                         <div>
                             <x-label for="areas_of_expertise" :value="__('Areas of Expertise')" />
 
                             <div>
-                                <input id="area_of_expertise1" type="checkbox" name="areas_of_expertise[]" value="child psychiatry" {{ in_array('option1', old('areas_of_expertise', [])) ? 'checked' : '' }}>
-                                <label for="area_of_expertise1">child psychiatry</label>
+                                <input id="area_of_expertise1" type="checkbox" name="areas_of_expertise[]" value="child psychiatry" {{ in_array('child psychiatry', old('areas_of_expertise', [])) ? 'checked' : '' }}>
+                                <label for="area_of_expertise1">Child Psychiatry</label>
                             </div>
-
 
                             <!-- Add more checkboxes as needed -->
 
@@ -87,6 +85,8 @@
                                 <label for="area_of_expertise_other">Other</label>
                             </div>
                         </div>
+
+
 
                         <div>
                             <x-label for="bio" :value="__('Bio')" />
