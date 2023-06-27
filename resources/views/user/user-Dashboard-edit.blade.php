@@ -74,17 +74,18 @@
                         <div>
                             <x-label for="areas_of_expertise" :value="__('Areas of Expertise')" />
 
-                            {{-- <div>
-                                <input id="area_of_expertise1" type="checkbox" name="areas_of_expertise[]" value="child psychiatry" {{ in_array('child psychiatry', old('areas_of_expertise', $user->areas_of_expertise), true) ? 'checked' : '' }}>
+                            <div>
+                                <input id="area_of_expertise1" type="checkbox" name="areas_of_expertise[]" value="child psychiatry" {{ in_array('option1', old('areas_of_expertise', [])) ? 'checked' : '' }}>
                                 <label for="area_of_expertise1">child psychiatry</label>
-                            </div> --}}
+                            </div>
+
 
                             <!-- Add more checkboxes as needed -->
 
-                            {{-- <div>
-                                <input id="area_of_expertise_other" type="checkbox" name="areas_of_expertise[]" value="other" {{ in_array('other', old('areas_of_expertise', $user->areas_of_expertise), true) ? 'checked' : '' }}>
+                            <div>
+                                <input id="area_of_expertise_other" type="checkbox" name="areas_of_expertise[]" value="other" {{ in_array('other', old('areas_of_expertise', [])) ? 'checked' : '' }}>
                                 <label for="area_of_expertise_other">Other</label>
-                            </div> --}}
+                            </div>
                         </div>
 
                         <div>
@@ -92,12 +93,17 @@
 
                             <textarea id="bio" class="block w-full mt-1" name="bio" placeholder="Bio" required>{{ old('bio', $user->bio) }}</textarea>
                         </div>
-
-                        {{-- <div>
+                        <div>
                             <x-label for="profile_picture" :value="__('Profile Picture')" />
 
-                            <input id="profile_picture" class="block w-full mt-1" type="file" name="profile_picture" accept="image/*" />
-                        </div> --}}
+                            <input id="profile_picture" class="block w-full mt-1" type="file" name="profile_picture" onchange="previewImage(event)"   />
+                            {{-- <input type="file" name="image" id="image" onchange="previewImage(event)"> --}}
+
+                            <img id="preview" src="#" alt="Preview" style="display: none; max-width: 200px; max-height: 200px;">
+
+                        </div>
+
+
 
                         <div>
                             <x-label for="work_address" :value="__('Work Address')" />
@@ -110,15 +116,7 @@
                             <textarea id="address_line1" class="block w-full mt-1" type="text" name="address_line1"
                                 placeholder="Work Addres 1" required />{{ old('bio', $user->address_line1) }}</textarea>
                         </div>
-                        <div>
-                            <x-label for="profile_picture" :value="__('Profile Picture')" />
 
-                            <input id="profile_picture" class="block w-full mt-1" type="file" name="profile_picture" onchange="previewImage(event)"   />
-                            {{-- <input type="file" name="image" id="image" onchange="previewImage(event)"> --}}
-
-                            <img id="preview" src="#" alt="Preview" style="display: none; max-width: 200px; max-height: 200px;">
-
-                        </div>
                         <div>
                             <x-label for="address_line2" :value="__('Address Line 2')" />
 
