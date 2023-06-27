@@ -6,20 +6,25 @@ use auth;
 use Exception;
 use Stripe\Plan;
 use Stripe\Stripe;
+use App\Models\User;
+use App\Models\TempRegister;
 use Illuminate\Http\Request;
 use Laravel\Cashier\Subscription;
 use PhpParser\Node\Stmt\TryCatch;
 use App\Models\Plan as ModelsPlan;
+use Illuminate\Support\Facades\Auth;
 
 class SubscriptionController extends Controller
 {
     public function singleChargeGet(Request $request)
     {
 
-        $user = auth()->user();
+        Stripe::setApiKey(env('STRIPE_SECRET'));
+
+        $intent = \Stripe\SetupIntent::create();
         return view('strip.single-charge',[
 
-        'intent' => $user->createSetupIntent(),
+        'intent' => $intent,
         ]
     );
 
@@ -31,7 +36,7 @@ class SubscriptionController extends Controller
         $ammount = $ammount * 100 ;
         $paymentMethod = $request->payment_method;
 
-        $user = auth()->user();
+        $user = new User();
         $user->createOrGetStripeCustomer();
        $paymentMethod = $user->addPaymentMethod($paymentMethod);
 
@@ -91,9 +96,11 @@ class SubscriptionController extends Controller
 
     public function checkout($planId)
     {
-        // dd( auth()->user());
-        $user = auth()->user();
-        $intent = $user->createSetupIntent();
+
+        Stripe::setApiKey(env('STRIPE_SECRET'));
+
+        $intent = \Stripe\SetupIntent::create();
+
         $plan = ModelsPlan::where('plan_id', $planId)->first();
         if (!$plan) {
             return back()->withErrors(
@@ -108,9 +115,18 @@ class SubscriptionController extends Controller
 
     public function processSubcription(Request $request)
     {
+        $user_id = $request->session()->get('user_id');
+        $temp_user = TempRegister::where('id',$user_id)->first();
 
-        $user = auth()->user();
-        $user->createOrGetStripeCustomer();
+
+        $user = new User();
+
+        $user->createOrGetStripeCustomer([
+            'name' => $temp_user->name,
+            'email' => $temp_user->email,
+        ]
+
+        );
         $paymentMethod = null;
         $paymentMethod = $request->payment_method;
 
@@ -118,16 +134,20 @@ class SubscriptionController extends Controller
 
         if ($paymentMethod != null) {
             $paymentMethod = $user->addPaymentMethod($paymentMethod);
+
+
         }
 
         $plan = $request->plan_id;
 
         // Subcription
         try {
+
             $user->newSubscription(
                 'default',
                 $plan
             )->create($paymentMethod != null ? $paymentMethod->id : '');
+
         } catch (Exception $th) {
             return back()->withErrors([
                 'error' => 'unable to create subscription due to this issue ' . $th->getMessage()
@@ -135,7 +155,8 @@ class SubscriptionController extends Controller
         }
 
         $request->session()->flash('alert-success', 'You are subscribed Successfully');
-
+        // Auth::login($user);
+dd('test');
         return to_route('thankyou', $plan)->withMessage('message');
     }
     public function allSubcription (){

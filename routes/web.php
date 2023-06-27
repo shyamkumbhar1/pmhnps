@@ -9,13 +9,14 @@ use App\Http\Controllers\DropdownController;
 use App\Http\Controllers\FindPmhnpsController;
 use App\Http\Controllers\ReviewRatingController;
 use App\Http\Controllers\SubscriptionController;
+use App\Http\Controllers\TempRegisterController;
 use App\Http\Controllers\ContactUsFormController;
 use App\Http\Controllers\CaptchaServiceController;
 use App\Http\Controllers\RemainingDetailsController;
 use App\Http\Controllers\User\UserDashboardController;
 
 
-Route::get('/clear-cache', function () {
+Route::get('/clear', function () {
     Artisan::call('cache:clear');
     Artisan::call('route:clear');
 
@@ -35,6 +36,10 @@ Auth::routes();
 // Artisan::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// Tempory  Registor User
+Route::get('register-step-one',[TempRegisterController::class,'registerStepOne'])->name('register.step.one');
+Route::post('register-step-one-post',[TempRegisterController::class,'postRegisterStepOne'])->name('register.step.one.post');
 
 // Subcription
 
