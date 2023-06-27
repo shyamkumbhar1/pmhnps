@@ -78,6 +78,16 @@
                                 <label for="area_of_expertise1">Child Psychiatry</label>
                             </div>
 
+                            <div>
+                                <input id="area_of_expertise2" type="checkbox" name="areas_of_expertise[]" value="geriatric psychiatry" {{ in_array('geriatric psychiatry', old('areas_of_expertise', [])) ? 'checked' : '' }}>
+                                <label for="area_of_expertise2">Geriatric Psychiatry</label>
+                            </div>
+
+                            <div>
+                                <input id="area_of_expertise3" type="checkbox" name="areas_of_expertise[]" value="substance abuse counseling" {{ in_array('substance abuse counseling', old('areas_of_expertise', [])) ? 'checked' : '' }}>
+                                <label for="area_of_expertise3">Substance Abuse Counseling</label>
+                            </div>
+
                             <!-- Add more checkboxes as needed -->
 
                             <div>
