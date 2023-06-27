@@ -112,20 +112,24 @@
                                 </select>
                             </div>
 
-                            {{-- <div>
-                                <x-label for="areas_of_expertise" :value="__('Areas of Expertise')" />
 
-                                <x-input id="areas_of_expertise" class="block w-full mt-1" type="text" name="areas_of_expertise"
-                                    :value="old('areas_of_expertise')" placeholder="Areas of Expertise" required />
-                            </div> --}}
                             <div>
                                 <x-label for="areas_of_expertise" :value="__('Areas of Expertise')" />
 
                                 <div>
-                                    <input id="area_of_expertise1" type="checkbox" name="areas_of_expertise[]" value="child psychiatry" {{ in_array('option1', old('areas_of_expertise', [])) ? 'checked' : '' }}>
-                                    <label for="area_of_expertise1">child psychiatry</label>
+                                    <input id="area_of_expertise1" type="checkbox" name="areas_of_expertise[]" value="child psychiatry" {{ in_array('child psychiatry', old('areas_of_expertise', [])) ? 'checked' : '' }}>
+                                    <label for="area_of_expertise1">Child Psychiatry</label>
                                 </div>
 
+                                <div>
+                                    <input id="area_of_expertise2" type="checkbox" name="areas_of_expertise[]" value="geriatric psychiatry" {{ in_array('geriatric psychiatry', old('areas_of_expertise', [])) ? 'checked' : '' }}>
+                                    <label for="area_of_expertise2">Geriatric Psychiatry</label>
+                                </div>
+
+                                <div>
+                                    <input id="area_of_expertise3" type="checkbox" name="areas_of_expertise[]" value="substance abuse counseling" {{ in_array('substance abuse counseling', old('areas_of_expertise', [])) ? 'checked' : '' }}>
+                                    <label for="area_of_expertise3">Substance Abuse Counseling</label>
+                                </div>
 
                                 <!-- Add more checkboxes as needed -->
 
@@ -135,12 +139,8 @@
                                 </div>
                             </div>
 
-                            {{-- <div>
-                                <x-label for="bio" :value="__('Bio')" />
 
-                                <x-input id="bio" class="block w-full mt-1" type="text" name="bio" :value="old('bio')"
-                                    placeholder="Bio" required />
-                            </div> --}}
+
                             <div>
                                 <x-label for="bio" :value="__('Bio')" />
 

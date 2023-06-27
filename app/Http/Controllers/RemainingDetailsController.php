@@ -50,7 +50,7 @@ class RemainingDetailsController extends Controller
                 'phone_number' => $request->phone_number,
                 'professional_license_number' => $request->professional_license_number,
                'state_of_licensure' => $request->state_of_licensure,
-                'areas_of_expertise' => implode($request->areas_of_expertise),
+                'areas_of_expertise' => implode(', ',$request->areas_of_expertise),
                 'bio' => $request->bio,
                 'profile_picture' => ($request->hasFile('profile_picture'))?$ImagePath :$defaultImagePath,
                 'work_address' => $request->work_address
@@ -63,7 +63,7 @@ class RemainingDetailsController extends Controller
             'phone_number' => $request->phone_number,
             'professional_license_number' => $request->professional_license_number,
             'state_of_licensure' => $request->state_of_licensure,
-            'areas_of_expertise' => implode($request->areas_of_expertise),
+            'areas_of_expertise' => implode(', ',$request->areas_of_expertise),
             'bio' => $request->bio,
             'profile_picture' => ($request->hasFile('profile_picture'))?$ImagePath :$defaultImagePath,
             'work_address' => $request->work_address
@@ -71,7 +71,7 @@ class RemainingDetailsController extends Controller
 
         // fetch Data from session
         $remainingDetails = $request->session()->get('remainingDetails');
-      
+
 
 
 
