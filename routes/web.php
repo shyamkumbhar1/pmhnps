@@ -43,7 +43,7 @@ Route::post('register-step-one-post',[TempRegisterController::class,'postRegiste
 
 // Subcription
 
-Route::view('thankyou','strip.thankyou')->name('thankyou');
+// Route::view('thankyou','strip.thankyou')->name('thankyou');
 Route::view('dashboard1','dashboard1')->name('dashboard1');
 Route::post('single-charge',[SubscriptionController::class,'singleCharge'])->name('single.charge');
 Route::get('single-charge',[SubscriptionController::class,'singleChargeGet'])->name('single.charge');
@@ -51,7 +51,11 @@ Route::get('plans/create',[SubscriptionController::class,'showPlanForm'])->name(
 Route::post('plans/store',[SubscriptionController::class,'savePlan'])->name('plans.store');
 Route::get('plans',[SubscriptionController::class,'allPlan'])->name('plans.all');
 Route::get('plans/checkout/{planId}',[SubscriptionController::class,'checkout'])->name('plans.checkout');
+Route::post('plans/save-remaning-data',[SubscriptionController::class,'SaveRemainingData'])->name('plans.save.remaning.data');
+
 Route::post('plans/process',[SubscriptionController::class,'processSubcription'])->name('plans.process');
+Route::get('thank-you',[SubscriptionController::class,'thankYou'])->name('thankyou');
+
 Route::get('subscription/all',[SubscriptionController::class,'allSubcription'])->name('subscription.all');
 Route::get('subscription/cancel',[SubscriptionController::class,'cancleSubcription'])->name('subscription.cancel');
 Route::get('subscription/resume',[SubscriptionController::class,'resumeSubcription'])->name('subscription.resume');

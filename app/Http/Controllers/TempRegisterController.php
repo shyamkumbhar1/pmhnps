@@ -38,7 +38,7 @@ class TempRegisterController extends Controller
         $temp_user->save();
 
         $request->session()->put('user_id', $temp_user->id);
-        dd($request->session()->all('user_id'));
+        // dd($request->session()->all('user_id'));
 
 
         $message = "Please select Any Subscription Plan";

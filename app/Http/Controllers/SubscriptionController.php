@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use auth;
+
 use Exception;
 use Stripe\Plan;
 use Stripe\Stripe;
@@ -12,7 +12,9 @@ use Illuminate\Http\Request;
 use Laravel\Cashier\Subscription;
 use PhpParser\Node\Stmt\TryCatch;
 use App\Models\Plan as ModelsPlan;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\SubscriptionController;
 
 class SubscriptionController extends Controller
 {
@@ -120,13 +122,16 @@ class SubscriptionController extends Controller
 
 
         $user = new User();
-
         $user->createOrGetStripeCustomer([
             'name' => $temp_user->name,
             'email' => $temp_user->email,
         ]
 
         );
+// dd($user->stripe_id);
+$request->session()->put('stripe_id', $user->stripe_id);
+
+
         $paymentMethod = null;
         $paymentMethod = $request->payment_method;
 
@@ -155,10 +160,52 @@ class SubscriptionController extends Controller
         }
 
         $request->session()->flash('alert-success', 'You are subscribed Successfully');
-        // Auth::login($user);
-dd('test');
-        return to_route('thankyou', $plan)->withMessage('message');
+
+
+
+
+              return to_route('thankyou', $plan)->withMessage('message');
     }
+
+
+public function thankYou (Request $request){
+
+
+    $temp_user = TempRegister::where('id',$request->session()->get('user_id'))->first();
+      $add_user = User::where('stripe_id',$request->session()->get('stripe_id'))->first();
+
+
+$add_user->name = $temp_user->name;
+$add_user->professional_title = $temp_user->professional_title;
+$add_user->email = $temp_user->email;
+$add_user->password = $temp_user->password;
+
+$add_user->save();
+if ($add_user) {
+    Auth::login($add_user);
+
+
+}
+return view('strip.thankyou')->withMessage('message');
+
+
+}
+
+public function autoLogin()
+{
+        $user = User::where('id', 1)->first();
+
+    if ($user) {
+        Auth::login($user);
+
+
+    }
+
+    // Handle invalid token or user not found
+    return redirect()->route('login')->with('error', 'Invalid token.');
+}
+
+
     public function allSubcription (){
         // $subscriptions = auth()->user()->subscriptions;
         $subscriptions = Subscription::where('user_id',auth()->id())->get();
