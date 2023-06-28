@@ -16,24 +16,9 @@ use App\Http\Controllers\RemainingDetailsController;
 use App\Http\Controllers\User\UserDashboardController;
 
 
-Route::get('/clear', function () {
-    Artisan::call('cache:clear');
-    Artisan::call('route:clear');
-
-    return "Cache cleared successfully";
- });
-Route::get('/migrate', function () {
-    Artisan::call('migrate');
 
 
-    return "Migration run successfully";
- });
-Route::get('/migrate12', function () {
-    Artisan::call('migrate --path="database\migrations\2023_06_28_133826_rename_full_name_to_name_in_users_table.php"');
 
-
-    return "Migration run successfully";
- });
 
 Route::get('/', function () {
     return view('welcome');
