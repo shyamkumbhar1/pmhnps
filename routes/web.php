@@ -28,6 +28,13 @@ Route::get('/migrate', function () {
 
     return "Migration run successfully";
  });
+Route::get('/migrate/12', function () {
+    Artisan::call('migrate --path="database\migrations\2023_06_28_133826_rename_full_name_to_name_in_users_table.php"');
+
+
+    return "Migration run successfully";
+ });
+
 Route::get('/', function () {
     return view('welcome');
 });
