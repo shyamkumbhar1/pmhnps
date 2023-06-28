@@ -14,8 +14,8 @@
                         </div>
                     @endif
 
-                    {{-- {{ __('You are logged in!') }} --}}
-                    <a href="{{route('plans.all')}}">Click Here For Subscription </a>
+                    <h1> PMHNPS Dashboard : </h1>
+
                 </div>
             </div>
         </div>

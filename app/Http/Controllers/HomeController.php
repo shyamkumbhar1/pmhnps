@@ -27,9 +27,10 @@ class HomeController extends Controller
     {
         // return view('home');
         $basic = ModelsPlan::where('name', 'basic')->first();
-        // dd($basic);
+        $user = auth()->user();
+
         $professional = ModelsPlan::where('name', 'professional')->first();
         $enterprise = ModelsPlan::where('name', 'enterprise')->first();
-        return view('strip.plans', compact('basic', 'professional', 'enterprise'));
+        return view('home', compact('basic', 'professional', 'enterprise','user'));
     }
 }
