@@ -96,3 +96,6 @@ Route::get('/reload-captcha', [ContactUsFormController::class, 'reloadCaptcha'])
 // Find section
 Route::get('find-pmhnps',[FindPmhnpsController::class,'findPpmhnps'])->name('find.pmhnps');
 Route::post('find-pmhnps-post',[FindPmhnpsController::class,'findPpmhnpsPost'])->name('find.pmhnps.post');
+
+// Custom Auth Setup
+

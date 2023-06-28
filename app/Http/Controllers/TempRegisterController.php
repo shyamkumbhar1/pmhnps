@@ -22,8 +22,8 @@ class TempRegisterController extends Controller
         $validatedData = $request->validate([
             'name' => 'required',
             'professional_title' => 'required',
-            'email' => 'required',
-            'password' => 'required',
+            'email' => 'required |email |unique:users',
+            'password' => 'required | min:8',
         ]);
 
 
@@ -38,14 +38,8 @@ class TempRegisterController extends Controller
         $temp_user->save();
 
         $request->session()->put('user_id', $temp_user->id);
-        // dd($request->session()->all('user_id'));
 
-
-        $message = "Please select Any Subscription Plan";
-
-
-        // return view('register.step2', ['message' => $message]);
-        return to_route('plans.all')->with('success', $message);
+        return to_route('plans.all')->with('success', 'User created successfully.');
     }
 
 
