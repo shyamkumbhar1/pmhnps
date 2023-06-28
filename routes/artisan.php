@@ -23,3 +23,15 @@ Route::get('migrate:fresh', function() {
 
      return "Cache cleared successfully";
   });
+ Route::get('/db:seed', function () {
+     Artisan::call('db:seed');
+
+
+     return "Db Seed successfully";
+  });
+ Route::get('/db:seed --class=CountrySateCitySeeder', function () {
+     Artisan::call('db:seed --class=CountrySateCitySeeder');
+
+
+     return "Db Seed successfully";
+  });
