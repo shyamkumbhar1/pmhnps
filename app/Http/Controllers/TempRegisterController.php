@@ -23,7 +23,8 @@ class TempRegisterController extends Controller
             'name' => 'required',
             'professional_title' => 'required',
             'email' => 'required |email |unique:users',
-            'password' => 'required | min:8',
+            'password' => 'min:8|confirmed',
+            'password_confirmation' => 'min:8'
         ]);
 
 
@@ -35,13 +36,11 @@ class TempRegisterController extends Controller
         $temp_user->password = Hash::make($validatedData['password']);
 
 
+
         $temp_user->save();
 
         $request->session()->put('user_id', $temp_user->id);
 
         return to_route('plans.all')->with('success', 'User created successfully.');
     }
-
-
-
 }
