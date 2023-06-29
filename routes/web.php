@@ -91,5 +91,9 @@ Route::get('find-pmhnps',[FindPmhnpsController::class,'findPpmhnps'])->name('fin
 Route::post('find-pmhnps-post',[FindPmhnpsController::class,'findPpmhnpsPost'])->name('find.pmhnps.post');
 
 // Custom Auth Setup
-Route::get('admin/home', [HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
 
+Route::prefix('admin')->group(function () {
+    Route::get('dashboard', [HomeController::class, 'adminHome'])->name('admin.dashboard')->middleware('is_admin');
+    // Route::get('Das', [HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
+
+});
