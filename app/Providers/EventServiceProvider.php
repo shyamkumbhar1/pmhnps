@@ -3,7 +3,9 @@
 namespace App\Providers;
 
 use App\Events\SendMail;
+use App\Events\ContactUsMail;
 use App\Listeners\SendMailFired;
+use App\Listeners\ContactUsMailFired;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -22,6 +24,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         SendMail::class => [
             SendMailFired::class,
+        ],
+        ContactUsMail::class => [
+            ContactUsMailFired::class,
         ],
     ];
 

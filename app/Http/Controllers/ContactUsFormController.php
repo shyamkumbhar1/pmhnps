@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Contact;
 use Mail;
+use App\Models\Contact;
+use Illuminate\Http\Request;
+use App\Events\ContactUsMail;
+use Illuminate\Support\Facades\Event;
 
 class ContactUsFormController extends Controller
 {
@@ -30,16 +32,15 @@ class ContactUsFormController extends Controller
         Contact::create($request->all());
 
         //  Send mail to admin
-        \Mail::send('mail', array(
+        $data =array(
             'name' => $request->get('name'),
             'email' => $request->get('email'),
             'phone' => $request->get('phone'),
             'subject' => $request->get('subject'),
-            'user_query' => $request->get('message'),
-        ), function ($message) use ($request) {
-            $message->from($request->email);
-            $message->to('shyamkumbhar743@gmail.com', 'Admin')->subject($request->get('subject'));
-        });
+            'user_query' => $request->get('message')
+        );
+
+        Event::dispatch(new ContactUsMail($data));
         return back()->with('success', 'We have received your message and would like to thank you for writing to us.');
     }
 
