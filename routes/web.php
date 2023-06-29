@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DropdownController;
@@ -27,7 +28,7 @@ Route::get('/', function () {
 Auth::routes();
 // Artisan::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 // Tempory  Registor User
 Route::get('register-step-one',[TempRegisterController::class,'registerStepOne'])->name('register.step.one');
@@ -90,4 +91,5 @@ Route::get('find-pmhnps',[FindPmhnpsController::class,'findPpmhnps'])->name('fin
 Route::post('find-pmhnps-post',[FindPmhnpsController::class,'findPpmhnpsPost'])->name('find.pmhnps.post');
 
 // Custom Auth Setup
+Route::get('admin/home', [HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
 

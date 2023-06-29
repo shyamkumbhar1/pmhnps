@@ -8,21 +8,13 @@ use App\Models\Plan as ModelsPlan;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
+
     public function __construct()
     {
         $this->middleware('auth');
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
+
     public function index()
     {
         // return view('home');
@@ -32,5 +24,9 @@ class HomeController extends Controller
         $professional = ModelsPlan::where('name', 'professional')->first();
         $enterprise = ModelsPlan::where('name', 'enterprise')->first();
         return view('home', compact('basic', 'professional', 'enterprise','user'));
+    }
+    public function adminHome()
+    {
+        return view('adminHome');
     }
 }
