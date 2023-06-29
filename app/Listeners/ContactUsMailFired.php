@@ -23,8 +23,8 @@ class ContactUsMailFired
     {
         // Preview the email content
         $emailContent = View::make('mail', ['userData' => $event->userData])->render();
-         echo $emailContent;
-    
+        //  echo $emailContent;
+
 
         Mail::send('mail', ['userData' =>$event->userData], function ($message) use ($event) {
             $message->from($event->userData['email']);
