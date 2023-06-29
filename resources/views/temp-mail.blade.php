@@ -1,10 +1,12 @@
 
+
+
 <h2>Your Register Succesfully</h2> <br><br>
 
-Your  Credentials: <br><br>
-Name: {{ $name }} <br>
-Email: {{ $email }} <br>
-{{-- Email: {{ $password }} <br> --}}
 
-Complete Your Subscription  : http://localhost:8000/plans
+Name: {{ $user['name'] }} <br>
+Email: {{ $user['email'] }} <br>
+
+
+Complete Your Subscription  : http://localhost:8000/plans <br><br>
 Thanks

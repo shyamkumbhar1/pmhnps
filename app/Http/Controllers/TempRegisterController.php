@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 
+use App\Events\SendMail;
 use App\Models\TempRegister;
 use Illuminate\Http\Request;
 use App\Models\RemainingDetails;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Event;
 
 class TempRegisterController extends Controller
 {
@@ -38,24 +40,18 @@ class TempRegisterController extends Controller
         $temp_user->password = Hash::make($validatedData['password']);
 
 
-        //  Send mail to admin
-        Mail::send('temp-mail', array(
-            'name' => $request->get('name'),
-            'email' => $request->get('email'),
-            'password' => $request->get('password'),
 
 
-
-        ), function ($message) use ($request) {
-            $message->from($request->email);
-            $message->to('shyamkumbhar743@gmail.com', 'Admin')->subject("test");
-        });
-
-        // return back()->with('success', 'Thank You For Registration .... Please Check Your Mail.');
 
         $temp_user->save();
 
         $request->session()->put('user_id', $temp_user->id);
+
+        //  Send mail to admin
+        if($temp_user){
+            Event::dispatch(new SendMail($temp_user->id));
+
+        }
 
         return to_route('plans.all')->with('success', 'User created successfully.');
     }
