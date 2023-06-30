@@ -94,6 +94,8 @@ Route::post('find-pmhnps-post',[FindPmhnpsController::class,'findPpmhnpsPost'])-
 
 Route::prefix('admin')->group(function () {
     Route::get('dashboard', [HomeController::class, 'adminHome'])->name('admin.dashboard')->middleware('is_admin');
-    // Route::get('Das', [HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
+    Route::get('pmhnps', [HomeController::class, 'adminPmhnps'])->name('admin.pmhnps')->middleware('is_admin');
+    Route::get('patients', [HomeController::class, 'adminPatients'])->name('admin.patients')->middleware('is_admin');
+
 
 });

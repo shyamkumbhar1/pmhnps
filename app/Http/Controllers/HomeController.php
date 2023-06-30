@@ -23,10 +23,18 @@ class HomeController extends Controller
 
         $professional = ModelsPlan::where('name', 'professional')->first();
         $enterprise = ModelsPlan::where('name', 'enterprise')->first();
-        return view('home', compact('basic', 'professional', 'enterprise','user'));
+        return view('home', compact('basic', 'professional', 'enterprise', 'user'));
     }
     public function adminHome()
     {
         return view('Admin.adminHome');
+    }
+    public function adminPmhnps()
+    {
+        return view('Admin.pmhnps');
+    }
+     public function adminPatients()
+    {
+        return view('Admin.patients');
     }
 }

@@ -32,13 +32,13 @@
                     </a>
 
                 </li> <li class="nav-item menu-open">
-                    <a href="#" class="nav-link active">
+                    <a href="{{ route('admin.pmhnps') }}" class="nav-link active">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p> PMHNPS Section </p>
                     </a>
 
                 </li> <li class="nav-item menu-open">
-                    <a href="#" class="nav-link active">
+                    <a href="{{ route('admin.patients') }}" class="nav-link active">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p> Patients  </p>
                     </a>

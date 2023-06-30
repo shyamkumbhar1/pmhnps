@@ -8,7 +8,7 @@
             <div class="container-fluid">
                 <div class="mb-2 row">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Dashboard</h1>
+                        <h1 class="m-0">Patients  Section</h1>
                     </div><!-- /.col -->
 
                 </div><!-- /.row -->
