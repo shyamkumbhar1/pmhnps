@@ -49,7 +49,8 @@
 
                             <div>
                                 @php
-                                    $expertiseAreas = ['Child Psychiatry', 'Geriatric Psychiatry', 'Substance Abuse Counseling'];
+                                    $expertiseAreas = [  "Mood Disorders",    "Trauma and PTSD",    "Geriatric Psychiatry",    "Psychotic Disorders",    "Neurodevelopmental Disorders",
+                                        "Substance Abuse Counseling",    "Eating Disorders",    "Sleep Disorders",    "Anxiety Disorders",    "Personality Disorders"];
                                 @endphp
                                 <label for="areas_of_expertise">Areas of Expertise</label>
 
@@ -146,7 +147,7 @@
                 }
             });
 
-           
+
         });
     </script>
 @endsection
