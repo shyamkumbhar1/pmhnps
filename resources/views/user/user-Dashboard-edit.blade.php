@@ -13,7 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <h1><strong>Update Your Details fgggg :</strong>
+                    <h1><strong>Update Your Details  :</strong>
 {{-- {{print_r($remaining_filed)}} --}}
 
                     </h1>
@@ -70,31 +70,36 @@
                                 <option value="other" {{ old('state_of_licensure', $user->state_of_licensure) === 'other' ? 'selected' : '' }}>Other</option>
                             </select>
                         </div>
+
+
                         <div>
-                            <x-label for="areas_of_expertise" :value="__('Areas of Expertise')" />
+                            {{-- {{ dd(explode(", ",$user->areas_of_expertise)) }} --}}
+                            @php
+                            $expertiseAreas = [
+                                'Child Psychiatry',
+                                'Geriatric Psychiatry',
+                                'Substance Abuse Counseling'
+                            ];
 
+                            $selectedAreas = explode(", ",$user->areas_of_expertise);
+                            @endphp
+                            <label for="areas_of_expertise">Areas of Expertise</label>
+
+                            @foreach($expertiseAreas as $index => $expertise)
                             <div>
-                                <input id="area_of_expertise1" type="checkbox" name="areas_of_expertise[]" value="child psychiatry" {{ in_array('child psychiatry', old('areas_of_expertise', [])) ? 'checked' : '' }}>
-                                <label for="area_of_expertise1">Child Psychiatry</label>
+                                <input id="area_of_expertise{{ $index }}" type="checkbox" name="areas_of_expertise[]" value="{{ $expertise }}"
+                                       {{ in_array($expertise, $selectedAreas) ? 'checked' : '' }}>
+                                <label for="area_of_expertise{{ $index }}">{{ $expertise }}</label>
                             </div>
+                            @endforeach
 
                             <div>
-                                <input id="area_of_expertise2" type="checkbox" name="areas_of_expertise[]" value="geriatric psychiatry" {{ in_array('geriatric psychiatry', old('areas_of_expertise', [])) ? 'checked' : '' }}>
-                                <label for="area_of_expertise2">Geriatric Psychiatry</label>
-                            </div>
-
-                            <div>
-                                <input id="area_of_expertise3" type="checkbox" name="areas_of_expertise[]" value="substance abuse counseling" {{ in_array('substance abuse counseling', old('areas_of_expertise', [])) ? 'checked' : '' }}>
-                                <label for="area_of_expertise3">Substance Abuse Counseling</label>
-                            </div>
-
-                            <!-- Add more checkboxes as needed -->
-
-                            <div>
-                                <input id="area_of_expertise_other" type="checkbox" name="areas_of_expertise[]" value="other" {{ in_array('other', old('areas_of_expertise', [])) ? 'checked' : '' }}>
+                                <input id="area_of_expertise_other" type="checkbox" name="areas_of_expertise[]" value="other"
+                                       {{ in_array('other', $selectedAreas) ? 'checked' : '' }}>
                                 <label for="area_of_expertise_other">Other</label>
                             </div>
                         </div>
+
 
 
 
