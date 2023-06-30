@@ -13,23 +13,31 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                    @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div><br />
+                    @endif
                     <h1><strong>Update Your Details  :</strong>
-{{-- {{print_r($remaining_filed)}} --}}
+
 
                     </h1>
                     <form method="POST" action="{{ route('user.Dashboard.update') }}" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <!-- Name -->
-                        {{-- <div>
-                            <x-label for="profile_picture" :value="__('Profile Picture')" />
 
-                            <input id="profile_picture" class="block w-full mt-1" type="file" name="profile_picture" accept="image/*"  />
-                        </div> --}}
                         <div>
                             <x-label for="name" :value="__('Full Name')" />
 
                             <x-input id="name" class="block w-full mt-1" type="text" name="name" :value="old('name',$user->name)" required autofocus />
+                                @if ($errors->has('name'))
+                                            <span class="text-danger">{{ $errors->first('name') }}</span>
+                                        @endif
                         </div>
                         <div>
                             <label for="professional_title">Professional Title</label>
@@ -43,6 +51,9 @@
                                 <!-- Add more options as needed -->
                                 <option value="other" {{ old('professional_title', $user->professional_title) === 'other' ? 'selected' : '' }}>Other</option>
                             </select>
+                            @if ($errors->has('professional_title'))
+                                            <span class="text-danger">{{ $errors->first('professional_title') }}</span>
+                                        @endif
                         </div>
 
 
@@ -51,6 +62,9 @@
 
                             <x-input id="phone_number" class="block w-full mt-1" type="text" name="phone_number" :value="old('phone_number', $user->professional_title)"
                                 placeholder="Phone Number" required autofocus />
+                                @if ($errors->has('phone_number'))
+                                            <span class="text-danger">{{ $errors->first('phone_number') }}</span>
+                                        @endif
                         </div>
                         <div>
                             <x-label for="professional_license_number" :value="__('Professional License Number')" />
@@ -58,6 +72,9 @@
                             <x-input id="professional_license_number" class="block w-full mt-1" type="text"
                                 name="professional_license_number" :value="old('professional_license_number', $user->professional_license_number)"
                                 placeholder="Professional License Number" required />
+                                @if ($errors->has('professional_license_number'))
+                                            <span class="text-danger">{{ $errors->first('professional_license_number') }}</span>
+                                        @endif
                         </div>
 
                         <div>
@@ -69,6 +86,10 @@
                                 <!-- Add more options as needed -->
                                 <option value="other" {{ old('state_of_licensure', $user->state_of_licensure) === 'other' ? 'selected' : '' }}>Other</option>
                             </select>
+
+                            @if ($errors->has('state_of_licensure'))
+                                            <span class="text-danger">{{ $errors->first('state_of_licensure') }}</span>
+                                        @endif
                         </div>
 
 
@@ -98,6 +119,10 @@
                                        {{ in_array('other', $selectedAreas) ? 'checked' : '' }}>
                                 <label for="area_of_expertise_other">Other</label>
                             </div>
+                            @if ($errors->has('areas_of_expertise'))
+                                            <span class="text-danger">{{ $errors->first('areas_of_expertise') }}</span>
+                                        @endif
+
                         </div>
 
 
@@ -107,6 +132,9 @@
                             <x-label for="bio" :value="__('Bio')" />
 
                             <textarea id="bio" class="block w-full mt-1" name="bio" placeholder="Bio" required>{{ old('bio', $user->bio) }}</textarea>
+                            @if ($errors->has('bio'))
+                                            <span class="text-danger">{{ $errors->first('bio') }}</span>
+                                        @endif
                         </div>
                         <div>
                             <x-label for="profile_picture" :value="__('Profile Picture')" />
@@ -115,7 +143,9 @@
                             {{-- <input type="file" name="image" id="image" onchange="previewImage(event)"> --}}
 
                             <img id="preview" src="#" alt="Preview" style="display: none; max-width: 200px; max-height: 200px;">
-
+                            @if ($errors->has('profile_picture'))
+                                            <span class="text-danger">{{ $errors->first('profile_picture') }}</span>
+                                        @endif
                         </div>
 
 
@@ -124,12 +154,19 @@
                             <x-label for="work_address" :value="__('Work Address')" />
 
                             <textarea id="work_address" class="block w-full mt-1" type="text" name="work_address" placeholder="Work Address" required />{{ old('bio', $user->work_address) }}</textarea>
+                            @if ($errors->has('work_address'))
+                                            <span class="text-danger">{{ $errors->first('work_address') }}</span>
+                                        @endif
                         </div>
                         <div>
                             <x-label for="address_line1" :value="__('Address Line 1')" />
 
                             <textarea id="address_line1" class="block w-full mt-1" type="text" name="address_line1"
                                 placeholder="Work Addres 1" required />{{ old('bio', $user->address_line1) }}</textarea>
+
+                                @if ($errors->has('address_line1'))
+                                            <span class="text-danger">{{ $errors->first('address_line1') }}</span>
+                                        @endif
                         </div>
 
                         <div>
@@ -137,6 +174,9 @@
 
                             <textarea id="address_line2" class="block w-full mt-1" type="text" name="address_line2"
                                  placeholder="Work Address 2" required />{{ old('bio', $user->address_line2) }}</textarea>
+                                 @if ($errors->has('address_line2'))
+                                            <span class="text-danger">{{ $errors->first('address_line2') }}</span>
+                                        @endif
                         </div>
 
                         <div>
@@ -149,22 +189,34 @@
                                 </option>
                                 @endforeach
                             </select>
+                            @if ($errors->has('country'))
+                                            <span class="text-danger">{{ $errors->first('country') }}</span>
+                                        @endif
                         </div>
                         <div class="mb-3 form-group">
                             <x-label for="state-dropdown" :value="__('State')" />
                             <select id="state-dropdown" id="state" class="form-control" name="state">
                             </select>
+                            @if ($errors->has('state'))
+                                            <span class="text-danger">{{ $errors->first('state') }}</span>
+                                        @endif
                         </div>
                         <div class="form-group">
                             <x-label for="city-dropdown" :value="__('City')" />
                             <select id="city-dropdown" class="form-control" name="city">
                             </select>
+                            @if ($errors->has('city'))
+                                            <span class="text-danger">{{ $errors->first('city') }}</span>
+                                        @endif
                         </div>
                         <div>
                             <x-label for="postal_code" :value="__('Postal Code')" />
 
                             <x-input id="postal_code" class="block w-full mt-1" type="text" name="postal_code"
                                 :value="old('postal_code', $user->postal_code)" placeholder="Postal Code" required />
+                                @if ($errors->has('postal_code'))
+                                            <span class="text-danger">{{ $errors->first('postal_code') }}</span>
+                                        @endif
                         </div>
 
 

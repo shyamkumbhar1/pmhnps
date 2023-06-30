@@ -81,7 +81,7 @@ class UserDashboardController extends Controller
            'state'=> 'required ',
            'city'=> 'required ',
            'city'=> 'required ',
-           'postal_code'=> 'required ',
+           'postal_code'=> 'required | digits:5',
 
         ]);
 
