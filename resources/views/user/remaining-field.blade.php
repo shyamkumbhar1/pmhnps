@@ -55,18 +55,30 @@
 
                                 @foreach ($expertiseAreas as $index => $expertise)
                                     <div>
-                                        <input id="area_of_expertise{{ $index }}" type="checkbox"
-                                            name="areas_of_expertise[]" value="{{ $expertise }}">
+                                        <input id="area_of_expertise{{ $index }}" type="checkbox" name="areas_of_expertise[]" value="{{ $expertise }}">
                                         <label for="area_of_expertise{{ $index }}">{{ $expertise }}</label>
                                     </div>
                                 @endforeach
 
                                 <div>
-                                    <input id="area_of_expertise_other" type="checkbox" name="areas_of_expertise[]"
-                                        value="other">
+                                    <input id="area_of_expertise_other" type="checkbox"  >
                                     <label for="area_of_expertise_other">Other</label>
+
+                                </div>
+
+                                <div id="otherInputContainer" style="display: none;">
+
+                                        <input type="text" name="areas_of_expertise[]" id="otherInput">
+
+
                                 </div>
                             </div>
+
+
+
+
+
+
 
 
 
@@ -114,4 +126,27 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#area_of_expertise_other').change(function() {
+                var isChecked = $(this).prop('checked');
+                var otherInputContainer = $('#otherInputContainer');
+                var otherInput = $('#otherInput');
+
+                if (isChecked) {
+                    otherInputContainer.show();
+                    otherInput.prop('required', true);
+                } else {
+                    otherInputContainer.hide();
+                    otherInput.prop('required', false);
+                }
+            });
+
+           
+        });
+    </script>
 @endsection
