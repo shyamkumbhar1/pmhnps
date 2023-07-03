@@ -23,7 +23,7 @@ class FindPmhnpsController extends Controller
 
 
 
-    return view('pmhnps.index', compact('cities', 'states', 'countries','data1'));
+    return view('find-pmhnps.index', compact('cities', 'states', 'countries','data1'));
 
     }
     public function findPpmhnpsPost(Request $request)
@@ -60,7 +60,7 @@ class FindPmhnpsController extends Controller
         $data1 = $data1->paginate(10);
 
 
-        return view('pmhnps.index', compact('data1','cities','states','countries'));
+        return view('find-pmhnps.index', compact('data1','cities','states','countries'));
 
 
     }
