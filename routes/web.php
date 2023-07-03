@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PmhnpsController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DropdownController;
@@ -99,3 +100,5 @@ Route::prefix('admin')->group(function () {
 
 
 });
+
+Route::resource('pmhnps',PmhnpsController::class);

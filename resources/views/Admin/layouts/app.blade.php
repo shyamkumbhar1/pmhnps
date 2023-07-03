@@ -20,6 +20,7 @@
 <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
 
 
+
 </head>
 
 <body class="hold-transition sidebar-mini">

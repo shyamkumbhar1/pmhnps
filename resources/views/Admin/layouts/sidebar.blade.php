@@ -25,25 +25,27 @@
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
-                <li class="nav-item menu-open">
+                {{-- <li class="nav-item menu-open">
                     <a href="{{ route('admin.dashboard') }}" class="nav-link active">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p> Dashboard </p>
                     </a>
 
-                </li> <li class="nav-item menu-open">
-                    <a href="{{ route('admin.pmhnps') }}" class="nav-link active">
+                </li>  --}}
+                <li class="nav-item menu-open">
+                    <a href="{{ route('pmhnps.index') }}" class="nav-link active">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p> PMHNPS Section </p>
                     </a>
 
-                </li> <li class="nav-item menu-open">
+                </li>
+                 {{-- <li class="nav-item menu-open">
                     <a href="{{ route('admin.patients') }}" class="nav-link active">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p> Patients  </p>
                     </a>
 
-                </li>
+                </li> --}}
 
             </ul>
         </nav>
