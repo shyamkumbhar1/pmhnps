@@ -1,11 +1,49 @@
-@extends('layouts.app')
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
+@include('layouts2.app')
+
+
+
+
+<body>
+
+    
+  
+  
+  
+  
+    <div class="page-height">
+      <div class="container">
+  
+        <div class="row">
+          <div class="col-md-12">
+            <div class="steps-row">
+              <ul>
+                <li class="active">
+                  <a href="#"> <span>1</span> Step 1 </a>
+                </li>
+                <li><i class="fa fa-chevron-right" aria-hidden="true"></i></li>
+                <li>
+                  <a href="#"> <span><i class="fa fa-check" aria-hidden="true"></i></span> Step 2 </a>
+                </li>
+                <li><i class="fa fa-chevron-right" aria-hidden="true"></i></li>
+                <li>
+                  <a href="#"> <span><i class="fa fa-check" aria-hidden="true"></i> </span> Step 3 </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+  
+        <div class="mb-4 row">
+          <div class="col-md-12">
+            <h2 class="mb-4 text-center">Sign up As PMHNP Professional</h2>
+          </div>
+        </div>
+  
+        <div class="row">
+          <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2">
             <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+                
                 @if(Session::has('success'))
                 <div class="alert alert-success">
                     {{ Session::get('success') }}
@@ -86,14 +124,54 @@
                         <div class="mb-0 row">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
+                                    {{ __('Sign Up') }}
                                 </button>
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
+          </div>
         </div>
+  
+      </div>
     </div>
-</div>
-@endsection
+  
+  
+  
+  
+  
+  
+
+  
+  
+    <!-- MDB -->
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+  
+    <!-- Custom scripts -->
+    <script type="text/javascript">
+  
+      function togglePasswordVisibility() {
+        var passwordInput = document.getElementById("password");
+        var toggleButton = document.querySelector(".toggle-password");
+  
+        if (passwordInput.type === "password") {
+          passwordInput.type = "text";
+          toggleButton.parentNode.classList.add("password-visible");
+        } else {
+          passwordInput.type = "password";
+          toggleButton.parentNode.classList.remove("password-visible");
+        }
+      }
+  
+    </script>
+  
+  </body>
+@include('layouts2.footer')
+  
+
+
+
+ 
+
+

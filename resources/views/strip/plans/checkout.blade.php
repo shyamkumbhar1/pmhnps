@@ -1,88 +1,101 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
-    <title>Remaining details</title>
-    <style>
-<style>
-    .StripeElement {
-        background-color: white;
-        padding: 8px 12px;
-        border-radius: 4px;
-        border: 1px solid transparent;
-        box-shadow: 0 1px 3px 0 #e6ebf1;
-        -webkit-transition: box-shadow 150ms ease;
-        transition: box-shadow 150ms ease;
-    }
-    .StripeElement--focus {
-        box-shadow: 0 1px 3px 0 #cfd7df;
-    }
-    .StripeElement--invalid {
-        border-color: #fa755a;
-    }
-    .StripeElement--webkit-autofill {
-        background-color: #fefde5 !important;
-    }
-</style>
-
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-{{-- {{$plan}} --}}
-<h4>Your Subcription  Plan is {{strtoupper($plan->name)}} </h4>
-<h4>Your Subcription  Plan Price is $ {{$plan->amount}} </h4>
-                <div class="card-body">
-                    @if (session('alert-success'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('alert-success') }}
-                        </div>
-                    @endif
-
-                    {{-- {{ __('You are logged in!') }} --}}
+@include('layouts2.app')
 
 
-                    <form action="{{route('plans.process')}}" method="POST" id="subscribe-form">
-                        @csrf
 
-                        <input type="hidden" name="plan_id" value="{{$plan->plan_id}}">
-                       {{-- <input type="number" name="ammount" class="form-control"><br> --}}
-                       <label for="card-holder-name">Card Holder Name</label>
-                        <input id="card-holder-name" type="text">
-                        <div class="form-row">
-                            <label for="card-element">Credit or debit card</label>
-                            <div id="card-element" class="form-control">
-                            </div>
-                            <!-- Used to display form errors. -->
-                            <div id="card-errors" role="alert"></div>
-                        </div>
-                        <div class="stripe-errors"></div>
-                        @if (count($errors) > 0)
-                        <div class="alert alert-danger">
-                            @foreach ($errors->all() as $error)
-                            {{ $error }}<br>
-                            @endforeach
-                        </div>
-                        @endif
-                        <div class="text-center form-group"><br>
-                            <button  id="card-button" data-secret="{{ $intent->client_secret }}" class="btn btn-lg btn-success btn-block">Process Subcription</button>
-                        </div>
-                    </form>
 
-                </div>
+<body>
+
+  
+  
+  
+    <div class="page-height">
+      <div class="container">
+  
+        <div class="row">
+          <div class="col-md-12">
+            <div class="steps-row">
+              <ul>
+                <li class="">
+                  <a href="#"> <span><i class="fa fa-check" aria-hidden="true"></i></span> Step 1 </a>
+                </li>
+                <li><i class="fa fa-chevron-right" aria-hidden="true"></i></li>
+                <li class="">
+                  <a href="#"> <span><i class="fa fa-check" aria-hidden="true"></i></span> Step 2 </a>
+                </li>
+                <li><i class="fa fa-chevron-right" aria-hidden="true"></i></li>
+                <li class="active">
+                  <a href="#"> <span>3</span> Step 3 </a>
+                </li>
+              </ul>
             </div>
+          </div>
         </div>
+  
+        <div class="mb-4 row">
+          <div class="col-md-12">
+            <h2 class="mb-4 text-center">Payment Details</h2>
+          </div>
+        </div>
+        <div class="mb-4 row">
+            <div class="col-lg-6 offset-lg-3 col-md-6 offset-md-3">
+    
+              <div class="padding">
+                <div class="card-row">
+                  <span class="visa"></span>
+                  <span class="mastercard"></span>
+                  <span class="amex"></span>
+                  <span class="jcb"><img src="{{ asset('src/img/jcb.jpg') }}" alt="payment"></span>
+                  <span class="discover"></span>
+                </div>
+        <form action="{{route('plans.process')}}" method="POST" id="subscribe-form">
+            @csrf
+
+            <input type="hidden" name="plan_id" value="{{$plan->plan_id}}">
+           
+           <label for="card-holder-name">Card Holder Name</label>
+            <input id="card-holder-name" type="text">
+          
+            <div class="form-row">
+                <label for="card-element">Credit or debit card</label>
+                <div id="card-element" class="form-control">
+                </div>
+                <!-- Used to display form errors. -->
+                <div id="card-errors" role="alert"></div>
+            </div>
+            <div class="stripe-errors"></div>
+            @if (count($errors) > 0)
+            <div class="alert alert-danger">
+                @foreach ($errors->all() as $error)
+                {{ $error }}<br>
+                @endforeach
+            </div>
+            @endif
+            <div class="text-center form-group"><br>
+                <button  id="card-button" data-secret="{{ $intent->client_secret }}" class="btn btn-lg btn-success btn-block">Process Subcription</button>
+            </div>
+        </form>
+  
+      </div>
+      </div>
     </div>
 </div>
-
-<script src="https://js.stripe.com/v3/"></script>
+    </div>
+  
+  
+  
+  
+ 
+  
+  
+    <!-- MDB -->
+    <script type="text/javascript" src="{{ asset('src/js/mdb.min.js') }}"></script>
+  
+    <!-- Custom scripts -->
+    <script type="{{ asset('src/text/javascript') }}">
+  
+    </script>
+    <script src="https://js.stripe.com/v3/"></script>
 <script>
     var stripe = Stripe('{{ env('STRIPE_KEY') }}');
     var elements = stripe.elements();
@@ -143,6 +156,16 @@
         form.submit();
     }
 </script>
-</body>
-</html>
+  
+  </body>
+  
+  
+
+@include('layouts2.footer')
+  
+
+
+
+ 
+
 
