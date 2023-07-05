@@ -1,5 +1,5 @@
 
-@include('layouts2.app')
+@include('layouts3.app')
 
 
 
@@ -17,8 +17,8 @@
         <div class="mt-5 mb-4 row">
           <div class="col-md-12">
             <h2 class="mb-4 text-center">Complete your Profile</h2>
-          </div>
-        </div>
+             <!-- Collapsible wrapper -->
+       
   
         <div class="row">
           <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2">
@@ -367,11 +367,7 @@
 
   
  
-@include('layouts2.footer')
+@include('layouts3.footer')
   
-
-
-
- 
 
 
