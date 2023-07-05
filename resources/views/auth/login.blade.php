@@ -10,6 +10,11 @@
       <div class="col-md-6 offset-md-3">
         <div class="sininbox">
           <h2 class="mb-4 text-center">Sign In</h2>
+          @if (session('error'))
+   <div class="alert alert-danger">
+        {{ session('error') }}
+   </div>
+@endif
 
           <form method="POST" action="{{ route('login') }}">
               @csrf

@@ -21,6 +21,7 @@ class User extends Authenticatable
         'professional_title',
         'email',
         'password',
+        'status'
     ];
     public function country()
 {

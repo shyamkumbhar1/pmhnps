@@ -17,6 +17,7 @@
 				<th>id</th>
 				<th>name</th>
 				<th>email</th>
+				<th>Status</th>
 				<th>Action</th>
 			</tr>
 		</thead>
@@ -27,6 +28,8 @@
 					<td>{{ $pmhnp->id }}</td>
 					<td>{{ $pmhnp->name }}</td>
 					<td>{{ $pmhnp->email }}</td>
+					<td>Active</td>
+
 
 					<td>
 						<div >
