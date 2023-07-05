@@ -18,7 +18,7 @@
            <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Navbar brand -->
             <a class="mt-2 navbar-brand mt-lg-0" href="#">
-              <img src="img/logo.jpg" alt="" loading="lazy" />
+              <img src="{{ asset('src/img/logo.jpg') }}" alt="" loading="lazy" />
             </a>
             <!-- Left links -->
             <ul class="mb-2 navbar-nav mb-lg-0">
@@ -46,7 +46,7 @@
 <div class="dropdown">
   <a class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#" id="navbarDropdownMenuAvatar"
       role="button" data-mdb-toggle="dropdown" aria-expanded="false">
-      <img src="img/profilpic.jpg" class="rounded-circle" height="25" alt="" loading="lazy" />
+      <img src="{{ asset('src/img/profilpic.jpg') }}" class="rounded-circle" height="25" alt="" loading="lazy" />
   </a>
   <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
       <li>
