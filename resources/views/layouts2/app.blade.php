@@ -21,6 +21,5 @@
     @include('layouts2.navbar')
     
 
-</body>
+
   
-</html>

@@ -82,7 +82,7 @@
 
 @include('layouts2.footer')
   
-
+</body>
 
 
  
