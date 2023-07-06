@@ -24,7 +24,7 @@ use App\Http\Controllers\User\UserDashboardController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 Auth::routes();
 // Artisan::routes();

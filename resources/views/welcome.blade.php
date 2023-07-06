@@ -70,7 +70,7 @@
       <div class="mb-4 row">
         <div class="mb-4 col-lg-3 col-md-3 col-sm-6">
           <h3 class="text-center title-step">Step 1</h3>
-          <div class="image-pmhnp"><img src="img/register.jpg" alt="">
+          <div class="image-pmhnp"><img src="{{ asset('src/img/register.jpg') }}" alt="">
           </div>  
           <h4 class="text-center">Register</h4>        
           <h6 class="text-center">
@@ -81,7 +81,7 @@
         <div class="mb-4 col-lg-3 col-md-3 col-sm-6">
           <h3 class="text-center title-step">Step 2</h3>
            <div class="image-pmhnp">
-            <img src="img/choose-plan.jpg" alt="">            
+            <img src="{{ asset('src/img/choose-plan.jpg') }}" alt="">            
           </div> 
           <h4 class="text-center">Choose Plan</h4>
           <h6 class="text-center">
@@ -91,7 +91,7 @@
 
         <div class="mb-4 col-lg-3 col-md-3 col-sm-6">
           <h3 class="text-center title-step">Step 3</h3>
-          <div class="image-pmhnp"><img src="img/create-profile.jpg" alt="">
+          <div class="image-pmhnp"><img src="{{ asset('src/img/create-profile.jpg') }}" alt="">
           </div>  
           <h4 class="text-center">Create Profile</h4>        
           <h6 class="text-center">
@@ -101,7 +101,7 @@
 
         <div class="mb-4 col-lg-3 col-md-3 col-sm-6">
           <h3 class="text-center title-step">Step 4</h3>
-          <div class="image-pmhnp"><img src="img/connecting-patient.jpg" alt="">
+          <div class="image-pmhnp"><img src="{{ asset('src/img/connecting-patient.jpg') }}" alt="">
           </div>  
           <h4 class="text-center">Connect with Patients</h4>        
           <h6 class="text-center">
@@ -123,7 +123,7 @@
 
         <div class="mb-4 col-lg-4 col-md-4 col-sm-6">
           <h3 class="text-center title-step">Step 1</h3>
-          <div class="image-patient"><img src="img/find-pmhnp.jpg" alt="">
+          <div class="image-patient"><img src="{{ asset('src/img/find-pmhnp.jpg') }}" alt="">
           </div>  
           <h4 class="text-center">Find Your PMHNP</h4>        
           <h6 class="text-center">
@@ -133,7 +133,7 @@
 
         <div class="mb-4 col-lg-4 col-md-4 col-sm-6">
           <h3 class="text-center title-step">Step 1</h3>
-          <div class="image-patient"><img src="img/review-profile.jpg" alt="">
+          <div class="image-patient"><img src="{{ asset('src/img/review-profile.jpg') }}" alt="">
           </div>  
           <h4 class="text-center">Find Your PMHNP</h4>        
           <h6 class="text-center">
@@ -143,7 +143,7 @@
 
         <div class="mb-4 col-lg-4 col-md-4 col-sm-6">
           <h3 class="text-center title-step">Step 3</h3>
-          <div class="image-patient"><img src="img/connecting-direct.jpg" alt="">
+          <div class="image-patient"><img src="{{ asset('src/img/connecting-direct.jpg') }}" alt="">
           </div>  
           <h4 class="text-center">Connect Directly</h4>        
           <h6 class="text-center">
@@ -178,7 +178,7 @@
                     </h4>
                     <h4 class="text-center">
                       <span class="reviewpic">
-                        <img src="img/reviewpic.jpg" alt="">
+                        <img src="{{ asset('src/img/reviewpic.jpg') }}" alt="">
                       </span> <strong>John smith 1</strong>
                     </h4>
                   </div>
@@ -192,7 +192,7 @@
                     </h4>
                     <h4 class="text-center">
                       <span class="reviewpic">
-                        <img src="img/reviewpic.jpg" alt="">
+                        <img src="{{ asset('src/img/reviewpic.jpg') }}" alt="">
                       </span> <strong>John smith 1</strong>
                     </h4>
                   </div>  

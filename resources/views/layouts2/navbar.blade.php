@@ -16,7 +16,7 @@
         <!-- Collapsible wrapper -->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <!-- Navbar brand -->
-          <a class="mt-2 navbar-brand mt-lg-0" href="#">
+          <a class="mt-2 navbar-brand mt-lg-0" href="{{ route('welcome') }}">
             <img src="{{ asset('src/img/logo.jpg') }}" alt="" loading="lazy" />
           </a>
           <!-- Left links -->
@@ -48,16 +48,21 @@
           </a>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
               <li>
-                  <a class="dropdown-item" href="#">Update profile</a>
+                  <a class="dropdown-item" href="{{ route('user.Dashboard.edit') }}">Update profile</a>
               </li>
               <li>
-                  <a class="dropdown-item" href="#">My subscription</a>
+                  <a class="dropdown-item" href="{{ route('user.my.subscription') }}">My subscription</a>
               </li>
               <li>
-                <a class="dropdown-item" href="#">My reviews</a>
+                <a class="dropdown-item" href="{{ route('user.my.reviews') }}">My reviews</a>
             </li>
               <li>
-                  <a class="dropdown-item" href="#">Logout</a>
+                <a class="dropdown-item" href="{{ route('logout') }}"
+                onclick="event.preventDefault();
+                              document.getElementById('logout-form').submit();">
+                 {{ __('Logout') }}
+
+             </a>
               </li>
           </ul>
         </div>
