@@ -135,10 +135,7 @@
                                     <div id="otherInputContainer" style="display: none;" class="mb-4">
 
                                         <input type="text" name="areas_of_expertise[]" id="otherInput">
-
-
-                                    </div>
-                                    @if ($errors->has('areas_of_expertise'))
+                                        @if ($errors->has('areas_of_expertise'))
                                         <div class="alert alert-danger">
                                             <ul>
                                                 @foreach ($errors->get('areas_of_expertise') as $error)
@@ -147,6 +144,9 @@
                                             </ul>
                                         </div>
                                     @endif
+
+                                    </div>
+                                
                             </div>
 
 
