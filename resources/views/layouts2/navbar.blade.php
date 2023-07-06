@@ -73,15 +73,7 @@
         </div>
         @endif
         
-        <div class="d-flex align-items-center">
-          <a class="text-reset nav-link-singin me-3" href="{{ route('login') }}">
-            PMHNP Sign in
-          </a>
-          <a class="btn btn-primary btn-md" href="{{ route('register.step.one') }}">
-            PMHNP Sign up
-          </a>
-
-        </div>
+      
         
       
     
