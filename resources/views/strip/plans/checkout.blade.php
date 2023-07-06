@@ -30,46 +30,50 @@
         <h2 class="mb-4 text-center">Payment Details</h2>
       </div>
     </div>
+
     <div class="mb-4 row">
-        <div class="col-lg-6 offset-lg-3 col-md-6 offset-md-3">
+      <div class="col-lg-6 offset-lg-3 col-md-6 offset-md-3">
 
-          <div class="padding">
-            <div class="card-row">
-              <span class="visa"></span>
-              <span class="mastercard"></span>
-              <span class="amex"></span>
-              <span class="jcb"><img src="{{ asset('src/img/jcb.jpg') }}" alt="payment"></span>
-              <span class="discover"></span>
+        <div class="padding">
+          <div class="card-row">
+            <span class="visa"></span>
+            <span class="mastercard"></span>
+            <span class="amex"></span>
+            <span class="jcb"><img src="{{ asset('src/img/jcb.jpg') }}" alt=""></span>
+            <span class="discover"></span>
+          </div>
+          <form action="{{route('plans.process')}}" method="POST" id="subscribe-form">
+            @csrf
+    
+            <input type="hidden" name="plan_id" value="{{$plan->plan_id}}">
+           
+           <label for="card-holder-name">Card Holder Name</label>
+            <input id="card-holder-name" type="text">
+          
+            <div class="form-row">
+                <label for="card-element">Credit or debit card</label>
+                <div id="card-element" class="form-control">
+                </div>
+                <!-- Used to display form errors. -->
+                <div id="card-errors" role="alert"></div>
             </div>
-    <form action="{{route('plans.process')}}" method="POST" id="subscribe-form">
-        @csrf
-
-        <input type="hidden" name="plan_id" value="{{$plan->plan_id}}">
-       
-       <label for="card-holder-name">Card Holder Name</label>
-        <input id="card-holder-name" type="text">
-      
-        <div class="form-row">
-            <label for="card-element">Credit or debit card</label>
-            <div id="card-element" class="form-control">
+            <div class="stripe-errors"></div>
+            @if (count($errors) > 0)
+            <div class="alert alert-danger">
+                @foreach ($errors->all() as $error)
+                {{ $error }}<br>
+                @endforeach
             </div>
-            <!-- Used to display form errors. -->
-            <div id="card-errors" role="alert"></div>
+            @endif
+            <div class="text-center form-group"><br>
+                <button  id="card-button" data-secret="{{ $intent->client_secret }}" class="btn btn-lg btn-success btn-block">Process Subcription</button>
+            </div>
+        </form>
         </div>
-        <div class="stripe-errors"></div>
-        @if (count($errors) > 0)
-        <div class="alert alert-danger">
-            @foreach ($errors->all() as $error)
-            {{ $error }}<br>
-            @endforeach
-        </div>
-        @endif
-        <div class="text-center form-group"><br>
-            <button  id="card-button" data-secret="{{ $intent->client_secret }}" class="btn btn-lg btn-success btn-block">Process Subcription</button>
-        </div>
-    </form>
 
-  </div>
+      </div>
+    </div>
+
   </div>
 </div>
 @endsection
