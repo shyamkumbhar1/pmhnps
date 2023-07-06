@@ -46,13 +46,17 @@
             @csrf
     
             <input type="hidden" name="plan_id" value="{{$plan->plan_id}}">
-           
-           <label for="card-holder-name">Card Holder Name</label>
-            <input id="card-holder-name" type="text">
+
           
-            <div class="form-row">
-                <label for="card-element">Credit or debit card</label>
-                <div id="card-element" class="form-control">
+           
+            <div class="mb-4 form-outline">
+            <input id="card-holder-name"  type="text" class="form-control" placeholder="Enter name">
+            <label for="card-holder-name" class="form-label">Card Holder Name</label>
+          </div>
+          
+            <div class="mb-4 form-row form-outline">
+                <label for="card-element form-label">Credit or debit card</label>
+                <div id="card-element"  class="form-control">
                 </div>
                 <!-- Used to display form errors. -->
                 <div id="card-errors" role="alert"></div>
