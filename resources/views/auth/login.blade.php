@@ -1,5 +1,5 @@
 
-@include('layouts2.app')
+@extends('layouts2.app')
 
 
 
@@ -80,9 +80,7 @@
   </div>
 </div>
 
-@include('layouts2.footer')
-  
-</body>
+
 
 
  

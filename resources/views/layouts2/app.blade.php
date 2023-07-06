@@ -21,5 +21,10 @@
     @include('layouts2.navbar')
     
 
-
+    @include('layouts2.footer')
   
+  </body>
+  
+</body>
+
+</html>
