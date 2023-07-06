@@ -39,16 +39,8 @@
         <!-- Collapsible wrapper -->
 
         <!-- Right elements -->
-        <div class="d-flex align-items-center">
-          <a class="text-reset nav-link-singin me-3" href="{{ route('login') }}">
-            PMHNP Sign in
-          </a>
-          <a class="btn btn-primary btn-md" href="{{ route('register.step.one') }}">
-            PMHNP Sign up
-          </a>
-
-        </div>
-       
+      
+        @if (Auth::user())
         <div class="dropdown">
           <a class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#" id="navbarDropdownMenuAvatar"
               role="button" data-mdb-toggle="dropdown" aria-expanded="false">
@@ -69,6 +61,31 @@
               </li>
           </ul>
         </div>
+        @else
+        <div class="d-flex align-items-center">
+          <a class="text-reset nav-link-singin me-3" href="{{ route('login') }}">
+            PMHNP Sign in
+          </a>
+          <a class="btn btn-primary btn-md" href="{{ route('register.step.one') }}">
+            PMHNP Sign up
+          </a>
+
+        </div>
+        @endif
+        
+        <div class="d-flex align-items-center">
+          <a class="text-reset nav-link-singin me-3" href="{{ route('login') }}">
+            PMHNP Sign in
+          </a>
+          <a class="btn btn-primary btn-md" href="{{ route('register.step.one') }}">
+            PMHNP Sign up
+          </a>
+
+        </div>
+        
+      
+    
+        
        
         <!-- Right elements -->
       </div>
