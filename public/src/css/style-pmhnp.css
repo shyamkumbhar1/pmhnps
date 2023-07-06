@@ -2,7 +2,13 @@ body, html{
     height: 100%;
 }
 body{
-    color: #555; font-size: 15px;
+    color: #555; font-size: 15px; font-family: 'latoregular';
+}
+h1, h2, h3, h4, h5{
+    color: #000;
+}
+h1, h2, h3{
+    font-family: 'latosemibold';
 }
 
 .navbar-brand img{ height: 35px;}
@@ -133,6 +139,10 @@ input.form-control{
 
 
 /******************* Payment ****/
+.card-row{ text-align: right; margin-bottom: 15px;}
+.card-row span{ width:55px; height: 35px; display: inline-block; background-repeat: no-repeat; background-size: 100%; margin: 0 3px;}
+.card-row span.jcb{ border: 1px solid #ddd; border-radius: 4px;}
+.card-row img{ width: 100%; height: 100%; object-fit: contain; display: flex;}
 .amex {
     background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAeCAMAAABdem3zAAAAA3NCSVQICAjb4U/gAAACi1BMVEUAAAAAAAAAdKIAdqcGdqoDeqkDeKoDe6sFeqoFeqwCeqoGe6wGeasGeqwGe6wFeqwFeqwFeqsGe6oFeawEeqwEeqwFe6wHeaoFe6oFeasFe6wFeawHe6wIfKwJfKwKfa0Lfa0Mfq0Of64Pf64QgK8RgK8Sga8TgbAUgrAVgrAWg7EXg7EYhLEZhLIahbIbhbIdhrMfh7QgiLQhiLQjirUkirUli7YnjLYojLcqjbcsj7gtj7kukLkvkLkwkbkxkboykrozkro0k7s1k7s2lLs3lLw4lbw5lbw6lr07lr08l709l75Amb9Bmr9Dm8BFnMBHncFIncFJnsJKnsJLn8JMn8NNoMNOocRPocRQosRRosVUpMZVpMZWpcZXpcdYpsdZp8dap8dbqMheqclgqslhq8pjrMpkrMtnrsxpr8xqr81tsc5vss5wss9xs89ztNB0tdB1ttF6uNJ8udN9utN+utR/u9SAu9SBvNWCvNWDvdWEvdWGvtaHv9aIv9eKwNeMwdiPw9mQw9mRxNqTxdqUxtuVx9uWx9yXyNyYyNyZyd2ayd2byt2cyt6dy96fzN+gzN+hzd+izeCjzuCkzuCn0OGp0eKq0eKr0uOs0+Ot0+Ov1OSw1eSy1uWz1uW01+W32Oa62ui72+i82+i+3Om/3enC3urE3+vF4OvH4ezI4uzJ4u3K4+3L4+3N5O7O5e7P5e/R5u/S5/DT5/DV6PHW6fHX6fHY6vHa6/Lb7PPc7PPd7fPe7fTf7vTg7vTi7/Xj8PXk8fbm8vbn8vfo8/fp8/fq9Pjr9Pjs9fjt9fnu9vnv9vnw9/rx9/ry+Prz+Pv0+fv1+fv2+vz4+/z5+/37/P38/f7+/v7///+B6xdgAAAAHHRSTlMAARYaJ0FIT1pcYG6YmZyssrPDys3T2tvt9PX+1nJQbwAAAnFJREFUOMtjYOAWESMWiAqwMzBwyZAEOBn4SdMgzCBImgYJUjVI0UeDkoGBrq6BgZ6MhgECqAA56nJ6ICZIWN3AQAeuoevIrvOHDuy6ZLl1366ru3ft2nVl167dJ08cOXHo/P6Dl3Yd33Nm15mdJw+thGnQO2ei2nzDRaZp405Zmd2KxhYWW2TMTeUmJOWv0NOPKVJ1uNEi4329LByuoXKaabvZNZcQw8u5IUANrYuX7pA5eNSxJCk/OPfGBe2ZKotbnAw6kTSs8Axslpnh0mtRr74YqME7LGaHjI6G4uakfOfGG21q3c5hLf7TNDMQGhqUMjN9vFz6O2TCjgA11M+Zs13m4oXIvKT8bOs+i7DMNJks/xuhcggNKQ3b+vfGpS65kLTqVNyRpLi4uP1xl6d09jRPPF+blHC29WB+SsX5PXF1cA0lE/1lWiZOnFg2saZrIgxkgojiyr6JZTLxQFZ5ycSJpRTHdOAmMMiM2Agk103esGnTxiWzwELTVwOJyes29aFqiFtrCQR+x05FuVpaWqcfA3I8FlQDyandjpaWh5KtLI3RNCxTA8ZypHewb7vNrvWKk2QW7wiIzU3YteusXtXWrQvllm+diK5BRl6+4JyW2omJ2qkRiqtknN2VF+UCxWbmKCi5b3GU1fRE16B+4cK5RCe3pH6z6bP3nZOZsyYoMzftwsWrp4+skZt/4kA1mqfjVqgAgcORw/Z23kejg86r7JxXm1AIFOqzVdFLAEoahaNqiDgMBplZQGKNjC6QbD0MA3vmAomN5XTLcaQASQZe0jSIM3CQpoGPgZFHmgT1QkwMDAzMrOxEAjYWBgYAvI9h1MHdhQIAAAAASUVORK5CYII=") #fff;
 }
@@ -196,9 +206,7 @@ input.form-control{
 
 .testimonial{ margin: 60px 0 50px;}
 .testimonial .carousel-inner > .item > img,
-.testimonial  .carousel-inner > .item > a > img {
-      width: 100%;  margin: auto;
-  }
+.testimonial  .carousel-inner > .item > a > img { width: 100%;  margin: auto; }
 .testimonial .container {width: 100%}
 .testimonial .carousel-item .fa-star{ color: #f2c63f;}
 .testimonial .carousel-item h3{ margin-bottom: 20px;}
@@ -214,17 +222,68 @@ input.form-control{
 .control-div .carousel-control-next{ background-image: none; color: #777;}
 .control-div .carousel-control-prev{ background-image: none; color: #777;}
 
-.control-div .carousel-indicators button{ 
-    width: 12px; height: 12px; border-radius: 50%; background-color: #bbb; margin: 0 6px;
-}
+.control-div .carousel-indicators button{ width: 12px; height: 12px; border-radius: 50%; background-color: #bbb; margin: 0 6px; }
 .control-div .carousel-control-next-icon::after, 
 .control-div .carousel-control-prev-icon::after{ --mdb-carousel-control-icon-font-size: 18px;}
 
 
+/*************************** Home page ***/
+.benefitbox{
+    background-color: #f3f5fa; border-radius: 8px; padding: 20px;
+}
+.hometext{ font-size: 18px; color: #777;}
+.benefitbox ul{margin: 0; padding: 0; list-style: none;}
+.benefitbox ul li{ display: block; position: relative; margin: 5px; font-size: 18px; padding-left: 30px;}
+.benefitbox ul li .fa-check{ position: absolute; left: 0; top: 5px;}
 
+.image-pmhnp{ /*height: 150px; background-color: #000; overflow: hidden; margin: 20px 0; position: relative; */ text-align: center;}
+.image-pmhnp img{ width:130px; margin: 0 auto;}
+.step-title{ position: absolute; z-index: 11; left: 0; right: 0; bottom: 0; text-align: center; color: #fff; font-size: 22px;
+    padding: 10px; font-weight: bold;
+}
 
+.image-patient{ /*height: 120px; overflow: hidden; margin: 20px 20px;*/ text-align: center; }
+.image-patient img{ /*width: 100%; height: 100%; object-fit: cover;*/ width:120px; margin: 0 auto; }
 
+/* .title-pmhnp{ color: #3b71ca;} */
+/* .title-patient{ color: #3b71ca;} */
+.title-step{ color: #3b71ca; }
 
+.hometestimonial{ background-color: #f1f5fe; margin: 40px 0 50px;}
+
+.homeslide{ margin: 60px 0 50px; position: relative;}
+.homeslide .carousel-inner > .item > img,
+.homeslide  .carousel-inner > .item > a > img { width: 100%;  margin: auto; }
+.homeslide .container {width: 100%}
+.homeslide .carousel-item h4{ font-size: 24px; line-height: 34px; margin: 20px 120px; font-family: 'latolight';}
+
+.hometestimonial .control-row{ position: absolute; z-index: 111; top: 50%; transform: translateY(-50%); width: 100%;}
+
+.control-row .carousel-control{ text-shadow: none; width: auto;}
+.control-row .carousel-control-next,
+.control-row .carousel-control-prev{ background-image: none; color: #777; width: auto; opacity: 1;}
+
+.control-row .carousel-control-next-icon::after, 
+.control-row .carousel-control-prev-icon::after{ --mdb-carousel-control-icon-font-size: 20px; line-height: 40px;}
+
+.control-row  .carousel-control-next-icon, 
+.control-row  .carousel-control-prev-icon{ width: 40px; height: 40px; border-radius: 50%; text-align: center; background-color: #fff;}
+
+.reviewpic{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #ddd;
+    overflow: hidden;
+    display: inline-block;
+    margin-right:20px;
+    vertical-align: middle;
+}
+.reviewpic img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
 
 
@@ -258,6 +317,8 @@ input.form-control{
     .div-responsive{ overflow-x: auto;}
     .compair-plan{ width: 140%; white-space: nowrap;}
     .compair-plan ul li{ white-space: nowrap;}
+
+    .homeslide .carousel-item h4{ margin: 20px 40px;}
 }
 
 /***************************/

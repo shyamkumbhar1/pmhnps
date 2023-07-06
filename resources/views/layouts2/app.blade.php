@@ -16,6 +16,8 @@
   <link rel="stylesheet" href="{{ asset('src/css/mdb.min.css') }}" />
   <!-- Custom style -->
   <link rel="stylesheet" href="{{ asset('src/css/style-pmhnp.css') }}" />
+  <link rel="stylesheet" href="{{ asset('src/font/stylesheet.css') }}" />
+
   @yield('style')
 
 </head>
