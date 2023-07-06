@@ -25,7 +25,8 @@
 
     @include('layouts2.footer')
         
-        <script type="text/javascript" src="js/mdb.min.js"></script>
+        <script type="text/javascript" src="{{ asset('src/js/mdb.min.js') }}"></script>
+    
         @yield('script')
   
      
