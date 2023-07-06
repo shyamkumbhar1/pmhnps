@@ -48,8 +48,31 @@
           </a>
 
         </div>
+       
+        <div class="dropdown">
+          <a class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#" id="navbarDropdownMenuAvatar"
+              role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+              <img src="{{ asset('src/img/profilpic.jpg') }}" class="rounded-circle" height="25" alt="" loading="lazy" />
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
+              <li>
+                  <a class="dropdown-item" href="#">Update profile</a>
+              </li>
+              <li>
+                  <a class="dropdown-item" href="#">My subscription</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#">My reviews</a>
+            </li>
+              <li>
+                  <a class="dropdown-item" href="#">Logout</a>
+              </li>
+          </ul>
+        </div>
+       
         <!-- Right elements -->
       </div>
+      
       <!-- Container wrapper -->
     </nav>
     <!-- Navbar -->
