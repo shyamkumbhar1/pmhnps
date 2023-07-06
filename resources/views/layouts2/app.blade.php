@@ -16,15 +16,22 @@
   <link rel="stylesheet" href="{{ asset('src/css/mdb.min.css') }}" />
   <!-- Custom style -->
   <link rel="stylesheet" href="{{ asset('src/css/style-pmhnp.css') }}" />
+  @yield('style')
+
 </head>
 <body>
     @include('layouts2.navbar')
     @yield('content')
 
     @include('layouts2.footer')
+        
+        <script type="text/javascript" src="js/mdb.min.js"></script>
+        @yield('script')
+  
+     
   
   </body>
   
-</body>
+
 
 </html>
