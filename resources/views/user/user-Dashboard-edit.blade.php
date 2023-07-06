@@ -114,17 +114,17 @@
 
                                             <div class="form-check">
                                         
-                                            <input id="area_of_expertise{{ $index }}" type="checkbox" name="areas_of_expertise[]" value="{{ $expertise }}"
-                                                   {{ in_array($expertise, $selectedAreas) ? 'checked' : '' }}>
-                                            <label for="area_of_expertise{{ $index }}">{{ $expertise }}</label>
+                                            <input id="area_of_expertise{{ $index }}" type="checkbox" name="areas_of_expertise[]" value="{{ $expertise }} "
+                                                   {{ in_array($expertise, $selectedAreas) ? 'checked' : '' }} class="form-check-input">
+                                            <label for="area_of_expertise{{ $index }}" class="form-check-lable">{{ $expertise }}</label>
                                         </div>
                                     </div>
                                         @endforeach
             
                                         <div>
-                                            <input id="area_of_expertise_other" type="checkbox" name="areas_of_expertise[]" value="other"
+                                            <input id="area_of_expertise_other" type="checkbox" name="areas_of_expertise[]" value="other" class="form-check-input"
                                                    {{ in_array('other', $selectedAreas) ? 'checked' : '' }}>
-                                            <label for="area_of_expertise_other">Other</label>
+                                            <label for="area_of_expertise_other" class="form-check-label">Other</label>
                                         </div>
                                         @if ($errors->has('areas_of_expertise'))
                                                         <span class="text-danger">{{ $errors->first('areas_of_expertise') }}</span>
