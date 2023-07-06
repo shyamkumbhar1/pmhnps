@@ -1,101 +1,81 @@
 
-@include('layouts2.app')
+@extends('layouts2.app')
 
+@section('content')
+<div class="page-height">
+  <div class="container">
 
-
-
-<body>
-
-  
-  
-  
-    <div class="page-height">
-      <div class="container">
-  
-        <div class="row">
-          <div class="col-md-12">
-            <div class="steps-row">
-              <ul>
-                <li class="">
-                  <a href="#"> <span><i class="fa fa-check" aria-hidden="true"></i></span> Step 1 </a>
-                </li>
-                <li><i class="fa fa-chevron-right" aria-hidden="true"></i></li>
-                <li class="">
-                  <a href="#"> <span><i class="fa fa-check" aria-hidden="true"></i></span> Step 2 </a>
-                </li>
-                <li><i class="fa fa-chevron-right" aria-hidden="true"></i></li>
-                <li class="active">
-                  <a href="#"> <span>3</span> Step 3 </a>
-                </li>
-              </ul>
-            </div>
-          </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="steps-row">
+          <ul>
+            <li class="">
+              <a href="#"> <span><i class="fa fa-check" aria-hidden="true"></i></span> Step 1 </a>
+            </li>
+            <li><i class="fa fa-chevron-right" aria-hidden="true"></i></li>
+            <li class="">
+              <a href="#"> <span><i class="fa fa-check" aria-hidden="true"></i></span> Step 2 </a>
+            </li>
+            <li><i class="fa fa-chevron-right" aria-hidden="true"></i></li>
+            <li class="active">
+              <a href="#"> <span>3</span> Step 3 </a>
+            </li>
+          </ul>
         </div>
-  
-        <div class="mb-4 row">
-          <div class="col-md-12">
-            <h2 class="mb-4 text-center">Payment Details</h2>
-          </div>
-        </div>
-        <div class="mb-4 row">
-            <div class="col-lg-6 offset-lg-3 col-md-6 offset-md-3">
-    
-              <div class="padding">
-                <div class="card-row">
-                  <span class="visa"></span>
-                  <span class="mastercard"></span>
-                  <span class="amex"></span>
-                  <span class="jcb"><img src="{{ asset('src/img/jcb.jpg') }}" alt="payment"></span>
-                  <span class="discover"></span>
-                </div>
-        <form action="{{route('plans.process')}}" method="POST" id="subscribe-form">
-            @csrf
-
-            <input type="hidden" name="plan_id" value="{{$plan->plan_id}}">
-           
-           <label for="card-holder-name">Card Holder Name</label>
-            <input id="card-holder-name" type="text">
-          
-            <div class="form-row">
-                <label for="card-element">Credit or debit card</label>
-                <div id="card-element" class="form-control">
-                </div>
-                <!-- Used to display form errors. -->
-                <div id="card-errors" role="alert"></div>
-            </div>
-            <div class="stripe-errors"></div>
-            @if (count($errors) > 0)
-            <div class="alert alert-danger">
-                @foreach ($errors->all() as $error)
-                {{ $error }}<br>
-                @endforeach
-            </div>
-            @endif
-            <div class="text-center form-group"><br>
-                <button  id="card-button" data-secret="{{ $intent->client_secret }}" class="btn btn-lg btn-success btn-block">Process Subcription</button>
-            </div>
-        </form>
-  
-      </div>
       </div>
     </div>
+
+    <div class="mb-4 row">
+      <div class="col-md-12">
+        <h2 class="mb-4 text-center">Payment Details</h2>
+      </div>
+    </div>
+    <div class="mb-4 row">
+        <div class="col-lg-6 offset-lg-3 col-md-6 offset-md-3">
+
+          <div class="padding">
+            <div class="card-row">
+              <span class="visa"></span>
+              <span class="mastercard"></span>
+              <span class="amex"></span>
+              <span class="jcb"><img src="{{ asset('src/img/jcb.jpg') }}" alt="payment"></span>
+              <span class="discover"></span>
+            </div>
+    <form action="{{route('plans.process')}}" method="POST" id="subscribe-form">
+        @csrf
+
+        <input type="hidden" name="plan_id" value="{{$plan->plan_id}}">
+       
+       <label for="card-holder-name">Card Holder Name</label>
+        <input id="card-holder-name" type="text">
+      
+        <div class="form-row">
+            <label for="card-element">Credit or debit card</label>
+            <div id="card-element" class="form-control">
+            </div>
+            <!-- Used to display form errors. -->
+            <div id="card-errors" role="alert"></div>
+        </div>
+        <div class="stripe-errors"></div>
+        @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            @foreach ($errors->all() as $error)
+            {{ $error }}<br>
+            @endforeach
+        </div>
+        @endif
+        <div class="text-center form-group"><br>
+            <button  id="card-button" data-secret="{{ $intent->client_secret }}" class="btn btn-lg btn-success btn-block">Process Subcription</button>
+        </div>
+    </form>
+
+  </div>
+  </div>
 </div>
-    </div>
-  
-  
-  
-  
- 
-  
-  
-    <!-- MDB -->
-    <script type="text/javascript" src="{{ asset('src/js/mdb.min.js') }}"></script>
-  
-    <!-- Custom scripts -->
-    <script type="{{ asset('src/text/javascript') }}">
-  
-    </script>
-    <script src="https://js.stripe.com/v3/"></script>
+@endsection
+   
+@section('script')
+<script src="https://js.stripe.com/v3/"></script>
 <script>
     var stripe = Stripe('{{ env('STRIPE_KEY') }}');
     var elements = stripe.elements();
@@ -156,16 +136,4 @@
         form.submit();
     }
 </script>
-  
-  </body>
-  
-  
-
-@include('layouts2.footer')
-  
-
-
-
- 
-
-
+@endsection     
