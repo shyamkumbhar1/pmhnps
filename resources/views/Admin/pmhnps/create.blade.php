@@ -27,4 +27,4 @@
 	{{ Form::close() }}
 
 
-@stop
+@stop`
