@@ -19,18 +19,18 @@ class CheckBanned
     {
        
         {
-            // if(auth()->check() && (auth()->user()->status == 0)){
-            //         Auth::logout();
+            if(auth()->check() && (auth()->user()->status == 0)){
+                    Auth::logout();
         
-            //         $request->session()->invalidate();
+                    $request->session()->invalidate();
         
-            //         $request->session()->regenerateToken();
+                    $request->session()->regenerateToken();
         
-            //         return redirect()->route('login')->with('error', 'Your Account is suspended, please contact Admin.');
+                    return redirect()->route('login')->with('error', 'Your Account is suspended, please contact Admin.');
         
-            // }
+            }
         
-            // return $next($request);
+            return $next($request);
         }
     }
 }
