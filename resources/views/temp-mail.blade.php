@@ -8,5 +8,5 @@ Name: {{ $user['name'] }} <br>
 Email: {{ $user['email'] }} <br>
 
 
-Complete Your Subscription  : http://localhost:8000/plans <br><br>
+Complete Your Subscription  : https://pmhnp-mvp.projectdemo.pro/plans <br><br>
 Thanks

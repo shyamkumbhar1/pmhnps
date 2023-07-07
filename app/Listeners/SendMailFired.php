@@ -39,7 +39,7 @@ $emailContent = View::make('temp-mail', ['user' => $user])->render();
 // echo $emailContent;
 
         Mail::send('temp-mail',['user' => $user],function($message) use ($user){
-            $message->from("admin@test.com");
+            $message->from("shyamkumbhar743@gmail.com");
             $message->to($user['email']);
             $message->subject("Registration Mail");
         });
