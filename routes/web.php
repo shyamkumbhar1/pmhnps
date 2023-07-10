@@ -102,3 +102,9 @@ Route::prefix('admin')->group(function () {
 });
 
 Route::resource('pmhnps',PmhnpsController::class);
+
+// Route::get('temp-pmhnps-index',[TempRegisterController::class,'tempPmhnpsIndex'])->name('temp.pmhnps.index');
+Route::resource('temp-pmhnps',TempRegisterController::class);
+
+
+

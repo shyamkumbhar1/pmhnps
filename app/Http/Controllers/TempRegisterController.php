@@ -56,7 +56,19 @@ class TempRegisterController extends Controller
         return to_route('plans.all')->with('success', 'User created successfully.');
     }
 
-    public function emailSend(Request $request){
+    public function index (Request $request){
+        $temp_pmhnps = TempRegister::orderBy('id','desc')->paginate(10);
+    
+        return view('Admin.temp-pmhnps.index', compact('temp_pmhnps'));
+       
+    }
+    public function destroy(Request $request , $id)
+    {
+     
+        $pmhnp = TempRegister::findOrFail($id);
+        
+        $pmhnp->delete();
 
+        return to_route('temp-pmhnps.index');
     }
 }
