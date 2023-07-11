@@ -8,6 +8,7 @@
             <div class="mt-5 mb-4 row">
                 <div class="col-md-12">
                     <h2 class="mb-4 text-center">Complete your Profile</h2>
+                   
                     <!-- Collapsible wrapper -->
 
 
@@ -81,8 +82,14 @@
 
                                         <select id="state_of_licensure" class="block w-full mt-1 form-control"
                                             name="state_of_licensure" required>
-                                            <option value="">Select State of Licensure</option>
-                                            <option value="ME">Maine (ME) </option>
+                                            <option value="other">Select State Of Licensure</option>
+
+                                            @foreach ($state_of_licensures as $state_of_licensure )
+                                            <option value="{{ $state_of_licensure['name'] }}">{{ $state_of_licensure['name'] }} </option>
+                                                
+                                            @endforeach
+                                           
+                                            
 
                                             <!-- Add more options as needed -->
                                             <option value="other">Other</option>

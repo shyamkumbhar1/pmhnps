@@ -19,12 +19,19 @@ class RemainingDetailsController extends Controller
     {
       
         $cities = City::all();
+       
         $states = State::all();
+        $state_of_licensures = json_decode($states,true);
+
         $countries = Country::all();
         $data1 = DB::table('users')->paginate(10);
 
+        // dd(json_decode($states,true));
+       
+
+
      
-    return view('user.remaining-field', compact('cities', 'states', 'countries','data1'));
+    return view('user.remaining-field', compact('cities', 'states', 'countries','data1','state_of_licensures'));
 
     }
 
