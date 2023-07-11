@@ -69,7 +69,7 @@
               <H3>ANNUAL <span class="popular">Popular</span></H3>
               <h5>$500/ <small>year</small></h5>
               <div class="mt-3 mb-4 text-center">
-                <button type="submit" class="btn btn-lg btn-plan-select selected btn-md">
+                <button type="submit" class="btn btn-lg btn-plan-select btn-md">
                     <a href=" {{ route('plans.checkout', $professional->plan_id) }}">Select</a>
                 </button>
               </div>
