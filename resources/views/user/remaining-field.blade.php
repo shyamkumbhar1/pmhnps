@@ -164,12 +164,17 @@
 
 
 
-                            <div class="mb-4 form-outline">
+                            {{-- <div class="mb-4 form-outline">
 
-                                <x-label for="bio" :value="__('Bio')" />
 
                                 <textarea id="bio" class="block w-full mt-1 form-control" name="bio" placeholder="Bio" required>{{ old('bio') }}</textarea>
-                            </div>
+                                <x-label for="bio" :value="__('Bio')" />
+
+                            </div> --}}
+                            <div class="mb-4 form-outline">
+                                <textarea class="form-control" id="" rows="5">{{ old('bio') }}</textarea>
+                                <label class="form-label" for="">Enter your Bio</label>
+                              </div>
 
                          
                             <div class="mb-4 form-outline">
