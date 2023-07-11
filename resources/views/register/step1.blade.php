@@ -13,11 +13,11 @@
         <div class="steps-row">
           <ul>
             <li class="active">
-              <a href="#"> <span>1</span> Step 1 </a>
+              <a href="{{ route('register.step.one') }}"> <span>1</span> Step 1 </a>
             </li>
             <li><i class="fa fa-chevron-right" aria-hidden="true"></i></li>
             <li>
-              <a href="#"> <span><i class="fa fa-check" aria-hidden="true"></i></span> Step 2 </a>
+              <a href="{{ route('plans.all') }}"> <span><i class="fa fa-check" aria-hidden="true"></i></span> Step 2 </a>
             </li>
             <li><i class="fa fa-chevron-right" aria-hidden="true"></i></li>
             <li>

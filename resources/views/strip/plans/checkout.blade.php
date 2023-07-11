@@ -9,16 +9,16 @@
       <div class="col-md-12">
         <div class="steps-row">
           <ul>
-            <li class="">
-              <a href="#"> <span><i class="fa fa-check" aria-hidden="true"></i></span> Step 1 </a>
+            <li >
+              <a href="{{ route('register.step.one') }}"> <span>1</span> Step 1 </a>
             </li>
             <li><i class="fa fa-chevron-right" aria-hidden="true"></i></li>
-            <li class="">
-              <a href="#"> <span><i class="fa fa-check" aria-hidden="true"></i></span> Step 2 </a>
+            <li>
+              <a href="{{ route('plans.all') }}"> <span><i class="fa fa-check" aria-hidden="true"></i></span> Step 2 </a>
             </li>
             <li><i class="fa fa-chevron-right" aria-hidden="true"></i></li>
-            <li class="active">
-              <a href="#"> <span>3</span> Step 3 </a>
+            <li class="active" >
+              <a href="#"> <span><i class="fa fa-check" aria-hidden="true"></i> </span> Step 3 </a>
             </li>
           </ul>
         </div>

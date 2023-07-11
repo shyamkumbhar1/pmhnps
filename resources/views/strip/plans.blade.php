@@ -9,12 +9,12 @@
       <div class="col-md-12">
         <div class="steps-row">
           <ul>
-            <li class="">
-              <a href="#"> <span><i class="fa fa-check" aria-hidden="true"></i></span> Step 1 </a>
+            <li >
+              <a href="{{ route('register.step.one') }}"> <span>1</span> Step 1 </a>
             </li>
             <li><i class="fa fa-chevron-right" aria-hidden="true"></i></li>
             <li class="active">
-              <a href="#"> <span>2</span> Step 2 </a>
+              <a href="{{ route('plans.all') }}"> <span><i class="fa fa-check" aria-hidden="true"></i></span> Step 2 </a>
             </li>
             <li><i class="fa fa-chevron-right" aria-hidden="true"></i></li>
             <li>
@@ -27,7 +27,7 @@
 
     <div class="mb-4 row">
       <div class="col-md-12">
-        <h2 class="mb-4 text-center">Compair plans</h2>
+        <h2 class="mb-4 text-center">Compare plans</h2>
       </div>
     </div>
 
