@@ -47,11 +47,11 @@ class TempRegisterController extends Controller
 
         $request->session()->put('user_id', $temp_user->id);
 
-        //  Send mail to admin
-        if($temp_user){
-            Event::dispatch(new SendMail($temp_user->id));
+        // //  Send mail to admin
+        // if($temp_user){
+        //     Event::dispatch(new SendMail($temp_user->id));
 
-        }
+        // }
 
         return to_route('plans.all')->with('success', 'User created successfully.');
     }
