@@ -8,12 +8,12 @@
             <div class="mt-5 mb-4 row">
                 <div class="col-md-12">
                     <h2 class="mb-4 text-center">Complete your Profile</h2>
-                   
                     <!-- Collapsible wrapper -->
 
 
                     <div class="row">
                         <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2">
+
                             <div class="card-body">
                                 @if (session('status'))
                                     <div class="alert alert-success" role="alert">
@@ -29,58 +29,52 @@
                                         </ul>
                                     </div><br />
                                 @endif
+                            </div>
 
+                            <form method="POST" action="{{ route('remaining.details.post') }}"
+                                enctype="multipart/form-data">
+                                @csrf
+                                <div>
+                                    <input type="hidden" value="{{ Auth::user()->id }}" name="user_id">
+                                </div>
 
-                                <form method="POST" action="{{ route('remaining.details.post') }}"
-                                    enctype="multipart/form-data">
-                                    @csrf
-                                    <div>
-                                        <input type="hidden" value="{{ Auth::user()->id }}" name="user_id">
-                                    </div>
-                                    <div class="mb-4 form-outline">
+                                <div class="mb-4 form-outline">
+                                    <x-input id="phone_number" class="block w-full mt-1" type="text"
+                                        name="phone_number" :value="old('phone_number')" class="form-control"
+                                        placeholder="Phone Number" required autofocus />
+                                    <x-label for="phone_number" class="form-label" :value="__('Phone Number')" />
+                                    @if ($errors->has('phone_number'))
+                                        <div class="alert alert-danger">
+                                            <ul>
+                                                @foreach ($errors->get('phone_number') as $error)
+                                                    <li>{{ $error }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    @endif
+                                </div>
 
-
-                                        <x-input id="phone_number" class="block w-full mt-1" type="text"
-                                            name="phone_number" :value="old('phone_number')" class="form-control"
-                                            placeholder="Phone Number" required autofocus />
-                                        <x-label for="phone_number" class="form-label" :value="__('Phone Number')" />
-
-                                        @if ($errors->has('phone_number'))
-                                            <div class="alert alert-danger">
-                                                <ul>
-                                                    @foreach ($errors->get('phone_number') as $error)
-                                                        <li>{{ $error }}</li>
-                                                    @endforeach
-                                                </ul>
-                                            </div>
-                                        @endif
-                                    </div>
-                                    <div class="mb-4 form-outline">
-
-
-                                        <x-input id="professional_license_number" class="block w-full mt-1 form-control"
-                                            type="text" name="professional_license_number" :value="old('professional_license_number')"
-                                            placeholder="Professional License Number" required />
-                                        <x-label for="professional_license_number" class="form-label" :value="__('Professional License Number')" />
-
-
-                                        @if ($errors->has('professional_license_number'))
-                                            <div class="alert alert-danger">
-                                                <ul>
-                                                    @foreach ($errors->get('professional_license_number') as $error)
-                                                        <li>{{ $error }}</li>
-                                                    @endforeach
-                                                </ul>
-                                            </div>
-                                        @endif
-
-                                    </div>
+                                <div class="mb-4 form-outline">
+                                    <x-input id="professional_license_number" class="block w-full mt-1 form-control"
+                                        type="text" name="professional_license_number" :value="old('professional_license_number')"
+                                        placeholder="Professional License Number" required />
+                                    <x-label for="professional_license_number" class="form-label" :value="__('Professional License Number')" />
+                                    @if ($errors->has('professional_license_number'))
+                                        <div class="alert alert-danger">
+                                            <ul>
+                                                @foreach ($errors->get('professional_license_number') as $error)
+                                                    <li>{{ $error }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    @endif
+                                </div>
 
 
                                     <div class="mb-4 ">
 
 
-                                        <select id="state_of_licensure" class="block w-full mt-1 form-control"
+                                        <select id="state_of_licensure" class="form-select form-control"
                                             name="state_of_licensure" required>
                                             <option value="other">Select State Of Licensure</option>
 
@@ -91,186 +85,176 @@
                                            
                                             
 
-                                            <!-- Add more options as needed -->
-                                            <option value="other">Other</option>
-                                        </select>
-                                        {{-- <label for="state_of_licensure" >State of Licensure</label> --}}
-
-                                        @if ($errors->has('state_of_licensure'))
-                                            <div class="alert alert-danger">
-                                                <ul>
-                                                    @foreach ($errors->get('state_of_licensure') as $error)
-                                                        <li>{{ $error }}</li>
-                                                    @endforeach
-                                                </ul>
-                                            </div>
-                                        @endif
-                                    </div>
-
-
-                                    <div class="mb-4 form-outline">
-
-                                        @php
-                                            $expertiseAreas = ['Mood Disorders', 'Trauma and PTSD', 'Geriatric Psychiatry', 'Psychotic Disorders', 'Neurodevelopmental Disorders', 'Substance Abuse Counseling', 'Eating Disorders', 'Sleep Disorders', 'Anxiety Disorders', 'Personality Disorders'];
-                                        @endphp
-                                        <label for="areas_of_expertise">Areas of Expertise</label>
-                                        <div class="mb-3 row expertise">
-                                            @foreach ($expertiseAreas as $index => $expertise)
-                                                {{-- <div>
-                                                
-                                            </div> --}}
-                                                <div class="mb-2 col-lg-6 col-md-6">
-
-
-                                                    <div class="form-check">
-                                                        <input id="area_of_expertise{{ $index }}"
-                                                            class="form-check-input" type="checkbox"
-                                                            name="areas_of_expertise[]" value="{{ $expertise }}">
-                                                        <label for="area_of_expertise{{ $index }}"
-                                                            class="form-check-label">{{ $expertise }}</label>
-                                                    </div>
-                                                </div>
-                                            @endforeach
-                                        </div>
-                                    </div>
-                                    <div class="mb-4">
-                                        <input id="area_of_expertise_other" type="checkbox">
-                                        <label for="area_of_expertise_other">Other</label>
-
-                                    </div>
-
-                                    <div id="otherInputContainer" style="display: none;" class="mb-4">
-
-                                        <input type="text" name="areas_of_expertise[]" id="otherInput">
-                                        @if ($errors->has('areas_of_expertise'))
+                                        <!-- Add more options as needed -->
+                                        <option value="other">Other</option>
+                                    </select>
+                                    {{-- <label for="state_of_licensure" >State of Licensure</label> --}}
+                                    @if ($errors->has('state_of_licensure'))
                                         <div class="alert alert-danger">
                                             <ul>
-                                                @foreach ($errors->get('areas_of_expertise') as $error)
+                                                @foreach ($errors->get('state_of_licensure') as $error)
                                                     <li>{{ $error }}</li>
                                                 @endforeach
                                             </ul>
                                         </div>
                                     @endif
+                                </div>
+
+                                <div class="mb-4 form-outline">
+                                    @php
+                                        $expertiseAreas = ['Mood Disorders', 'Trauma and PTSD', 'Geriatric Psychiatry', 'Psychotic Disorders', 'Neurodevelopmental Disorders', 'Substance Abuse Counseling', 'Eating Disorders', 'Sleep Disorders', 'Anxiety Disorders', 'Personality Disorders'];
+                                    @endphp
+                                    <h5><label for="areas_of_expertise">Areas of Expertise</label></h5>
+                                    <div class="mb-3 row expertise">
+                                        @foreach ($expertiseAreas as $index => $expertise)
+                                            {{-- <div>                                                    
+                                        </div> --}}
+                                            <div class="mb-2 col-lg-6 col-md-6">
+                                                <div class="form-check">
+                                                    <input id="area_of_expertise{{ $index }}"
+                                                        class="form-check-input" type="checkbox"
+                                                        name="areas_of_expertise[]" value="{{ $expertise }}">
+                                                    <label for="area_of_expertise{{ $index }}"
+                                                        class="form-check-label">{{ $expertise }}</label>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                        
+                                        <div class="mb-2 col-lg-6 col-md-6">
+                                            <div class="form-check">
+                                                <input id="area_of_expertise_other" class="form-check-input" type="checkbox">
+                                                <label for="area_of_expertise_other">Other</label>
+                                            </div>
+                                            <div id="otherInputContainer" style="display: none;" class="mt-2">
+                                                <input type="text" class="form-control-check" name="areas_of_expertise[]" id="otherInput">
+                                                @if ($errors->has('areas_of_expertise'))
+                                                <div class="alert alert-danger">
+                                                    <ul>
+                                                        @foreach ($errors->get('areas_of_expertise') as $error)
+                                                            <li>{{ $error }}</li>
+                                                        @endforeach
+                                                    </ul>
+                                                </div>
+                                                @endif
+                                            </div>
+                                        </div>                                         
 
                                     </div>
+                                </div>
+
                                 
-                            </div>
-
-
-
-
-
-
-
-
-
-                            <div class="mb-4 form-outline">
-
-                                <x-label for="bio" :value="__('Bio')" />
-
-                                <textarea id="bio" class="block w-full mt-1 form-control" name="bio" placeholder="Bio" required>{{ old('bio') }}</textarea>
-                            </div>
-
                          
-                            <div class="mb-4 form-outline">
+                               
+                        <!-- </div> -->
 
-                                {{-- <x-label for="profile_picture" :value="__('Profile Picture')" /> --}}
+                                <div class="mb-4 form-outline">
+                                    <textarea id="bio" class="form-control" name="bio" placeholder="Bio" rows="4" required>{{ old('bio') }}</textarea>
+                                    <x-label class="form-label" for="bio" :value="__('Bio')" />
+                                </div>
 
-                                <input id="profile_picture" class="block w-full mt-1 form-control" type="file"
-                                    name="profile_picture" accept="image/*" />
-
-                                @if ($errors->has('profile_picture'))
-                                    <div class="alert alert-danger">
-                                        <ul>
-                                            @foreach ($errors->get('profile_picture') as $error)
-                                                <li>{{ $error }}</li>
-                                            @endforeach
-                                        </ul>
+                            
+                                <div class="row mb-4">
+                                    <div class="col-sm-6 mb-sm-4">
+                                        {{-- <x-label for="profile_picture" :value="__('Profile Picture')" /> --}}                                        
                                     </div>
-                                @endif
-                            </div>
+                                    <div class="col-sm-6 mb-4 text-end">
+                                        <input id="profile_picture" class="block w-full mt-1 form-control" type="file"
+                                            name="profile_picture" accept="image/*" />
+                                        @if ($errors->has('profile_picture'))
+                                            <div class="alert alert-danger">
+                                                <ul>
+                                                    @foreach ($errors->get('profile_picture') as $error)
+                                                        <li>{{ $error }}</li>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                        @endif                                        
+                                    </div>
+                                </div>
 
 
+                                <div class="mb-4 form-outline">
+                                    {{-- <x-label for="address_line1" :value="__('Address Line 1')" /> --}}
+                                    <textarea id="address_line1" class="block w-full mt-1 form-control" type="text" name="address_line1"
+                                        placeholder="Address line 1" required />{{ old('bio') }}</textarea>
+                                    @if ($errors->has('address_line1'))
+                                        <span class="text-danger">{{ $errors->first('address_line1') }}</span>
+                                    @endif
+                                </div>
 
 
-                            <div class="mb-4 form-outline">
-
-                                {{-- <x-label for="address_line1" :value="__('Address Line 1')" /> --}}
-
-                                <textarea id="address_line1" class="block w-full mt-1 form-control" type="text" name="address_line1"
-                                    placeholder="Address line 1" required />{{ old('bio') }}</textarea>
-
-                                @if ($errors->has('address_line1'))
-                                    <span class="text-danger">{{ $errors->first('address_line1') }}</span>
-                                @endif
-                            </div>
-
-                            <div class="mb-4 form-outline">
-
-                                {{-- <x-label for="address_line2" :value="__('Address Line 2')" /> --}}
-
-                                <textarea id="address_line2" class="block w-full mt-1 form-control" type="text" name="address_line2"
-                                    placeholder="Address line 2" required />{{ old('bio') }}</textarea>
-                                @if ($errors->has('address_line2'))
-                                    <span class="text-danger">{{ $errors->first('address_line2') }}</span>
-                                @endif
-                            </div>
-
-                            <div>
-                                <x-label for="country-dropdown" :value="__('Country')" />
-                                {{-- {{ dd($countries )}} --}}
-                                <select id="country-dropdown" id="country" class="form-control" name="country">
-                                    <option value="">-- Select Country --</option>
-                                    @foreach ($countries as $data)
-                                        <option value="{{ $data->id }}">
-                                            {{ $data->name }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                                @if ($errors->has('country'))
-                                    <span class="text-danger">{{ $errors->first('country') }}</span>
-                                @endif
-                            </div>
-                            <div class="mb-3 form-group">
-                                <x-label for="state-dropdown" :value="__('State')" />
-                                <select id="state-dropdown" id="state" class="form-control" name="state">
-                                </select>
-                                @if ($errors->has('state'))
-                                    <span class="text-danger">{{ $errors->first('state') }}</span>
-                                @endif
-                            </div>
-                            <div class="mb-4 form-group ">
-                                <x-label for="city-dropdown" :value="__('City')" />
-                                <select id="city-dropdown" class="form-control" name="city">
-                                </select>
-                                @if ($errors->has('city'))
-                                    <span class="text-danger">{{ $errors->first('city') }}</span>
-                                @endif
-                            </div>
-                            <div class="mb-4 form-outline">
-
-                                <x-input id="postal_code" class="block w-full mt-1 form-control" type="text"
-                                    name="postal_code" :value="old('postal_code')" placeholder="Postal Code" required />
-                                <x-label for="postal_code" :value="__('Postal Code')" class="form-label" />
-
-                                @if ($errors->has('postal_code'))
-                                    <span class="text-danger">{{ $errors->first('postal_code') }}</span>
-                                @endif
-                            </div>
+                                <div class="mb-4 form-outline">
+                                    {{-- <x-label for="address_line2" :value="__('Address Line 2')" /> --}}
+                                    <textarea id="address_line2" class="block w-full mt-1 form-control" type="text" name="address_line2"
+                                        placeholder="Address line 2" required />{{ old('bio') }}</textarea>
+                                    @if ($errors->has('address_line2'))
+                                        <span class="text-danger">{{ $errors->first('address_line2') }}</span>
+                                    @endif
+                                </div>
 
 
+                                <div class="row">
+                                    <div class="col-sm-6 mb-4">
+                                        <x-label for="country-dropdown" :value="__('Country')" />
+                                        {{-- {{ dd($countries )}} --}}
+                                        <select id="country-dropdown" id="country" class="form-control" name="country">
+                                            <option value="">-- Select Country --</option>
+                                            @foreach ($countries as $data)
+                                                <option value="{{ $data->id }}">
+                                                    {{ $data->name }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                        @if ($errors->has('country'))
+                                            <span class="text-danger">{{ $errors->first('country') }}</span>
+                                        @endif
+                                    </div>
+                                    <div class="col-sm-6 mb-4">
+                                        <x-label for="state-dropdown" :value="__('State')" />
+                                        <select id="state-dropdown" id="state" class="form-control" name="state">
+                                        </select>
+                                        @if ($errors->has('state'))
+                                            <span class="text-danger">{{ $errors->first('state') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
 
 
-                            <div class="flex items-center justify-end mt-4">
-                                {{-- <a class="text-sm text-gray-600 underline hover:text-gray-900" href="{{ route('login') }}">
-                      {{ __('Already registered?') }}
-                  </a> --}}
+                                <div class="row">
+                                    <div class="col-sm-6 mb-4">
+                                        <x-label for="city-dropdown" :value="__('City')" />
+                                        <select id="city-dropdown" class="form-control" name="city">
+                                        </select>
+                                        @if ($errors->has('city'))
+                                            <span class="text-danger">{{ $errors->first('city') }}</span>
+                                        @endif
+                                    </div>
+                                    <div class="col-sm-6 mb-4">
+                                        <label for=""></label>
+                                        <div class="form-outline">                                        
+                                            <x-input id="postal_code" class="form-control" type="text"
+                                                name="postal_code" :value="old('postal_code')" placeholder="Postal Code" required />  
+                                                <x-label for="postal_code" :value="__('Postal Code')" class="form-label" />                                      
+                                            @if ($errors->has('postal_code'))
+                                                <span class="text-danger">{{ $errors->first('postal_code') }}</span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
 
-                                <x-button class="ml-4 btn btn-primary">
-                                    {{ __('Complete Profile') }}
-                                </x-button>
-                            </div>
+
+                                <div class="mb-4 text-center">
+                                    {{-- <a class="text-sm text-gray-600 underline hover:text-gray-900" href="{{ route('login') }}">
+                                        {{ __('Already registered?') }}
+                                    </a> --}}
+
+                                    <x-button class="ml-4 btn btn-lg btn-primary">
+                                        {{ __('Complete Profile') }}
+                                    </x-button>
+                                </div>
+
                             </form>
+
                         </div>
                     </div>
                 </div>

@@ -20,24 +20,3 @@
     </div>
   </footer>
 
-    <!-- MDB -->
-  <script type="text/javascript" src="{{ asset('src/js/mdb.min.js') }}"></script>
-
-  <!-- Custom scripts -->
-  <script type="text/javascript">
-
-    function togglePasswordVisibility() {
-      var passwordInput = document.getElementById("password");
-      var toggleButton = document.querySelector(".toggle-password");
-
-      if (passwordInput.type === "password") {
-        passwordInput.type = "text";
-        toggleButton.parentNode.classList.add("password-visible");
-      } else {
-        passwordInput.type = "password";
-        toggleButton.parentNode.classList.remove("password-visible");
-      }
-    }
-
-  </script>
-

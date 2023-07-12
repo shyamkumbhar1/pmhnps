@@ -95,6 +95,9 @@ select.form-control{
 input.form-control{
     font-size: 15px;
 }
+input.form-control-check{
+    padding: 6px 10px; border: 1px solid #bbb; border-radius: 4px; width: 100%;
+}
 .uploadpic{
     background-color: #3b71ca; border-color: #3b71ca; color: #fff; line-height: 28px; font-size: 15px; text-transform: inherit;
 }
@@ -225,6 +228,8 @@ input.form-control{
 .control-div .carousel-indicators button{ width: 12px; height: 12px; border-radius: 50%; background-color: #bbb; margin: 0 6px; }
 .control-div .carousel-control-next-icon::after, 
 .control-div .carousel-control-prev-icon::after{ --mdb-carousel-control-icon-font-size: 18px;}
+
+.imgpreview{ width: 80px; height: 80px; border-radius: 6px; overflow: hidden; margin-top: 10px;}
 
 
 /*************************** Home page ***/

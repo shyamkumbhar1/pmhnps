@@ -86,10 +86,6 @@
         @endif
         
       
-        
-      
-    
-        
        
         <!-- Right elements -->
       </div>

@@ -35,6 +35,7 @@
       <div class="col-lg-6 offset-lg-3 col-md-6 offset-md-3">
 
         <div class="padding">
+
           <div class="card-row">
             <span class="visa"></span>
             <span class="mastercard"></span>
@@ -42,17 +43,16 @@
             <span class="jcb"><img src="{{ asset('src/img/jcb.jpg') }}" alt=""></span>
             <span class="discover"></span>
           </div>
+
           <form action="{{route('plans.process')}}" method="POST" id="subscribe-form">
             @csrf
     
-            <input type="hidden" name="plan_id" value="{{$plan->plan_id}}">
-
-          
+            <input type="hidden" name="plan_id" value="{{$plan->plan_id}}">          
            
             <div class="mb-4 form-outline">
-            <input id="card-holder-name"  type="text" class="form-control" placeholder="Enter name">
-            <label for="card-holder-name" class="form-label">Card Holder Name</label>
-          </div>
+              <input id="card-holder-name"  type="text" class="form-control" placeholder="Enter name">
+              <label for="card-holder-name" class="form-label">Card Holder Name</label>
+            </div>
           
             <div class="mb-4 form-row form-outline">
                 <label for="card-element form-label">Credit or debit card</label>
@@ -61,7 +61,9 @@
                 <!-- Used to display form errors. -->
                 <div id="card-errors" role="alert"></div>
             </div>
+
             <div class="stripe-errors"></div>
+
             @if (count($errors) > 0)
             <div class="alert alert-danger">
                 @foreach ($errors->all() as $error)
@@ -69,10 +71,12 @@
                 @endforeach
             </div>
             @endif
+
             <div class="text-center form-group"><br>
-                <button  id="card-button" data-secret="{{ $intent->client_secret }}" class="btn btn-lg btn-success btn-block">Process Subcription</button>
+                <button  id="card-button" data-secret="{{ $intent->client_secret }}" class="btn btn-lg btn-primary btn-block">Process Subcription</button>
             </div>
-        </form>
+          </form>
+
         </div>
 
       </div>
