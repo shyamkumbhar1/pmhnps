@@ -190,7 +190,7 @@
 
                                 <div class="row">
                                     <div class="mb-4 col-sm-6">
-                                        <x-label for="country-dropdown" :value="__('Country')" />
+                                        <x-label for="country-dropdown" >Country<span class="mandatory">*</span></x-label>
                                         {{-- {{ dd($countries )}} --}}
                                         <select id="country-dropdown" id="country" class="form-select form-control" name="country">
                                             <option value="">-- Select Country --</option>
@@ -205,7 +205,7 @@
                                         @endif
                                     </div>
                                     <div class="mb-4 col-sm-6">
-                                        <x-label for="state-dropdown" :value="__('State')" />
+                                        <x-label for="state-dropdown" >State<span class="mandatory">*</span></x-label>
                                         <select id="state-dropdown" id="state" class="form-select form-control" name="state">
                                         </select>
                                         @if ($errors->has('state'))
@@ -217,7 +217,7 @@
 
                                 <div class="row">
                                     <div class="mb-4 col-sm-6">
-                                        <x-label for="city-dropdown" :value="__('City')" />
+                                        <x-label for="city-dropdown" >City<span class="mandatory">*</span></x-label>
                                         <select id="city-dropdown" class="form-select form-control" name="city">
                                         </select>
                                         @if ($errors->has('city'))
@@ -229,7 +229,7 @@
                                         <div class="form-outline">                                        
                                             <x-input id="postal_code" class="form-control" type="text"
                                                 name="postal_code" :value="old('postal_code')" placeholder="Postal Code" required />  
-                                                <x-label for="postal_code" :value="__('Postal Code')" class="form-label" />                                      
+                                                <x-label for="postal_code" class="form-label" >Postal Code<span class="mandatory">*</span></x-label>                                     
                                             @if ($errors->has('postal_code'))
                                                 <span class="text-danger">{{ $errors->first('postal_code') }}</span>
                                             @endif
