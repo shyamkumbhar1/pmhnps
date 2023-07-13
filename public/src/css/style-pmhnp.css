@@ -110,6 +110,14 @@ input.form-control-check{
 .mandatory{color: #f00;}
 .required{ color: #f00; }
 
+x-input[required]::after{ color: #f00; content: "*";}
+
+.form-control::placeholder::after {
+    content: "*";
+    color: red;
+    
+  }
+
 
   /************************* Registration ***/
 .steps-row{ margin: 50px auto; }

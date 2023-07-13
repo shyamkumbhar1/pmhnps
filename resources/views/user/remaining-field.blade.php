@@ -142,17 +142,15 @@
                                
                         <!-- </div> -->
 
-                            <div class="mb-4 form-outline">
-
-                                <x-label for="bio" :value="__('Bio')" />
-
-                                <textarea id="bio" class="block w-full mt-1 form-control" name="bio" placeholder="Bio" required>{{ old('bio') }}</textarea>
-                            </div>
+                                <div class="mb-4 form-outline">
+                                    <textarea id="bio" class="block w-full mt-1 form-control" name="bio" placeholder="Bio" required>{{ old('bio') }}</textarea>
+                                    <x-label class="form-label" for="bio" :value="__('Bio*')" />
+                                </div>
 
                             
                                 <div class="row mb-4">
                                     <div class="col-sm-6 mb-sm-4">
-                                        {{-- <x-label for="profile_picture" :value="__('Profile Picture')" /> --}}                                        
+                                        <x-label for="profile_picture" :value="__('Profile Picture')" />                                      
                                     </div>
                                     <div class="col-sm-6 mb-4 text-end">
                                         <input id="profile_picture" class="block w-full mt-1 form-control" type="file"
@@ -170,20 +168,20 @@
                                 </div>
 
 
-                                <div class="mb-4 form-outline">
-                                    {{-- <x-label for="address_line1" :value="__('Address Line 1')" /> --}}
+                                <div class="mb-4 form-outline">                                    
                                     <textarea id="address_line1" class="block w-full mt-1 form-control" type="text" name="address_line1"
                                         placeholder="Address line 1*" required />{{ old('bio') }}</textarea>
+                                        <x-label class="form-label" for="address_line1" :value="__('Address Line 1*')" /> 
                                     @if ($errors->has('address_line1'))
                                         <span class="text-danger">{{ $errors->first('address_line1') }}</span>
                                     @endif
                                 </div>
 
 
-                                <div class="mb-4 form-outline">
-                                    {{-- <x-label for="address_line2" :value="__('Address Line 2')" /> --}}
+                                <div class="mb-4 form-outline">                                    
                                     <textarea id="address_line2" class="block w-full mt-1 form-control" type="text" name="address_line2"
                                         placeholder="Address line 2*" required />{{ old('bio') }}</textarea>
+                                        <x-label class="form-label" for="address_line2" :value="__('Address Line 2*')" />
                                     @if ($errors->has('address_line2'))
                                         <span class="text-danger">{{ $errors->first('address_line2') }}</span>
                                     @endif
@@ -268,7 +266,7 @@
 
 
         <!-- MDB -->
-        <script type="text/javascript" src="{{ asset('src/js/mdb.min.js') }}"></script>
+        <!-- <script type="text/javascript" src="{{ asset('src/js/mdb.min.js') }}"></script> -->
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script>
             $(document).ready(function() {
