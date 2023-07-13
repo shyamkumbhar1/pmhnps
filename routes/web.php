@@ -97,14 +97,14 @@ Route::prefix('admin')->group(function () {
     Route::get('dashboard', [HomeController::class, 'adminHome'])->name('admin.dashboard')->middleware('is_admin');
     Route::get('pmhnps', [HomeController::class, 'adminPmhnps'])->name('admin.pmhnps')->middleware('is_admin');
     Route::get('patients', [HomeController::class, 'adminPatients'])->name('admin.patients')->middleware('is_admin');
+    Route::resource('pmhnps',PmhnpsController::class);
 
+    // Route::get('temp-pmhnps-index',[TempRegisterController::class,'tempPmhnpsIndex'])->name('temp.pmhnps.index');
+    Route::resource('temp-pmhnps',TempRegisterController::class);
 
 });
 
-Route::resource('pmhnps',PmhnpsController::class);
 
-// Route::get('temp-pmhnps-index',[TempRegisterController::class,'tempPmhnpsIndex'])->name('temp.pmhnps.index');
-Route::resource('temp-pmhnps',TempRegisterController::class);
 
 
 

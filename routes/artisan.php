@@ -40,3 +40,9 @@ Route::get('migrate:fresh', function() {
 
      return "Db Seed successfully";
   });
+   Route::get('/storage:link', function () {
+     Artisan::call('storage:link');
+
+
+     return "Storage Create successfully";
+  });
