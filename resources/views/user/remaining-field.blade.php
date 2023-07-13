@@ -31,7 +31,7 @@
                                 @endif --}}
                             </div>
 
-                            <form method="POST" action="{{ route('remaining.details.post') }}"
+                            <form class="padding" method="POST" action="{{ route('remaining.details.post') }}"
                                 enctype="multipart/form-data">
                                 @csrf
                                 <div>

@@ -161,23 +161,23 @@
                                 </div> --}}
 
 
-                                <div class="mb-4">            
+                                <div class="mb-4 form-outline">            
                                     <textarea id="address_line1" class="block w-full mt-1 form-control" type="text" name="address_line1"
                                         placeholder="Address Line 1" required />{{ old('bio', $user->address_line1) }}</textarea>
-                                    {{-- <x-label for="address_line1" :value="__('Address Line 1')" class="form-lable"/> --}}
+                                    <x-label class="form-label" for="address_line1" :value="__('Address Line 1')" />
                                     @if ($errors->has('address_line1'))
                                         <span class="text-danger">{{ $errors->first('address_line1') }}</span>
                                     @endif
                                 </div>
 
         
-                                <div class="mb-4 ">            
+                                <div class="mb-4 form-outline">            
                                     <textarea id="address_line2" class="block w-full mt-1 form-control" type="text" name="address_line2"
-                                            placeholder="Address Line 2" required />{{ old('bio', $user->address_line2) }}</textarea>
-                                        {{-- <x-label for="address_line2" :value="__('Address Line 2')" class="form-lable" /> --}}
-                                            @if ($errors->has('address_line2'))
-                                            <span class="text-danger">{{ $errors->first('address_line2') }}</span>
-                                        @endif
+                                        placeholder="Address Line 2" required />{{ old('bio', $user->address_line2) }}</textarea>
+                                    <x-label class="form-label" for="address_line2" :value="__('Address Line 2')" /> 
+                                    @if ($errors->has('address_line2'))
+                                        <span class="text-danger">{{ $errors->first('address_line2') }}</span>
+                                    @endif
                                 </div>
 
                                 <div class="row">

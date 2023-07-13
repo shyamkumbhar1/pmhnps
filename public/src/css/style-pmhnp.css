@@ -53,7 +53,7 @@ footer{ color: #555; padding: 20px 0; font-size: 15px;
 
 /******************** Sign in **/
 .height-login{ min-height: calc(100% - 140px);}
-.page-height { min-height: calc(100% - 140px); }
+.page-height { min-height: calc(100% - 190px);}
 .sininbox{
     margin:130px 0;
     padding: 50px;
