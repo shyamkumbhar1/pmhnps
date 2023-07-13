@@ -142,10 +142,12 @@
                                
                         <!-- </div> -->
 
-                                <div class="mb-4 form-outline">
-                                    <textarea id="bio" class="form-control" name="bio" placeholder="Bio" rows="4" required>{{ old('bio') }}</textarea>
-                                    <x-label class="form-label" for="bio" :value="__('Bio*')" />
-                                </div>
+                            <div class="mb-4 form-outline">
+
+                                <x-label for="bio" :value="__('Bio')" />
+
+                                <textarea id="bio" class="block w-full mt-1 form-control" name="bio" placeholder="Bio" required>{{ old('bio') }}</textarea>
+                            </div>
 
                             
                                 <div class="row mb-4">
@@ -224,7 +226,6 @@
                                             <span class="text-danger">{{ $errors->first('city') }}</span>
                                         @endif
                                     </div>
-<<<<<<< HEAD
                                     <div class="col-sm-6 mb-4">
                                         <label for=""></label>
                                         <div class="form-outline">                                        
@@ -235,46 +236,6 @@
                                                 <span class="text-danger">{{ $errors->first('postal_code') }}</span>
                                             @endif
                                         </div>
-=======
-                                
-                            </div>
-
-
-
-
-
-
-
-
-
-                            {{-- <div class="mb-4 form-outline">
-
-
-                                <textarea id="bio" class="block w-full mt-1 form-control" name="bio" placeholder="Bio" required>{{ old('bio') }}</textarea>
-                                <x-label for="bio" :value="__('Bio')" />
-
-                            </div> --}}
-                            <div class="mb-4 form-outline">
-                                <textarea class="form-control" id="" rows="5">{{ old('bio') }}</textarea>
-                                <label class="form-label" for="">Enter your Bio</label>
-                              </div>
-
-                         
-                            <div class="mb-4 form-outline">
-
-                                {{-- <x-label for="profile_picture" :value="__('Profile Picture')" /> --}}
-
-                                <input id="profile_picture" class="block w-full mt-1 form-control" type="file"
-                                    name="profile_picture" accept="image/*" />
-
-                                @if ($errors->has('profile_picture'))
-                                    <div class="alert alert-danger">
-                                        <ul>
-                                            @foreach ($errors->get('profile_picture') as $error)
-                                                <li>{{ $error }}</li>
-                                            @endforeach
-                                        </ul>
->>>>>>> origin/ds_dev
                                     </div>
                                 </div>
 
