@@ -33,95 +33,76 @@
 
     <div class="row">
       <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2">
-
-        <div class="card">
             
-            @if(Session::has('success'))
-            <div class="alert alert-success">
-                {{ Session::get('success') }}
-                @php
-                    Session::forget('success');
-                @endphp
-            </div>
-            @endif
+          @if(Session::has('success'))
+          <div class="alert alert-success">
+              {{ Session::get('success') }}
+              @php
+                  Session::forget('success');
+              @endphp
+          </div>
+          @endif
+          
+          <form class="padding" method="POST" action="{{ route('register.step.one.post') }}">
+              @csrf
 
-            <div class="card-body">
-                <form method="POST" action="{{ route('register.step.one.post') }}">
-                    @csrf
+              <div class="form-outline mb-4">                        
+                  <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                  <label class="form-label" for="name">{{ __(' Full Name') }} <span class="mandatory">*</span></label>
+                  @error('name')
+                      <span class="invalid-feedback" role="alert">
+                          <strong>{{ $message }}</strong>
+                      </span>
+                  @enderror                        
+              </div>                    
 
-                    <div class="mb-3 row">
-                        <label for="name" class="col-md-4 col-form-label text-md-end">{{ __(' Full Name') }} <span class="mandatory">*</span></label>
-                        <div class="col-md-6">
-                            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+              <div class="mb-4">
+                  <!-- <label for="professional_title" class="col-form-label">Professional Title <span class="mandatory">*</span></label> -->
+                    <select id="professional_title" class="form-select form-control" name="professional_title" required>
+                        <option value="">Select Professional Title</option>
+                        <option value="DNP">DNP (Doctor of Nursing Practice)</option>
+                        <option value="MSN"> MSN (Master of Science in Nursing)</option>
+                        <option value="RN">RN (Registered Nurse)</option>
+                        <option value="PMHNP-BC">PMHNP-BC (Board Certified Psychiatric-Mental Health Nurse Practitioner)</option>
+                        <!-- Add more options as needed -->
+                        <option value="other">Other</option>
+                    </select>
+              </div>
 
-                            @error('name')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                    </div>
+              <div class="form-outline mb-4">
+                  <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                  <label for="email" class="form-label">{{ __('Email Address') }}<span class="mandatory">*</span></label>
+                  @error('email')
+                      <span class="invalid-feedback" role="alert">
+                          <strong>{{ $message }}</strong>
+                      </span>
+                  @enderror
+              </div>
 
-                    
+              <div class="form-outline mb-4">                        
+                  <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                  <label for="password" class="form-label">{{ __('Password') }}<span class="mandatory">*</span></label>
+                      @error('password')
+                      <span class="invalid-feedback" role="alert">
+                          <strong>{{ $message }}</strong>
+                      </span>
+                    @enderror
+              </div>
 
-                    <div class="mb-3 row">
-                        <label for="professional_title" class="col-md-4 col-form-label text-md-end">Professional Title <span class="mandatory">*</span></label>
-                        <div class="col-md-6">
-                          <select id="professional_title" class="form-select form-control" name="professional_title" required>
-                              <option value="">Select Professional Title</option>
-                              <option value="DNP">DNP (Doctor of Nursing Practice)</option>
-                              <option value="MSN"> MSN (Master of Science in Nursing)</option>
-                              <option value="RN">RN (Registered Nurse)</option>
-                              <option value="PMHNP-BC">PMHNP-BC (Board Certified Psychiatric-Mental Health Nurse Practitioner)</option>
-                              <!-- Add more options as needed -->
-                              <option value="other">Other</option>
-                          </select>
-                      </div>
-                    </div>
+              <div class="form-outline mb-4">
+                  <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                  <label for="password-confirm" class="form-label">{{ __('Confirm Password') }}<span class="mandatory">*</span></label>
+              </div>
 
-                    <div class="mb-3 row">
-                        <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}<span class="mandatory">*</span></label>
-                        <div class="col-md-6">
-                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-                            @error('email')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                    </div>
+              <div class="mb-4 text-center">
+                  <button type="submit" class="btn btn-lg btn-primary">
+                      {{ __('Sign Up') }}
+                  </button>
+              </div>
 
-                    <div class="mb-3 row">
-                        <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}<span class="mandatory">*</span></label>
-                        <div class="col-md-6">
-                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-                               @error('password')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                              @enderror
-                        </div>
-                    </div>
 
-                    <div class="mb-3 row">
-                        <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}<span class="mandatory">*</span></label>
-
-                        <div class="col-md-6">
-                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                        </div>
-                    </div>
-
-                    <div class="mb-0 row">
-                        <div class="col-md-6 offset-md-4">
-                            <button type="submit" class="btn btn-primary">
-                                {{ __('Sign Up') }}
-                            </button>
-                        </div>
-                    </div>
-
-                </form>
-            </div>
-        </div>
+          </form>            
+        
       </div>
     </div>
 
