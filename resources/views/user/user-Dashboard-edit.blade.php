@@ -30,7 +30,7 @@
                                 </div><br />
                             @endif
 
-                            <form method="POST" action="{{ route('user.Dashboard.update') }}" enctype="multipart/form-data">
+                            <form class="padding" method="POST" action="{{ route('user.Dashboard.update') }}" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 <!-- Name -->
@@ -183,7 +183,7 @@
                                 <div class="row">
                                     <div class="col-sm-6 mb-4">
                                         <x-label for="country-dropdown" :value="__('Country')" />
-                                        <select id="country-dropdown" id="country" class="form-control" name="country">
+                                        <select id="country-dropdown" id="country" class="form-select form-control" name="country">
                                             <option value="">-- Select Country --</option>
                                             @foreach ($countries as $data)
                                             <option value="{{ $data->id }}">
@@ -197,7 +197,7 @@
                                     </div>
                                     <div class="col-sm-6 mb-4">
                                         <x-label for="state-dropdown" :value="__('State')" />
-                                        <select id="state-dropdown" id="state" class="form-control" name="state">
+                                        <select id="state-dropdown" id="state" class="form-select form-control" name="state">
                                         </select>
                                         @if ($errors->has('state'))
                                             <span class="text-danger">{{ $errors->first('state') }}</span>
@@ -209,7 +209,7 @@
                                 <div class="row">
                                     <div class="col-sm-6 mb-4">
                                         <x-label for="city-dropdown" :value="__('City')" />
-                                        <select id="city-dropdown" class="form-control" name="city">
+                                        <select id="city-dropdown" class="form-select form-control" name="city">
                                         </select>
                                         @if ($errors->has('city'))
                                             <span class="text-danger">{{ $errors->first('city') }}</span>
