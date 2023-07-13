@@ -42,7 +42,7 @@
                                     <x-input id="phone_number" class="block w-full mt-1" type="text"
                                         name="phone_number" :value="old('phone_number')" class="form-control"
                                         placeholder="Phone Number" required autofocus />
-                                    <x-label for="phone_number" class="form-label" :value="__('Phone Number*')" />
+                                    <x-label for="phone_number" class="form-label">Phone Number <span class="mandatory">*</span></x-label>
                                     @if ($errors->has('phone_number'))
                                         <div class="alert alert-danger">
                                             <ul>
@@ -58,7 +58,7 @@
                                     <x-input id="professional_license_number" class="block w-full mt-1 form-control"
                                         type="text" name="professional_license_number" :value="old('professional_license_number')"
                                         placeholder="Professional License Number" required />
-                                    <x-label for="professional_license_number" class="form-label" :value="__('Professional License Number*')" />
+                                    <x-label for="professional_license_number" class="form-label">Professional License Number<span class="mandatory">*</span></x-label>
                                     @if ($errors->has('professional_license_number'))
                                         <div class="alert alert-danger">
                                             <ul>
@@ -144,7 +144,7 @@
 
                                 <div class="mb-4 form-outline">
                                     <textarea id="bio" class="block w-full mt-1 form-control" name="bio" placeholder="Bio" required>{{ old('bio') }}</textarea>
-                                    <x-label class="form-label" for="bio" :value="__('Bio*')" />
+                                    <x-label class="form-label" for="bio">Bio<span class="mandatory">*</span></x-label>
                                 </div>
 
                             
@@ -171,7 +171,7 @@
                                 <div class="mb-4 form-outline">                                    
                                     <textarea id="address_line1" class="block w-full mt-1 form-control" type="text" name="address_line1"
                                         placeholder="Address line 1*" required />{{ old('bio') }}</textarea>
-                                        <x-label class="form-label" for="address_line1" :value="__('Address Line 1*')" /> 
+                                        <x-label class="form-label" for="address_line1" >Address Line 1<span class="mandatory">*</span></x-label> 
                                     @if ($errors->has('address_line1'))
                                         <span class="text-danger">{{ $errors->first('address_line1') }}</span>
                                     @endif
@@ -181,7 +181,7 @@
                                 <div class="mb-4 form-outline">                                    
                                     <textarea id="address_line2" class="block w-full mt-1 form-control" type="text" name="address_line2"
                                         placeholder="Address line 2*" required />{{ old('bio') }}</textarea>
-                                        <x-label class="form-label" for="address_line2" :value="__('Address Line 2*')" />
+                                        <x-label class="form-label" for="address_line2" >Address Line 2<span class="mandatory">*</span></x-label>
                                     @if ($errors->has('address_line2'))
                                         <span class="text-danger">{{ $errors->first('address_line2') }}</span>
                                     @endif
