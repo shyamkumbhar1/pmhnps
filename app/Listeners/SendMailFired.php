@@ -31,17 +31,19 @@ class SendMailFired
     public function handle(SendMail $event)
     {
 
-        $user = TempRegister::find($event->userId)->toArray();
+        $user = User::find($event->userId)->toArray();
+        // dd($user);
 // Render the email template
 $emailContent = View::make('temp-mail', ['user' => $user])->render();
 
 // Preview the email content
 // echo $emailContent;
+// dd('test');
 
         Mail::send('temp-mail',['user' => $user],function($message) use ($user){
             $message->from("shyamkumbhar743@gmail.com");
             $message->to($user['email']);
-            $message->subject("Registration Mail");
+            $message->subject("Registration Confirmation");
         });
 
     }

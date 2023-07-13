@@ -7,6 +7,7 @@ use Exception;
 use Stripe\Plan;
 use Stripe\Stripe;
 use App\Models\User;
+use App\Events\SendMail;
 use App\Models\TempRegister;
 use Illuminate\Http\Request;
 use Laravel\Cashier\Subscription;
@@ -14,8 +15,8 @@ use PhpParser\Node\Stmt\TryCatch;
 use App\Models\Plan as ModelsPlan;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\SubscriptionController;
-
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Event;
 class SubscriptionController extends Controller
 {
     public function singleChargeGet(Request $request)
@@ -159,6 +160,7 @@ $request->session()->put('stripe_id', $user->stripe_id);
             ]);
         }
 
+
         $request->session()->flash('alert-success', 'You are subscribed Successfully');
 
 
@@ -181,6 +183,12 @@ $add_user->email = $temp_user->email;
 $add_user->password = $temp_user->password;
 
 $add_user->save();
+
+  //  Send mail to Practisnor
+  if($add_user){
+    Event::dispatch(new SendMail($add_user->id));
+
+}
 if ($add_user) {
     Auth::login($add_user);
 
