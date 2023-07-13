@@ -14,7 +14,7 @@
 	<p><strong>Email Address:</strong> {{ $user['email'] }}</p>
 	{{-- <p><strong>Date of Registration:</strong> [Date/Time]</p> --}}
 
-	<p>To complete your subscription, please follow the steps below:</p>
+	{{-- <p>To complete your subscription, please follow the steps below:</p> --}}
 	
 	{{-- <ol>
 		<li>Purchase a plan: Visit our website <a href="[Website URL]">[Website URL]</a> and choose the plan that suits your needs.</li>
