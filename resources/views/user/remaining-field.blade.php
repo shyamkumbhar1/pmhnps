@@ -20,7 +20,7 @@
                                         {{ session('status') }}
                                     </div>
                                 @endif
-                                @if ($errors->any())
+                                {{-- @if ($errors->any())
                                     <div class="alert alert-danger">
                                         <ul>
                                             @foreach ($errors->all() as $error)
@@ -28,7 +28,7 @@
                                             @endforeach
                                         </ul>
                                     </div><br />
-                                @endif
+                                @endif --}}
                             </div>
 
                             <form method="POST" action="{{ route('remaining.details.post') }}"
@@ -148,11 +148,11 @@
                                 </div>
 
                             
-                                <div class="row mb-4">
+                                <div class="mb-4 row">
                                     <div class="col-sm-6 mb-sm-4">
                                         <x-label for="profile_picture" :value="__('Profile Picture')" />                                      
                                     </div>
-                                    <div class="col-sm-6 mb-4 text-end">
+                                    <div class="mb-4 col-sm-6 text-end">
                                         <input id="profile_picture" class="block w-full mt-1 form-control" type="file"
                                             name="profile_picture" accept="image/*" />
                                         @if ($errors->has('profile_picture'))
@@ -189,7 +189,7 @@
 
 
                                 <div class="row">
-                                    <div class="col-sm-6 mb-4">
+                                    <div class="mb-4 col-sm-6">
                                         <x-label for="country-dropdown" :value="__('Country')" />
                                         {{-- {{ dd($countries )}} --}}
                                         <select id="country-dropdown" id="country" class="form-select form-control" name="country">
@@ -204,7 +204,7 @@
                                             <span class="text-danger">{{ $errors->first('country') }}</span>
                                         @endif
                                     </div>
-                                    <div class="col-sm-6 mb-4">
+                                    <div class="mb-4 col-sm-6">
                                         <x-label for="state-dropdown" :value="__('State')" />
                                         <select id="state-dropdown" id="state" class="form-select form-control" name="state">
                                         </select>
@@ -216,7 +216,7 @@
 
 
                                 <div class="row">
-                                    <div class="col-sm-6 mb-4">
+                                    <div class="mb-4 col-sm-6">
                                         <x-label for="city-dropdown" :value="__('City')" />
                                         <select id="city-dropdown" class="form-select form-control" name="city">
                                         </select>
@@ -224,7 +224,7 @@
                                             <span class="text-danger">{{ $errors->first('city') }}</span>
                                         @endif
                                     </div>
-                                    <div class="col-sm-6 mb-4">
+                                    <div class="mb-4 col-sm-6">
                                         <label for=""></label>
                                         <div class="form-outline">                                        
                                             <x-input id="postal_code" class="form-control" type="text"
