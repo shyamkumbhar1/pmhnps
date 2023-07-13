@@ -150,11 +150,16 @@
                             
                                 <div class="mb-4 row">
                                     <div class="col-sm-6 mb-sm-4">
-                                        <x-label for="profile_picture" :value="__('Profile Picture')" />                                      
+                                        <x-label for="profile_picture" :value="__('Profile Picture')" />                                   
                                     </div>
                                     <div class="mb-4 col-sm-6 text-end">
-                                        <input id="profile_picture" class="block w-full mt-1 form-control" type="file"
-                                            name="profile_picture" accept="image/*" />
+                                        <!-- <input id="profile_picture" class="block w-full mt-1 form-control" type="file" name="profile_picture" accept="image/*" /> -->
+                                            
+                                        <div class="fileuploadpic">
+                                            <span>Upload Photo</span>
+                                            <input id="profile_picture" class="block w-full mt-1 form-control" type="file" name="profile_picture" accept="image/*" />
+                                        </div>
+
                                         @if ($errors->has('profile_picture'))
                                             <div class="alert alert-danger">
                                                 <ul>
@@ -170,7 +175,7 @@
 
                                 <div class="mb-4 form-outline">                                    
                                     <textarea id="address_line1" class="block w-full mt-1 form-control" type="text" name="address_line1"
-                                        placeholder="Address line 1*" required />{{ old('bio') }}</textarea>
+                                        placeholder="Address line 1" required />{{ old('bio') }}</textarea>
                                         <x-label class="form-label" for="address_line1" >Address Line 1<span class="mandatory">*</span></x-label> 
                                     @if ($errors->has('address_line1'))
                                         <span class="text-danger">{{ $errors->first('address_line1') }}</span>
@@ -180,7 +185,7 @@
 
                                 <div class="mb-4 form-outline">                                    
                                     <textarea id="address_line2" class="block w-full mt-1 form-control" type="text" name="address_line2"
-                                        placeholder="Address line 2*" required />{{ old('bio') }}</textarea>
+                                        placeholder="Address line 2" required />{{ old('bio') }}</textarea>
                                         <x-label class="form-label" for="address_line2" >Address Line 2<span class="mandatory">*</span></x-label>
                                     @if ($errors->has('address_line2'))
                                         <span class="text-danger">{{ $errors->first('address_line2') }}</span>

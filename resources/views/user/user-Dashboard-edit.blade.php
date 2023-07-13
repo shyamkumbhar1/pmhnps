@@ -139,15 +139,20 @@
                                 <div class="row">
                                     <div class="col-sm-6 mb-4">
                                         <x-label for="profile_picture" :value="__('Profile Picture')" />
-                                    </div>            
-                                    <div class="col-sm-6 mb-4 text-end">
-                                        <input id="profile_picture" class="block w-full mt-1 form-control" type="file" name="profile_picture" onchange="previewImage(event)"   />
-                                        {{-- <input type="file" name="image" id="image" onchange="previewImage(event)"> --}}
-            
                                         <img class="imgpreview" id="preview" src="#" alt="Preview" style="display: none; ">
                                         @if ($errors->has('profile_picture'))
                                             <span class="text-danger">{{ $errors->first('profile_picture') }}</span>
-                                        @endif                                            
+                                        @endif
+                                    </div>            
+                                    <div class="col-sm-6 mb-4 text-end">
+                                        <!-- <input id="profile_picture" class="block w-full mt-1 form-control" type="file" name="profile_picture" onchange="previewImage(event)" /> -->
+                                        {{-- <input type="file" name="image" id="image" onchange="previewImage(event)"> --}}
+                                          
+                                        <div class="fileuploadpic">
+                                            <span>Upload Photo</span>
+                                            <input id="profile_picture" class="form-control" type="file" name="profile_picture" onchange="previewImage(event)" />
+                                        </div>
+
                                     </div>
                                 </div>
         
