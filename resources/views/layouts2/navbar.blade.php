@@ -60,15 +60,13 @@
               <li>
                 <a class="nav-link"  href="#">
                   <a class="dropdown-item" href="{{ route('logout') }}"
-                                               onclick="event.preventDefault();
-                                                             document.getElementById('logout-form').submit();">
-                                                {{ __('Logout') }}
-        
-                                            </a>
-        
-                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                                @csrf
-                                            </form>
+                    onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">
+                    {{ __('Logout') }}
+                  </a>
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                      @csrf
+                  </form>
                 </a>
               </li>
           </ul>
@@ -81,10 +79,8 @@
           <a class="btn btn-primary btn-md" href="{{ route('register.step.one') }}">
             PMHNP Sign up
           </a>
-
         </div>
-        @endif
-        
+        @endif        
       
        
         <!-- Right elements -->

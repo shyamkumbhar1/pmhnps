@@ -22,18 +22,18 @@
 
 </head>
 <body>
-    @include('layouts2.navbar')
-    @yield('content')
 
-    @include('layouts2.footer')
-        
-        <script type="text/javascript" src="{{ asset('src/js/mdb.min.js') }}"></script>
-    
-        @yield('script')
+  @include('layouts2.navbar')
+
+  @yield('content')
+
+  @include('layouts2.footer')
+      
+  <script type="text/javascript" src="{{ asset('src/js/mdb.min.js') }}"></script>
   
+  @yield('script')
      
-  
-  </body>
+</body>
   
 
 

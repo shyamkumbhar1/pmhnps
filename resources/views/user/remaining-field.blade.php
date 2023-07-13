@@ -42,7 +42,7 @@
                                     <x-input id="phone_number" class="block w-full mt-1" type="text"
                                         name="phone_number" :value="old('phone_number')" class="form-control"
                                         placeholder="Phone Number" required autofocus />
-                                    <x-label for="phone_number" class="form-label" :value="__('Phone Number')" />
+                                    <x-label for="phone_number" class="form-label" :value="__('Phone Number*')" />
                                     @if ($errors->has('phone_number'))
                                         <div class="alert alert-danger">
                                             <ul>
@@ -58,7 +58,7 @@
                                     <x-input id="professional_license_number" class="block w-full mt-1 form-control"
                                         type="text" name="professional_license_number" :value="old('professional_license_number')"
                                         placeholder="Professional License Number" required />
-                                    <x-label for="professional_license_number" class="form-label" :value="__('Professional License Number')" />
+                                    <x-label for="professional_license_number" class="form-label" :value="__('Professional License Number*')" />
                                     @if ($errors->has('professional_license_number'))
                                         <div class="alert alert-danger">
                                             <ul>
@@ -71,19 +71,14 @@
                                 </div>
 
 
-                                    <div class="mb-4 ">
+                                <div class="mb-4 ">
+                                    <select id="state_of_licensure" class="form-select form-control"
+                                        name="state_of_licensure" required>
+                                        <option value="other">Select State Of Licensure</option>
 
-
-                                        <select id="state_of_licensure" class="form-select form-control"
-                                            name="state_of_licensure" required>
-                                            <option value="other">Select State Of Licensure</option>
-
-                                            @foreach ($state_of_licensures as $state_of_licensure )
-                                            <option value="{{ $state_of_licensure['name'] }}">{{ $state_of_licensure['name'] }} </option>
-                                                
-                                            @endforeach
-                                           
-                                            
+                                        @foreach ($state_of_licensures as $state_of_licensure )
+                                        <option value="{{ $state_of_licensure['name'] }}">{{ $state_of_licensure['name'] }} </option>                                                
+                                        @endforeach
 
                                         <!-- Add more options as needed -->
                                         <option value="other">Other</option>
@@ -149,7 +144,7 @@
 
                                 <div class="mb-4 form-outline">
                                     <textarea id="bio" class="form-control" name="bio" placeholder="Bio" rows="4" required>{{ old('bio') }}</textarea>
-                                    <x-label class="form-label" for="bio" :value="__('Bio')" />
+                                    <x-label class="form-label" for="bio" :value="__('Bio*')" />
                                 </div>
 
                             
@@ -176,7 +171,7 @@
                                 <div class="mb-4 form-outline">
                                     {{-- <x-label for="address_line1" :value="__('Address Line 1')" /> --}}
                                     <textarea id="address_line1" class="block w-full mt-1 form-control" type="text" name="address_line1"
-                                        placeholder="Address line 1" required />{{ old('bio') }}</textarea>
+                                        placeholder="Address line 1*" required />{{ old('bio') }}</textarea>
                                     @if ($errors->has('address_line1'))
                                         <span class="text-danger">{{ $errors->first('address_line1') }}</span>
                                     @endif
@@ -186,7 +181,7 @@
                                 <div class="mb-4 form-outline">
                                     {{-- <x-label for="address_line2" :value="__('Address Line 2')" /> --}}
                                     <textarea id="address_line2" class="block w-full mt-1 form-control" type="text" name="address_line2"
-                                        placeholder="Address line 2" required />{{ old('bio') }}</textarea>
+                                        placeholder="Address line 2*" required />{{ old('bio') }}</textarea>
                                     @if ($errors->has('address_line2'))
                                         <span class="text-danger">{{ $errors->first('address_line2') }}</span>
                                     @endif
@@ -197,7 +192,7 @@
                                     <div class="col-sm-6 mb-4">
                                         <x-label for="country-dropdown" :value="__('Country')" />
                                         {{-- {{ dd($countries )}} --}}
-                                        <select id="country-dropdown" id="country" class="form-control" name="country">
+                                        <select id="country-dropdown" id="country" class="form-select form-control" name="country">
                                             <option value="">-- Select Country --</option>
                                             @foreach ($countries as $data)
                                                 <option value="{{ $data->id }}">
@@ -211,7 +206,7 @@
                                     </div>
                                     <div class="col-sm-6 mb-4">
                                         <x-label for="state-dropdown" :value="__('State')" />
-                                        <select id="state-dropdown" id="state" class="form-control" name="state">
+                                        <select id="state-dropdown" id="state" class="form-select form-control" name="state">
                                         </select>
                                         @if ($errors->has('state'))
                                             <span class="text-danger">{{ $errors->first('state') }}</span>
@@ -223,7 +218,7 @@
                                 <div class="row">
                                     <div class="col-sm-6 mb-4">
                                         <x-label for="city-dropdown" :value="__('City')" />
-                                        <select id="city-dropdown" class="form-control" name="city">
+                                        <select id="city-dropdown" class="form-select form-control" name="city">
                                         </select>
                                         @if ($errors->has('city'))
                                             <span class="text-danger">{{ $errors->first('city') }}</span>

@@ -107,6 +107,9 @@ input.form-control-check{
 .expertise .form-check{ display: flex;}
 .expertise label{ font-size: 15px; }
 
+.mandatory{color: #f00;}
+.required{ color: #f00; }
+
 
   /************************* Registration ***/
 .steps-row{ margin: 50px auto; }
