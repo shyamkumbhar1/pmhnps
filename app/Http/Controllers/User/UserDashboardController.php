@@ -28,7 +28,7 @@ class UserDashboardController extends Controller
         $countries = Country::get(["name", "id"]);
 
 
-        return view('user.user-Dashboard', compact('cities', 'states', 'countries','state_of_licensures'));
+        return view('user.user-Dashboard', compact('cities', 'states', 'countries'));
     }
 
 
