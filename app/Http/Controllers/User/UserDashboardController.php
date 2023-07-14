@@ -21,12 +21,12 @@ class UserDashboardController extends Controller
 
     public function index(Request $request)
     {
-
         $cities = City::where("state_id", $request->state_id)
             ->get(["name", "id"]);
         $states = State::where("country_id", $request->country_id)
             ->get(["name", "id"]);
         $countries = Country::get(["name", "id"]);
+
 
         return view('user.user-Dashboard', compact('cities', 'states', 'countries'));
     }
@@ -58,6 +58,10 @@ class UserDashboardController extends Controller
         $data = RemainingDetails::where('user_id', $id)->get();
         $remaining_filed = json_decode($data, true);
         // $remaining_filed =  $remaining_filed[0];
+        $states = State::where("country_id", 254)
+        ->get(["name", "id"]);
+        $state_of_licensures = json_decode($states,true);
+
 
         // dd($remaining_filed[0]);
 
@@ -66,7 +70,7 @@ class UserDashboardController extends Controller
         $states = State::where("country_id", $request->country_id)
             ->get(["name", "id"]);
         $countries= Country::get(["name", "id"]);
-        return view('user.user-Dashboard-edit', compact('user', 'remaining_filed','cities','states','countries'));
+        return view('user.user-Dashboard-edit', compact('user', 'remaining_filed','cities','states','countries','state_of_licensures'));
     }
 
 
