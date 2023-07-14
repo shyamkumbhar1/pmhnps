@@ -86,9 +86,9 @@
                                     {{-- <label for="state_of_licensure">State of Licensure</label> --}}            
                                     <select id="state_of_licensure" class="form-select form-control" name="state_of_licensure" required>
                                         <option value="">Select State of Licensure</option>
-                                        <option value="ME" {{ old('state_of_licensure', $user->state_of_licensure) === 'ME' ? 'selected' : '' }}>Maine (ME)</option>
-                                        <!-- Add more options as needed -->
-                                        <option value="other" {{ old('state_of_licensure', $user->state_of_licensure) === 'other' ? 'selected' : '' }}>Other</option>
+                                        @foreach ($state_of_licensures as $state_of_licensure )
+                                        <option value="{{ $state_of_licensure['name'] }}">{{ $state_of_licensure['name'] }} </option>                                                 --}}
+                                         @endforeach
                                     </select>            
                                     @if ($errors->has('state_of_licensure'))
                                         <span class="text-danger">{{ $errors->first('state_of_licensure') }}</span>
@@ -137,14 +137,14 @@
 
 
                                 <div class="row">
-                                    <div class="col-sm-6 mb-4">
+                                    <div class="mb-4 col-sm-6">
                                         <x-label for="profile_picture" :value="__('Profile Picture')" />
                                         <img class="imgpreview" id="preview" src="#" alt="Preview" style="display: none; ">
                                         @if ($errors->has('profile_picture'))
                                             <span class="text-danger">{{ $errors->first('profile_picture') }}</span>
                                         @endif
                                     </div>            
-                                    <div class="col-sm-6 mb-4 text-end">
+                                    <div class="mb-4 col-sm-6 text-end">
                                         <!-- <input id="profile_picture" class="block w-full mt-1 form-control" type="file" name="profile_picture" onchange="previewImage(event)" /> -->
                                         {{-- <input type="file" name="image" id="image" onchange="previewImage(event)"> --}}
                                           
@@ -186,7 +186,7 @@
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-sm-6 mb-4">
+                                    <div class="mb-4 col-sm-6">
                                         <x-label for="country-dropdown" :value="__('Country')" />
                                         <select id="country-dropdown" id="country" class="form-select form-control" name="country">
                                             <option value="">-- Select Country --</option>
@@ -200,7 +200,7 @@
                                             <span class="text-danger">{{ $errors->first('country') }}</span>
                                         @endif
                                     </div>
-                                    <div class="col-sm-6 mb-4">
+                                    <div class="mb-4 col-sm-6">
                                         <x-label for="state-dropdown" :value="__('State')" />
                                         <select id="state-dropdown" id="state" class="form-select form-control" name="state">
                                         </select>
@@ -212,7 +212,7 @@
         
                                 
                                 <div class="row">
-                                    <div class="col-sm-6 mb-4">
+                                    <div class="mb-4 col-sm-6">
                                         <x-label for="city-dropdown" :value="__('City')" />
                                         <select id="city-dropdown" class="form-select form-control" name="city">
                                         </select>
@@ -220,7 +220,7 @@
                                             <span class="text-danger">{{ $errors->first('city') }}</span>
                                         @endif
                                     </div>
-                                    <div class="col-sm-6 mb-4">
+                                    <div class="mb-4 col-sm-6">
                                         <label for=""></label>
                                         <div class="form-outline">           
                                             <x-input id="postal_code" class="form-control" type="text" name="postal_code"
