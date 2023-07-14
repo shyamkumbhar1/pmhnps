@@ -101,7 +101,8 @@
                                     @php
                                     $expertiseAreas = ['Mood Disorders', 'Trauma and PTSD', 'Geriatric Psychiatry', 'Psychotic Disorders', 'Neurodevelopmental Disorders', 'Substance Abuse Counseling', 'Eating Disorders', 'Sleep Disorders', 'Anxiety Disorders', 'Personality Disorders'];
         
-                                    $selectedAreas = json_decode($user->areas_of_expertise,true);
+                                    $selectedAreas = explode(", ",$user->areas_of_expertise);
+                                    // $selectedAreas = json_decode($user->areas_of_expertise,true);
                                  
                                     // dd($expertiseAreas,$selectedAreas,$user->areas_of_expertise,in_array("Geriatric Psychiatry",$expertiseAreas) );
                             
