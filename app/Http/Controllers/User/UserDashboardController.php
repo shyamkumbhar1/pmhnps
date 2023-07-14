@@ -109,7 +109,7 @@ class UserDashboardController extends Controller
         $user->phone_number = $request->phone_number;
         $user->professional_license_number = $request->professional_license_number;
         $user->state_of_licensure = $request->state_of_licensure;
-        $user->areas_of_expertise = $request->areas_of_expertise;
+        $user->areas_of_expertise = implode(', ',$request->areas_of_expertise); 
         $user->bio = $request->bio;
         $user->profile_picture = ($request->hasFile('profile_picture'))?$ImagePath :$defaultImagePath;
         $user->work_address = $request->work_address;
