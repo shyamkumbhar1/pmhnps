@@ -59,8 +59,12 @@ footer{ color: #555; padding: 20px 0; font-size: 15px;
     padding: 50px;
     border: 2px solid #4c7bed;
     border-radius: 8px;
-    background-color: #f5f8fe;
+    /* background-color: #f5f8fe; */
 }
+.sininbox input{ background-color: #f8f8f8;}
+.sininbox .btn-link:hover{ background: none;}
+.btn-forgot{ color: #3b71ca;}
+.sininbox .btn:hover{ box-shadow: none;}
 
 .toggle-password {
     position: absolute;
