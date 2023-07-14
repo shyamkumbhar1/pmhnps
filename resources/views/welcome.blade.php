@@ -132,7 +132,7 @@
         </div>
 
         <div class="mb-4 col-lg-4 col-md-4 col-sm-6">
-          <h3 class="text-center title-step">Step 1</h3>
+          <h3 class="text-center title-step">Step 2</h3>
           <div class="image-patient"><img src="{{ asset('src/img/review-profile.jpg') }}" alt="">
           </div>  
           <h4 class="text-center">Find Your PMHNP</h4>        

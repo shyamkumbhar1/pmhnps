@@ -203,6 +203,7 @@
                                     <div class="col-sm-6 mb-4">
                                         <x-label for="state-dropdown" :value="__('State')" />
                                         <select id="state-dropdown" id="state" class="form-select form-control" name="state">
+                                        <option selected>--Select State--</option>
                                         </select>
                                         @if ($errors->has('state'))
                                             <span class="text-danger">{{ $errors->first('state') }}</span>
@@ -215,6 +216,7 @@
                                     <div class="col-sm-6 mb-4">
                                         <x-label for="city-dropdown" :value="__('City')" />
                                         <select id="city-dropdown" class="form-select form-control" name="city">
+                                        <option selected>--Select City--</option>
                                         </select>
                                         @if ($errors->has('city'))
                                             <span class="text-danger">{{ $errors->first('city') }}</span>
