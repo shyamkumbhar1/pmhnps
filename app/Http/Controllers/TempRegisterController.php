@@ -26,7 +26,7 @@ class TempRegisterController extends Controller
         $validatedData = $request->validate([
             'name' => 'required',
             'professional_title' => 'required',
-            'email' => 'required |email |unique:temp_registers',
+            'email' => 'required |email:rfc |unique:temp_registers',
             'password' => 'min:8|confirmed',
             'password_confirmation' => 'min:8'
         ]);
