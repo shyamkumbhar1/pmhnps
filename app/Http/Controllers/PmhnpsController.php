@@ -17,7 +17,9 @@ class PmhnpsController extends Controller
     public function index()
     {
         // $pmhnps= User::all();
-        $pmhnps = User::orderBy('id','desc')->paginate(5);
+        // $pmhnps = User::orderBy('id','desc')->paginate(5);
+        $pmhnps = User::where('is_admin', null)->orderBy('id', 'desc')->paginate(10);
+        // dd($pmhnps);
         return view('Admin.pmhnps.index', compact('pmhnps'));
     }
 
