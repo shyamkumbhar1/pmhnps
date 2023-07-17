@@ -112,4 +112,7 @@ route::view('home/about','home/about')->name('home.about');
 route::view('home/contact','home/contact')->name('home.contact');
 
 
+Route::view('test','test');
+
+
 
