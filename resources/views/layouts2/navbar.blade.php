@@ -22,7 +22,7 @@
           <!-- Left links -->
           <ul class="mb-2 navbar-nav mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link" href="#">Find PMHNPs</a>
+              <a class="nav-link" href="{{ route('home.find_pmhnps') }}">Find PMHNPs</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">How it Works</a>

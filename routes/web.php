@@ -105,6 +105,8 @@ Route::prefix('admin')->group(function () {
 });
 
 
+// Home Page
+route::view('home/find_pmhnps','home/find_pmhnps')->name('home.find_pmhnps');
 
 
 
