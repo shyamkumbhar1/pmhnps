@@ -19,6 +19,9 @@
 		<div class="mb-3">
 			{{ Form::label('email', 'Email', ['class'=>'form-label']) }}
 			{{ Form::text('email', null, array('class' => 'form-control')) }}
+		</div><div class="mb-3">
+			{{ Form::label('email', 'Email', ['class'=>'form-label']) }}
+			{{ Form::text('email', null, array('class' => 'form-control')) }}
 		</div>
 
 		{{ Form::submit('Edit', array('class' => 'btn btn-primary')) }}
