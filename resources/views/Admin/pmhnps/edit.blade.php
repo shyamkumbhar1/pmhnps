@@ -140,7 +140,13 @@
                                     @endif
                                 </div>
 
-
+                                <div class="row">
+                                    <div class="mb-4 col-sm-6">
+              <img src="{{ asset('src/img/profilpic.jpg') }}" class="rounded-circle" height="25" alt="" loading="lazy" />
+                                        
+                                    </div>
+                                </div>
+                                
                                 <div class="row">
                                     <div class="mb-4 col-sm-6">
                                         <x-label for="profile_picture" :value="__('Profile Picture')" />
