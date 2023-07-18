@@ -35,7 +35,7 @@
                 <li class="nav-item menu-open">
                     <a href="{{ route('pmhnps.index') }}" class="nav-link active">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
-                        <p> PMHNPS Section </p>
+                        <p> All PMHNPS  </p>
                     </a>
                    
 
@@ -47,13 +47,27 @@
                    
 
                 </li>
-                 {{-- <li class="nav-item menu-open">
+                 <li class="nav-item menu-open">
                     <a href="{{ route('admin.patients') }}" class="nav-link active">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p> Patients  </p>
                     </a>
 
-                </li> --}}
+                </li> 
+                <li class="nav-item menu-open">
+                    <a href="#" class="nav-link active">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p> All Plans  </p>
+                    </a>
+
+                </li> 
+                <li class="nav-item menu-open">
+                    <a href="#" class="nav-link active">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p> Create Plans  </p>
+                    </a>
+
+                </li>
 
             </ul>
         </nav>
