@@ -2,18 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use App\Models\City;
 
 use App\Models\User;
+use App\Models\State;
+use App\Models\Country;
+use Illuminate\Http\Request;
+use App\Models\RemainingDetails;
 use App\Http\Requests\PmhnpRequest;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class PmhnpsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Contracts\View\View
-     */
+  
     public function index()
     {
         // $pmhnps= User::all();
@@ -23,22 +25,13 @@ class PmhnpsController extends Controller
         return view('Admin.pmhnps.index', compact('pmhnps'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Contracts\View\View
-     */
+  
     public function create()
     {
         return view('Admin.pmhnps.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  PmhnpRequest  $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
+   
     public function store(PmhnpRequest $request)
     {
         $pmhnp = new User;
@@ -49,28 +42,37 @@ class PmhnpsController extends Controller
         return to_route('pmhnps.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Contracts\View\View
-     */
+ 
     public function show($id)
     {
         $pmhnp = User::findOrFail($id);
         return view('Admin.pmhnps.show',['pmhnp'=>$pmhnp]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Contracts\View\View
-     */
-    public function edit($id)
+
+    public function edit( Request $request , $id)
     {
         $pmhnp = User::findOrFail($id);
-        return view('Admin.pmhnps.edit',['pmhnp'=>$pmhnp]);
+        $id = Auth::user()->id;
+        $user = Auth::user();
+        $data = RemainingDetails::where('user_id', $id)->get();
+        $remaining_filed = json_decode($data, true);
+        // $remaining_filed =  $remaining_filed[0];
+        $states = State::where("country_id", 254)
+        ->get(["name", "id"]);
+        $state_of_licensures = json_decode($states,true);
+
+
+        // dd($remaining_filed[0]);
+
+        $cities = City::where("state_id", $request->state_id)
+            ->get(["name", "id"]);
+        $states = State::where("country_id", $request->country_id)
+            ->get(["name", "id"]);
+        $countries= Country::get(["name", "id"]);
+        // return view('Admin.pmhnps.edit',['pmhnp'=>$pmhnp]);
+        return view('Admin.pmhnps.edit', compact('pmhnp','user', 'remaining_filed','cities','states','countries','state_of_licensures'));
+
     }
 
     /**

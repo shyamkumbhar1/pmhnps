@@ -16,7 +16,11 @@
 			<tr>
 				<th>id</th>
 				<th>name</th>
+				<th>Professional Title</th>
 				<th>email</th>
+				<th>Phone Number</th>
+				<th>Professional Licence Number</th>
+				<th>Created At</th>
 				<th>Status</th>
 				<th>Action</th>
 			</tr>
@@ -27,7 +31,11 @@
 				<tr>
 					<td>{{ $pmhnp->id }}</td>
 					<td>{{ $pmhnp->name }}</td>
+					<td>{{ $pmhnp->professional_title }}</td>
 					<td>{{ $pmhnp->email }}</td>
+					<td>{{ $pmhnp->phone_number }}</td>
+					<td>{{ $pmhnp->professional_license_number }}</td>
+					<td>{{ $pmhnp->created_at }}</td>
 					<td>Active</td>
 
 
