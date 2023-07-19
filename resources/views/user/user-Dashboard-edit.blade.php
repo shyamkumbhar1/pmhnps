@@ -212,9 +212,10 @@
                                         @endif
                                     </div>
                                     <div class="mb-4 col-sm-6">
+                                        {{-- {{ dd($old_state->name) }} --}}
                                         <x-label for="state-dropdown" :value="__('State')" />
                                         <select id="state-dropdown" id="state" class="form-select form-control" name="state">
-                                        <option >{{ $old_state->name }}</option>
+                                        <option value="{{$user->state  }}" >{{ $old_state->name }}</option>
                                         
                                         </select>
                                         @if ($errors->has('state'))
@@ -231,7 +232,7 @@
                                     <div class="mb-4 col-sm-6">
                                         <x-label for="city-dropdown" :value="__('City')" />
                                         <select id="city-dropdown" class="form-select form-control" name="city">
-                                        <option selected>{{ $old_state->name }}</option>
+                                        <option value="{{ $user->city }}"  selected>{{ $old_city->name }}</option>
                                 
                                         </select>
                                         @if ($errors->has('city'))
