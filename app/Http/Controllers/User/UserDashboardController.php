@@ -102,8 +102,10 @@ class UserDashboardController extends Controller
         $profile_picture_name = $request->file('profile_picture')->getClientOriginalName();
 
 
-        $ImagePath = $request->file('profile_picture')->storeAs('public/Profile-Picture',$profile_picture_name);
-
+         $request->file('profile_picture')->storeAs('public/Profile-Picture',$profile_picture_name);
+         $ImagePath = 'storage/Profile-Picture/' . $profile_picture_name;
+        // //  $ImagePath = 'storage/Profile-Picture/Test-cards-Stripe-Documentation.png';
+        // dd($ImagePath);
        }
        $defaultImagePath = '';
 
