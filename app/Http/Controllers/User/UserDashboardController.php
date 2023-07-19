@@ -62,16 +62,18 @@ class UserDashboardController extends Controller
         $states = State::where("country_id", 254)
         ->get(["name", "id"]);
         $state_of_licensures = json_decode($states,true);
+        $old_country = Country::where('id', $user->country)->first();
+        $old_state = State::where('id', $user->state)->first();
+        $old_city = City::where('id', $user->city)->first();
 
+// dd($old_state);
+    
 
-        // dd($remaining_filed[0]);
-
-        $cities = City::where("state_id", $request->state_id)
-            ->get(["name", "id"]);
+        $cities = City::where("state_id", $request->state_id) ->get(["name", "id"]);
         $states = State::where("country_id", $request->country_id)
             ->get(["name", "id"]);
         $countries= Country::get(["name", "id"]);
-        return view('user.user-Dashboard-edit', compact('user', 'remaining_filed','cities','states','countries','state_of_licensures'));
+        return view('user.user-Dashboard-edit', compact('user', 'remaining_filed','cities','states','countries','state_of_licensures','old_country','old_state','old_city'));
     }
 
 

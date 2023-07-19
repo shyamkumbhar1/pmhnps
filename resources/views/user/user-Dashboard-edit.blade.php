@@ -190,14 +190,21 @@
                                 </div>
 
                                 <div class="row">
+                                    <div class="mb-4 col-sm-12">
+                                        <h6>[Note : Please choose country once more if you updated your state, city, or country.]</h6>
+                                    </div>
                                     <div class="mb-4 col-sm-6">
                                         <x-label for="country-dropdown" :value="__('Country')" />
                                         <select id="country-dropdown" id="country" class="form-select form-control" name="country">
+                                          
+                                                
                                             <option value="">-- Select Country --</option>
+                                               
+                                             
+                                                                                       
                                             @foreach ($countries as $data)
-                                            <option value="{{ $data->id }}">
-                                                {{ $data->name }}
-                                            </option>
+                                         
+                                            <option value="{{ $data->id }}" @if ($data->id == $user->country) selected @endif>{{ $data->name }}</option>
                                             @endforeach
                                         </select>
                                         @if ($errors->has('country'))
@@ -207,12 +214,16 @@
                                     <div class="mb-4 col-sm-6">
                                         <x-label for="state-dropdown" :value="__('State')" />
                                         <select id="state-dropdown" id="state" class="form-select form-control" name="state">
-                                        <option selected>--Select State--</option>
+                                        <option >{{ $old_state->name }}</option>
+                                        
                                         </select>
                                         @if ($errors->has('state'))
                                             <span class="text-danger">{{ $errors->first('state') }}</span>
                                         @endif
                                     </div>
+                                    
+
+                                    
                                 </div>
         
                                 
@@ -220,7 +231,8 @@
                                     <div class="mb-4 col-sm-6">
                                         <x-label for="city-dropdown" :value="__('City')" />
                                         <select id="city-dropdown" class="form-select form-control" name="city">
-                                        <option selected>--Select City--</option>
+                                        <option selected>{{ $old_state->name }}</option>
+                                
                                         </select>
                                         @if ($errors->has('city'))
                                             <span class="text-danger">{{ $errors->first('city') }}</span>
