@@ -11,6 +11,7 @@ use App\Models\Country;
 use Illuminate\Http\Request;
 use App\Models\RemainingDetails;
 use Laravel\Cashier\Subscription;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -134,8 +135,13 @@ class UserDashboardController extends Controller
 
     public function mySubscription()
     {
+        $user = auth()->user();
         $subscriptions = Subscription::where('user_id', auth()->id())->get();
-        return view('user.my-subscription', compact('subscriptions'));
+        $plan = DB::table('plans')->select('*')->where('plan_id','=','plan_OAMVLXAQNjx2Wp')->first(); 
+
+        // dd($user->id,$plan->amount);
+
+        return view('user.my-subscription', compact('subscriptions','plan'));
     }
     public function myReviews()
     {

@@ -23,7 +23,7 @@
                                     <thead>
                                         <tr>
                                             <th scope="col">Plan Name</th>
-                                            <th scope="col">Subscription Name</th>
+                                           
                                             <th scope="col">Amount </th>
                                             <th scope="col">Trial Start At</th>
                                             <th scope="col">Status</th>
@@ -34,9 +34,8 @@
 
                                         @foreach ($subscriptions as $subscription)
                                             <tr>
-                                                <th scope="row">{{ $subscription->plan->name }}</th>
-                                                <th scope="row">{{ $subscription->name }}</th>
-                                                <th scope="row">{{ $subscription->plan->amount }}</th>
+                                                <th scope="row">{{ $plan->name }}</th>
+                                                <th scope="row">{{ $plan->amount }}</th>
                                                 <th scope="row">{{ $subscription->created_at }}</th>
                                                 <th scope="row">Active</th>
 
