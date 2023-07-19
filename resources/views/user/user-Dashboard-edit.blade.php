@@ -87,7 +87,7 @@
                                     <select id="state_of_licensure" class="form-select form-control" name="state_of_licensure" required>
                                         <option value="">Select State of Licensure</option>
                                         @foreach ($state_of_licensures as $state_of_licensure )
-                                        <option value="{{ $state_of_licensure['name'] }}">{{ $state_of_licensure['name'] }} </option>                                                 --}}
+                                        <option value="{{ $state_of_licensure['name'] }}" selected>{{ $state_of_licensure['name'] }} </option>                                                 --}}
                                          @endforeach
                                     </select>            
                                     @if ($errors->has('state_of_licensure'))
