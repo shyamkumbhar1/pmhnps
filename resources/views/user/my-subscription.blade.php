@@ -1,11 +1,13 @@
 @extends('layouts2.app')
 
 @section('content')
+<div class="page-height">
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">{{ __('Dashboard') }}</div>
+
+
+        <div class="mt-5 mb-4 row">
+            <div class="col-md-12">
+                   
 
                     <div class="card-body">
                         @if (session('status'))
@@ -13,7 +15,7 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-                        <h1><strong>My Subscription :</strong> </h1>
+                        <h1><strong> My Subscription :</strong> </h1>
 
                         {{-- {{ $subscriptions }} --}}
 
