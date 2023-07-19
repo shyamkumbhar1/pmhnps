@@ -8,7 +8,7 @@
 
         <div class="mt-5 mb-4 row">
             <div class="col-md-12">
-                <h2 class="mb-4 text-center">Update your Profile</h2>
+                <h2 class="mb-4 text-center">Update User Profile</h2>
                 <!-- Collapsible wrapper -->
 
                 <div class="row">

@@ -47,13 +47,13 @@
                    
 
                 </li>
-                 <li class="nav-item menu-open">
+                 {{-- <li class="nav-item menu-open">
                     <a href="{{ route('admin.patients') }}" class="nav-link active">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p> Patients  </p>
                     </a>
 
-                </li> 
+                </li>  --}}
                 <li class="nav-item menu-open">
                     <a href="#" class="nav-link active">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -62,7 +62,7 @@
 
                 </li> 
                 <li class="nav-item menu-open">
-                    <a href="#" class="nav-link active">
+                    <a href="{{ route('plans.create') }}" class="nav-link active">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p> Create Plans  </p>
                     </a>
