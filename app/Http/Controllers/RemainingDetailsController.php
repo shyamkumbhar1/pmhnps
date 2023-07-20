@@ -66,7 +66,7 @@ class RemainingDetailsController extends Controller
         $ImagePath = 'storage/Profile-Picture/' . $profile_picture_name;
        }
 
-        $defaultImagePath = "public/Profile-Picture/default-image.jfif";
+        $defaultImagePath = "storage/Profile-Picture/default-image.jfif";
 
         $RemainingDetails = RemainingDetails::create(
             [
