@@ -62,9 +62,8 @@ class RemainingDetailsController extends Controller
        if ($request->hasFile('profile_picture')) {
         $profile_picture_name = $request->file('profile_picture')->getClientOriginalName();
 
-
-        $ImagePath = $request->file('profile_picture')->storeAs('public/Profile-Picture',$profile_picture_name);
-
+        $request->file('profile_picture')->storeAs('public/Profile-Picture',$profile_picture_name);
+        $ImagePath = 'storage/Profile-Picture/' . $profile_picture_name;
        }
 
         $defaultImagePath = "public/Profile-Picture/default-image.jfif";
