@@ -42,7 +42,7 @@
                 </li>   <li class="nav-item menu-open">
                     <a href="{{ route('temp-pmhnps.index') }}" class="nav-link active">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
-                        <p> Temperory User </p>
+                        <p> Temporary User </p>
                     </a>
                    
 
