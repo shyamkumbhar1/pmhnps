@@ -42,7 +42,7 @@
                 </li>   <li class="nav-item menu-open">
                     <a href="{{ route('temp-pmhnps.index') }}" class="nav-link active">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
-                        <p> Temerory Registor </p>
+                        <p> Temperory User </p>
                     </a>
                    
 
@@ -54,20 +54,20 @@
                     </a>
 
                 </li>  --}}
-                <li class="nav-item menu-open">
+                {{-- <li class="nav-item menu-open">
                     <a href="#" class="nav-link active">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p> All Plans  </p>
                     </a>
 
-                </li> 
-                <li class="nav-item menu-open">
+                </li>  --}}
+                {{-- <li class="nav-item menu-open">
                     <a href="{{ route('plans.create') }}" class="nav-link active">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p> Create Plans  </p>
                     </a>
 
-                </li>
+                </li> --}}
 
             </ul>
         </nav>
