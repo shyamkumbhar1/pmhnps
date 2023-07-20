@@ -11,13 +11,17 @@ h1, h2, h3{
     font-family: 'latosemibold';
 }
 
-.navbar-brand img{ height: 35px;}
+.navbar-brand{
+    padding-top: 0; padding-bottom: 0;
+}
+.navbar-brand img{ height: 60px;}
 .navbar{
     border-bottom: 1px solid #3b71ca;
     --mdb-navbar-box-shadow:none;
-    --mdb-navbar-padding-top:10px;
-    --mdb-navbar-padding-y:10px;
+    --mdb-navbar-padding-top:7px;
+    --mdb-navbar-padding-y:7px;
 }
+
 
 /************************ Header ***/
 .nav-link-singin{
