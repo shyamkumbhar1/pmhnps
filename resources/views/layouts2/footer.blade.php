@@ -3,10 +3,10 @@
     <div class="row">
       <div class="col-lg-6 offset-lg-3 col-md-12 copyright d-lg-flex d-sm-block justify-content-center align-items-center">
         <div class="text-center d-sm-block text-sm-center">
-          <span> © 2022 </span> <a class="text-dark" href="#">PMHNP.com</a>
+          <span> © 2023 </span> <a class="text-dark" href="#">PMHNP.com</a>
         </div>
-        <div class="text-center d-sm-block text-sm-center"> | <a href="#">PRIVACY POLITY</a> | <a
-          href="#">TERMS OF USE</a>
+        <div class="text-center d-sm-block text-sm-center"> | <a href="#">PRIVACY POLICY</a> | <a  href="#">TERMS OF USE</a>
+          
         </div>
       </div>
       <div class="col-lg-3 col-md-12">
