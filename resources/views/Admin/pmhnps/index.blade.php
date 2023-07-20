@@ -44,9 +44,13 @@
 												<div >
 													<a href="{{ route('pmhnps.show', [$pmhnp->id]) }}" class="btn btn-info">Show</a>
 													<a href="{{ route('pmhnps.edit', [$pmhnp->id]) }}" class="btn btn-primary">Edit</a>
-													{!! Form::open(['method' => 'DELETE','route' => ['pmhnps.destroy', $pmhnp->id]]) !!}
+													{{-- {!! Form::open(['method' => 'DELETE','route' => ['pmhnps.destroy', $pmhnp->id]]) !!}
 														{!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
-													{!! Form::close() !!}
+													{!! Form::close() !!} --}}
+													{!! Form::open(['method' => 'DELETE', 'route' => ['pmhnps.destroy', $pmhnp->id], 'onsubmit' => 'return confirm("Are you sure you want to delete this item?");']) !!}
+    {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+{!! Form::close() !!}
+
 												</div>
 											</td>
 										</tr>
