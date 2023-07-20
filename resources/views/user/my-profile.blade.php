@@ -10,8 +10,6 @@
 
 
 
-
-
                     <h1>My profile Page</h1>
 
 
