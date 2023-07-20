@@ -52,6 +52,12 @@
           </a>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
               <li>
+                  <a class="dropdown-item" href="{{ route('user.Dashboard') }}">Dashboard</a>
+              </li> 
+              <li>
+                  <a class="dropdown-item" href="{{ route('user.Dashboard.my.profile') }}">My profile</a>
+              </li>
+               <li>
                   <a class="dropdown-item" href="{{ route('user.Dashboard.edit') }}">Update profile</a>
               </li>
               <li>

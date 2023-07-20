@@ -66,6 +66,7 @@ Route::get('user-Dashboard-edit',[UserDashboardController::class,'edit'])->name(
 Route::put('user-Dashboard-update',[UserDashboardController::class,'update'])->name('user.Dashboard.update');
 Route::get('my-subscription',[UserDashboardController::class,'mySubscription'])->name('user.my.subscription');
 Route::get('my-reviews',[UserDashboardController::class,'myReviews'])->name('user.my.reviews');
+Route::get('my-profile',[UserDashboardController::class,'myProfile'])->name('user.Dashboard.my.profile');
 
 //State Country city Dropdown
 Route::get('dropdown', [DropdownController::class, 'index']);
