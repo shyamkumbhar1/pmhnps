@@ -77,7 +77,7 @@ class RemainingDetailsController extends Controller
                'state_of_licensure' => $request->state_of_licensure,
                 'areas_of_expertise' => implode(', ',$request->areas_of_expertise),
                 'bio' => $request->bio,
-                'profile_picture' => ($request->hasFile('profile_picture'))?$ImagePath :$defaultImagePath,
+                'profile_picture' => ($request->hasFile('profile_picture'))? $ImagePath :$defaultImagePath,
                 'work_address' => $request->work_address,
                 
                   "address_line1" => $request->address_line1,
@@ -107,8 +107,9 @@ class RemainingDetailsController extends Controller
         ]);
 
         // fetch Data from session
-        $remainingDetails = $request->session()->get('remainingDetails');
+        $remainingDetails_session = $request->session()->get('remainingDetails');
 
+        // dd($RemainingDetails , $remainingDetails_session,$remainingDetails_session['profile_picture']);
 
 
 
@@ -117,24 +118,24 @@ class RemainingDetailsController extends Controller
         $user = User::findOrFail($user_id);
 
         if ($user ) {
-            $user->phone_number = $remainingDetails['phone_number'];
-            $user->professional_license_number =$remainingDetails['professional_license_number'];
-            $user->state_of_licensure = $remainingDetails['state_of_licensure'];
-            $user->areas_of_expertise = $remainingDetails['areas_of_expertise'];
-            $user->bio = $remainingDetails['bio'];
-            $user->profile_picture = $remainingDetails['profile_picture'];
-            $user->address_line1 =$remainingDetails['address_line1'];
-            $user->address_line2 =$remainingDetails['address_line2'];
-            $user->country =$remainingDetails['country'];
-            $user->state =$remainingDetails['state'];
-            $user->city =$remainingDetails['city'];
-            $user->city =$remainingDetails['city'];
-            $user->postal_code =$remainingDetails['postal_code'];
+            $user->phone_number = $remainingDetails_session['phone_number'];
+            $user->professional_license_number =$remainingDetails_session['professional_license_number'];
+            $user->state_of_licensure = $remainingDetails_session['state_of_licensure'];
+            $user->areas_of_expertise = $remainingDetails_session['areas_of_expertise'];
+            $user->bio = $remainingDetails_session['bio'];
+            $user->profile_picture = $remainingDetails_session['profile_picture'];
+            $user->address_line1 =$remainingDetails_session['address_line1'];
+            $user->address_line2 =$remainingDetails_session['address_line2'];
+            $user->country =$remainingDetails_session['country'];
+            $user->state =$remainingDetails_session['state'];
+            $user->city =$remainingDetails_session['city'];
+            $user->city =$remainingDetails_session['city'];
+            $user->postal_code =$remainingDetails_session['postal_code'];
             $user->save();
         }
 
 
-
+        // dd($user ,$user_id);
         return to_route('user.Dashboard');
     }
 
