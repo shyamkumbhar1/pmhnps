@@ -48,8 +48,8 @@
 														{!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
 													{!! Form::close() !!} --}}
 													{!! Form::open(['method' => 'DELETE', 'route' => ['pmhnps.destroy', $pmhnp->id], 'onsubmit' => 'return confirm("Are you sure you want to delete this item?");']) !!}
-    {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
-{!! Form::close() !!}
+    												{!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+													{!! Form::close() !!}
 
 												</div>
 											</td>
