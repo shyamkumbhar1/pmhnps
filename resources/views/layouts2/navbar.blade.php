@@ -54,18 +54,18 @@
               <li>
                   <a class="dropdown-item" href="{{ route('user.Dashboard') }}">Dashboard</a>
               </li> 
-              <li>
+              {{-- <li>
                   <a class="dropdown-item" href="{{ route('user.Dashboard.my.profile') }}">My profile</a>
-              </li>
+              </li> --}}
                <li>
                   <a class="dropdown-item" href="{{ route('user.Dashboard.edit') }}">Update profile</a>
               </li>
               <li>
                   <a class="dropdown-item" href="{{ route('user.my.subscription') }}">My subscription</a>
               </li>
-              <li>
+              {{-- <li>
                 <a class="dropdown-item" href="{{ route('user.my.reviews') }}">My reviews</a>
-            </li>
+            </li> --}}
               <li>
                 <a class="nav-link"  href="#">
                   <a class="dropdown-item" href="{{ route('logout') }}"

@@ -9,6 +9,14 @@
             <div class="mt-5 mb-4 row">
                 <div class="col-md-12">
                     <h2 class="mb-4 text-center">PMHNPS Dashboard</h2>
+                    <div>
+                     
+                  <a  href="{{ route('user.Dashboard.edit') }}" class="mb-4 btn btn-lg btn-primary">Update profile</a>
+                  <a  href="{{ route('user.my.subscription') }}" class="mb-4 btn btn-lg btn-primary">My subscription</a>
+
+
+                   
+                    </div>
                 </div>
             </div>
 
