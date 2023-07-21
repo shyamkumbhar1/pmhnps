@@ -53,7 +53,7 @@
 									@endforeach
 								</tbody>
 							</table>
-							<!-- {!! $temp_pmhnps->links() !!} -->
+							{!! $temp_pmhnps->links() !!}
 						</div>
 
 					</div>
