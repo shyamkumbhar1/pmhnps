@@ -53,8 +53,10 @@ class UserDashboardController extends Controller
 
     public function edit(Request $request)
     {
-
+        
+        
         $id = Auth::user()->id;
+
         $user = Auth::user();
         $data = RemainingDetails::where('user_id', $id)->get();
         $remaining_filed = json_decode($data, true);
@@ -79,8 +81,8 @@ class UserDashboardController extends Controller
 
     public function update(Request $request)
     {
-        // dd($request->all());
-
+        
+        dd($request->all());
         $validator=  $request->validate([
             'address_line1' => 'required',
            'address_line2'=> 'required ',
@@ -93,9 +95,6 @@ class UserDashboardController extends Controller
         ]);
 
         $user = Auth::user();
-
-
-
 
           // Image Upload
        if ($request->hasFile('profile_picture')) {
@@ -131,7 +130,7 @@ class UserDashboardController extends Controller
 
         // dd($user->profile_picture);
 
-
+    
         return to_route('user.Dashboard')
             ->with('success', 'User updated successfully');
     }
