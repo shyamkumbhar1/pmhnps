@@ -150,7 +150,12 @@
                                             <span class="text-danger">{{ $errors->first('bio') }}</span>
                                         @endif
                                     </div>
-
+                                    
+                                    <div class="d-flex justify-content-center">
+                                        <div class="mb-4 form-outline">
+                                          <img src="{{ asset($user->profile_picture) }}" alt="profile Image" class="rounded-circle" height="100" alt="" loading="lazy">
+                                        </div>
+                                      </div>
 
                                     <div class="row">
                                         <div class="mb-4 col-sm-6">
