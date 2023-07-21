@@ -8,7 +8,7 @@
 
         <div class="mt-5 mb-4 row">
             <div class="col-md-12">
-                <h2 class="mb-4 text-center">Update your Profile</h2>
+                <h2 class="mb-4 text-center">Update your Profile </h2>
                 <!-- Collapsible wrapper -->
 
                 <div class="row">
@@ -189,16 +189,26 @@
                                     @endif
                                 </div>
 
+<input type="hidden" value="{{ $user->state }}" id="editstate">
+<input type="hidden" value="{{ $user->city }}" id="editcity">
                                 <div class="row">
                                     <div class="mb-4 col-sm-6">
                                         <x-label for="country-dropdown" :value="__('Country')" />
                                         <select id="country-dropdown" id="country" class="form-select form-control" name="country">
                                             <option value="">-- Select Country --</option>
-                                            @foreach ($countries as $data)
-                                            <option value="{{ $data->id }}">
-                                                {{ $data->name }}
-                                            </option>
-                                            @endforeach
+                                             @php
+                                             $old=$user->country;
+                                             @endphp
+                        @foreach ($countries as $value =>$data)
+
+                             <option value="{{ $data->id }}" 
+                                {{ $old == $data->id ? 'selected' : 'ddd' }}>
+                                {{ $data->name }}
+                            </option>
+                        @endforeach
+
+
+                                            
                                         </select>
                                         @if ($errors->has('country'))
                                             <span class="text-danger">{{ $errors->first('country') }}</span>
@@ -282,7 +292,9 @@
 </script>
 <script>
     $(document).ready(function() {
-
+        setTimeout(function() {
+        $("#country-dropdown").trigger('change');
+        }, 1000);
         /*------------------------------------------
         --------------------------------------------
         Country Dropdown Change Event
@@ -300,11 +312,17 @@
                 },
                 dataType: 'json',
                 success: function(result) {
+
+                    var editstate = $("#editstate").val();
                     $('#state-dropdown').html(
                         '<option value="">-- Select State --</option>');
                     $.each(result.states, function(key, value) {
+                        var sel = '';
+                        if(editstate==value.id){ var sel = 'selected';
+                        setTimeout(function() {
+                        $("#state-dropdown").trigger('change'); }, 1000); }
                         $("#state-dropdown").append('<option value="' + value
-                            .id + '">' + value.name + '</option>');
+                            .id + '" '+sel+'>' + value.name + '</option>');
                     });
                     $('#city-dropdown').html('<option value="">-- Select City --</option>');
                 }
@@ -328,10 +346,14 @@
                 },
                 dataType: 'json',
                 success: function(res) {
+                    var editcity = $("#editcity").val();
+                    console.log('editcity',editcity)
                     $('#city-dropdown').html('<option value="">-- Select City --</option>');
                     $.each(res.cities, function(key, value) {
+                        var sel = '';
+                        if(editcity==value.id){ var sel = 'selected'; }
                         $("#city-dropdown").append('<option value="' + value
-                            .id + '">' + value.name + '</option>');
+                            .id + '" '+sel+' >' + value.name + '</option>');
                     });
                 }
             });

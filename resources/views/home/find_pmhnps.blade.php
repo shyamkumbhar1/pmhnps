@@ -19,37 +19,91 @@
             <div class="col-lg-11 col-md-11 col-sm-10">
               <div class="row search-mr">
                 <div class="mb-3 col-lg-3 col-md-6 col-sm-6 mb-lg-0">
-                  <input type="text" id="" class="form-control" placeholder="Professional Title" />
+                   
+
+                    <select id="professional_title" class="form-control" name="professional_title" >
+                        <option value="">Select Professional Title</option>
+                        @php
+                            $professionalTitles = [
+                                'DNP' => 'Doctor of Nursing Practice (DNP)',
+                                'MSN' => 'Master of Science in Nursing (MSN)',
+                                'RN' => 'Registered Nurse (RN)',
+                                'PMHNP-BC' => 'Board Certified Psychiatric-Mental Health Nurse Practitioner (PMHNP-BC)',
+                                // Add more options as needed
+                                'other' => 'Other',
+                            ];
+                            $oldProfessionalTitle = '';
+                            if(isset($_GET['professional_title']) && !empty($_GET['professional_title'])){
+                            $oldProfessionalTitle = $_GET['professional_title'];
+                        }
+                        @endphp
+
+                        @foreach ($professionalTitles as $value => $label)
+                            <option value="{{ $value }}" {{ $oldProfessionalTitle === $value ? 'selected' : '' }}>
+                                {{ $label }}
+                            </option>
+                        @endforeach
+                    </select>
+
                 </div>
                 <div class="mb-3 col-lg-3 col-md-6 col-sm-6 mb-lg-0 ">
-                  <div class="mymultiselect">
-                    <!-- <label>Area of Expertise</label> -->
-                    <select name="field1" id="field1" multiple
-                      onchange="console.log(Array.from(this.selectedOptions).map(x=>x.value??x.text))"
-                      multiselect-hide-x="true" >
-                      <option selected>Area of Expertise</option>
-                      <option value="1">Child Psychiatry</option>
-                      <option value="2">Geriatric Psychiatry</option>
-                    </select>
-                  </div>
+                  
+         <div class="multiselect">
+    <div class="selectBox" onclick="showaoe()">
+      <select class="form-control" >
+        <option>Area of Expertise</option>
+      </select>
+      <div class="overSelect"></div>
+    </div>
+    <div id="checkboxes">
+      <label for="Mood Disorders">
+        <input type="checkbox" name="aoe[]" value="Mood Disorders" />Mood Disorders</label>
+      <label for="Trauma and PTSD">
+        <input type="checkbox"  name="aoe[]" value="Trauma and PTSD" />Trauma and PTSD</label>
+      <label for="Geriatric Psychiatry">
+        <input type="checkbox" name="aoe[]" value="Geriatric Psychiatry" />Geriatric Psychiatry</label>
+         <label for="Psychotic Disorders">
+        <input type="checkbox" name="aoe[]" value="Psychotic Disorders" />Psychotic Disorders</label>
+         <label for="Neurodevelopmental Disorders">
+        <input type="checkbox" name="aoe[]" value="Neurodevelopmental Disorders" />Neurodevelopmental Disorders</label>
+         <label for="Substance Abuse Counseling">
+        <input type="checkbox" name="aoe[]" value="Substance Abuse Counseling" />Substance Abuse Counseling</label>
+         <label for="Eating Disorders">
+        <input type="checkbox" name="aoe[]" value="Eating Disorders" />Eating Disorders</label>
+         <label for="Sleep Disorders">
+        <input type="checkbox" name="aoe[]"  value="Sleep Disorders" />Sleep Disorders</label>
+         <label for="Anxiety Disorders">
+        <input type="checkbox" name="aoe[]" value="Anxiety Disorders" />Anxiety Disorders</label>
+         <label for="Personality Disorders">
+        <input type="checkbox" name="aoe[]" value="APersonality Disorders" />Personality Disorders</label>
+        <label for="Other">
+        <input type="checkbox" name="aoe[]" value="Other" />Other</label>
+    </div>
+  </div>
+                  
+                </div>
+       
+  
+
+                <div class="mb-3 col-lg-2 col-md-4 col-sm-4 mb-lg-0 mb-sm-0">
+                  <input type="text" id="" name="pin_code" class="form-control" placeholder="Enter pin code"   />
                 </div>
                 <div class="mb-3 col-lg-2 col-md-4 col-sm-4 mb-lg-0 mb-sm-0">
-                  <input type="number" id="" class="form-control" placeholder="Enter pin code" />
+                  <select id="stateSelect" name="state" class="form-select form-control">
+                    <option value="">Select state</option>
+                      @foreach($states as $state)
+                          <option value="{{ $state->id }}">{{ $state->name }}</option>
+                      @endforeach
+                  </select>
+
                 </div>
                 <div class="mb-3 col-lg-2 col-md-4 col-sm-4 mb-lg-0 mb-sm-0">
-                  <select class="form-select form-control">
-                    <option selected>Select City</option>
-                    <option value="2">City 1</option>
-                    <option value="3">City 2</option>
+                  <select id="citySelect" name="city" class="form-select form-control">
+                       <option value="">Select a City</option>
+
                   </select>
                 </div>
-                <div class="mb-3 col-lg-2 col-md-4 col-sm-4 mb-lg-0 mb-sm-0">
-                  <select class="form-select form-control">
-                    <option selected>Select state</option>
-                    <option value="2">State 1</option>
-                    <option value="3">State 2</option>
-                  </select>
-                </div>
+               
               </div>
             </div>
             <div class="col-lg-1 col-md-1 col-sm-2 text-end">
@@ -66,117 +120,56 @@
       <div class="pmhnp-row ">
 
         <!-- PMHNP list -->
+          
+         @foreach($users as $user)
         <div class="pmhnplist">
           <div class="pmhnp-probox">
             <div class="pmhnppicbox">
               <img src="img/noimage.jpg" alt="">
             </div>
             <div class="mt-3 text-center">
-              <button type="submit" class="btn btn-lg btn-primary">View Profile</button>
+                        @php
+                        $user_id=$user->id;
+                            $encrypted = Crypt::encryptString($user_id);
+                        @endphp
+              <button type="submit" onclick="location.href = '/home/profile/{{ $encrypted }}';" class="btn btn-lg btn-primary">View Profile</button>
             </div>
           </div>
           <div class="">
-            <h3>Lindsay Cygan, DNP</h3>
+            <h3>{{ $user->name }}</h3>
             <p>
-              Dr. Jane Doe. DNP. PMHNP-BC, is a board-certified Psychiatric Mental Health Nurse Practitioner with a
-              Doctorate in Nursing Practice.
-              With over ten years of experience in mental health care. Dr. Doe is dedicated to providing holistic,
-              patient-centered care with a
-              focus on individual strengths and wellness.
+              {{ $user->bio }}
             </p>
             <h5 class="mt-3">Area of Expertise</h5>
             <div class="mt-3 mb-4 expertise-row">
-              <span class="badge-expert">Child Psychiatry</span>
-              <span class="badge-expert">Geriatric Psychiatry</span>
+              
+               
+              
+              @php
+                  $extracted_value=explode(",",$user->areas_of_expertise);
+              @endphp
+              @foreach ($extracted_value as   $value)
+              <span class="badge-expert">{{ $value }}</span>
+               @endforeach
             </div>
             <div class="row">
               <div class="col-sm-6">
                 <div class="location">
-                  <i class="fa fa-map-marker faicon" aria-hidden="true"></i> 1612 Choto Markets Way <br>Knoxville, TN
+                  <i class="fa fa-map-marker faicon" aria-hidden="true"></i> {{ $user->address_line1 }},{{ $user->city }},{{ $user->state }},{{ $user->postal_code }}
                 </div>
               </div>
               <div class="mt-3 col-sm-6 reviews text-start text-sm-end mt-sm-0">
-                <i class="fa fa-star" aria-hidden="true"></i> <strong>4.77</strong> (636 reviews)
+                <i class="fa fa-star" aria-hidden="true"></i> <strong>{{ $user->reviews }}</strong> ( {{ $user->reviewcnt }} reviews)
               </div>
             </div>
           </div>
         </div>
         <!-- PMHNP list end -->
-
+        @endforeach
         <!-- PMHNP list -->
-        <div class="pmhnplist">
-          <div class="pmhnp-probox">
-            <div class="pmhnppicbox">
-              <img src="img/noimage.jpg" alt="">
-            </div>
-            <div class="mt-3 text-center">
-              <button type="submit" class="btn btn-lg btn-primary">View Profile</button>
-            </div>
-          </div>
-          <div class="">
-            <h3>Lindsay Cygan, DNP</h3>
-            <p>
-              Dr. Jane Doe. DNP. PMHNP-BC, is a board-certified Psychiatric Mental Health Nurse Practitioner with a
-              Doctorate in Nursing Practice.
-              With over ten years of experience in mental health care. Dr. Doe is dedicated to providing holistic,
-              patient-centered care with a
-              focus on individual strengths and wellness.
-            </p>
-            <h5 class="mt-3">Area of Expertise</h5>
-            <div class="mt-3 mb-4 expertise-row">
-              <span class="badge-expert">Child Psychiatry</span>
-              <span class="badge-expert">Geriatric Psychiatry</span>
-            </div>
-            <div class="row">
-              <div class="col-sm-6">
-                <div class="location">
-                  <i class="fa fa-map-marker faicon" aria-hidden="true"></i> 1612 Choto Markets Way <br>Knoxville, TN
-                </div>
-              </div>
-              <div class="mt-3 col-sm-6 reviews text-start text-sm-end mt-sm-0">
-                <i class="fa fa-star" aria-hidden="true"></i> <strong>4.77</strong> (636 reviews)
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- PMHNP list end -->
-
+         
         <!-- PMHNP list -->
-        <div class="pmhnplist">
-          <div class="pmhnp-probox">
-            <div class="pmhnppicbox">
-              <img src="img/noimage.jpg" alt="">
-            </div>
-            <div class="mt-3 text-center">
-              <button type="submit" class="btn btn-lg btn-primary">View Profile</button>
-            </div>
-          </div>
-          <div class="">
-            <h3>Lindsay Cygan, DNP</h3>
-            <p>
-              Dr. Jane Doe. DNP. PMHNP-BC, is a board-certified Psychiatric Mental Health Nurse Practitioner with a
-              Doctorate in Nursing Practice.
-              With over ten years of experience in mental health care. Dr. Doe is dedicated to providing holistic,
-              patient-centered care with a
-              focus on individual strengths and wellness.
-            </p>
-            <h5 class="mt-3">Area of Expertise</h5>
-            <div class="mt-3 mb-4 expertise-row">
-              <span class="badge-expert">Child Psychiatry</span>
-              <span class="badge-expert">Geriatric Psychiatry</span>
-            </div>
-            <div class="row">
-              <div class="col-sm-6">
-                <div class="location">
-                  <i class="fa fa-map-marker faicon" aria-hidden="true"></i> 1612 Choto Markets Way <br>Knoxville, TN
-                </div>
-              </div>
-              <div class="mt-3 col-sm-6 reviews text-start text-sm-end mt-sm-0">
-                <i class="fa fa-star" aria-hidden="true"></i> <strong>4.77</strong> (636 reviews)
-              </div>
-            </div>
-          </div>
-        </div>
+        
         <!-- PMHNP list end -->
 
 
@@ -188,17 +181,11 @@
 
           <nav aria-label="Page navigation example">
             <ul class="pagination pg-blue justify-content-end">
-              <li class="page-item disabled">
-                <a class="page-link" tabindex="-1"><span aria-hidden="true">&laquo;</span> Previous</a>
-              </li>
-              <li class="page-item"><a class="page-link">1</a></li>
-              <li class="page-item active">
-                <a class="page-link">2 <span class="sr-only">(current)</span></a>
-              </li>
-              <li class="page-item"><a class="page-link">3</a></li>
-              <li class="page-item">
-                <a class="page-link">Next <span aria-hidden="true">&raquo;</span></a>
-              </li>
+              <li class="page-item"><a class="page-link">   ..
+
+</a></li>
+               
+              
             </ul>
           </nav>
 
@@ -309,4 +296,40 @@
                 reader.readAsDataURL(event.target.files[0]);
             }
         </script>
+        <script type="text/javascript">var expanded = false;
+
+function showaoe() {
+  var checkboxes = document.getElementById("checkboxes");
+  if (!expanded) {
+    checkboxes.style.display = "block";
+    expanded = true;
+
+  } else {
+    checkboxes.style.display = "none";
+    expanded = false;
+  }
+
+}</script>
+<script>
+    // JavaScript code to handle the dynamic select boxes
+    document.getElementById('stateSelect').addEventListener('change', function() {
+        const stateId = this.value;
+        const citySelect = document.getElementById('citySelect');
+
+        // Clear the city select box
+        citySelect.innerHTML = '<option value="">Select a City</option>';
+
+        // Fetch cities for the selected state via AJAX
+        fetch(`/home/cities/${stateId}`)
+            .then(response => response.json())
+            .then(cities => {
+                cities.forEach(city => {
+                    const option = document.createElement('option');
+                    option.value = city.id;
+                    option.textContent = city.name;
+                    citySelect.appendChild(option);
+                });
+            });
+    });
+</script>
     @endsection

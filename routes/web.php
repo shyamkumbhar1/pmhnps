@@ -16,6 +16,7 @@ use App\Http\Controllers\ContactUsFormController;
 use App\Http\Controllers\CaptchaServiceController;
 use App\Http\Controllers\RemainingDetailsController;
 use App\Http\Controllers\User\UserDashboardController;
+use App\Http\Controllers\ListingPmhnpsController;
 
 
 
@@ -76,7 +77,6 @@ Route::post('api/fetch-cities', [DropdownController::class, 'fetchCity']);
 // Review section
 Route::get('/reviews', [ReviewController::class,'index'])->name('reviews.index');
 Route::get('/reviews/create', [ReviewController::class,'create'])->name('reviews.create');
-Route::post('/reviews', [ReviewController::class,'store'])->name('reviews.store');
 
 
 
@@ -104,9 +104,19 @@ Route::prefix('admin')->group(function () {
 
 });
 
+Route::get('home/find_pmhnps', [ListingPmhnpsController::class, 'index'])->name('home.find_pmhnps');
+Route::get('home/cities/{state}', [ListingPmhnpsController::class, 'getCitiesByState']);
+ Route::get('home/profile/{pid}', [ListingPmhnpsController::class, 'getProfileByid']);
+// Route::post('/contactus', [ListingPmhnpsController::class, 'ContactForm']) ;
 
+
+Route::post('home/contact', [ListingPmhnpsController::class,'store'])->name('contact.store');
+//
+
+Route::post('/register', [ListingPmhnpsController::class, 'review_insert']);
+ 
 // Home Page
-route::view('home/find_pmhnps','home/find_pmhnps')->name('home.find_pmhnps');
+//route::view('home/find_pmhnps','home/find_pmhnps')->name('home.find_pmhnps');
 // route::view('home/home.how_it_work','home/home.how_it_work')->name('home.home.how_it_work');
 route::view('home/about','home/about')->name('home.about');
 route::view('home/contact','home/contact')->name('home.contact');
