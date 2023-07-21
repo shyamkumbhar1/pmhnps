@@ -44,19 +44,26 @@
         <div class="dropdown">
           <a class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#" id="navbarDropdownMenuAvatar"
               role="button" data-mdb-toggle="dropdown" aria-expanded="false">
-              <img src="{{ asset('src/img/profilpic.jpg') }}" class="rounded-circle" height="25" alt="" loading="lazy" />
-              {{-- <img src="{{ asset('src/img/Profile-Picture/default-image.jfif') }}" class="rounded-circle" height="25" alt="" loading="lazy" /> --}}
+              {{-- <img src="{{ asset('src/img/profilpic.jpg') }}" class="rounded-circle" height="25" alt="" loading="lazy" /> --}}
+            <img src="{{ asset(auth()->user()->profile_picture) }}" alt="profile Image" class="rounded-circle" height="25" alt="" loading="lazy">
+            {{-- <img src="{{ asset('storage/Profile-Picture\1.jfif') }}" alt="dfggg"> --}}
               {{-- <h1>{{ dd(Auth::user()->profile_picture,Auth::user()->name) }}</h1> --}}
-
+              
           </a>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
               <li>
+                  <a class="dropdown-item" href="{{ route('user.Dashboard') }}">Dashboard</a>
+              </li> 
+              {{-- <li>
+                  <a class="dropdown-item" href="{{ route('user.Dashboard.my.profile') }}">My profile</a>
+              </li> --}}
+               <li>
                   <a class="dropdown-item" href="{{ route('user.Dashboard.edit') }}">Update profile</a>
               </li>
-              {{-- <li>
+              <li>
                   <a class="dropdown-item" href="{{ route('user.my.subscription') }}">My subscription</a>
               </li>
-              <li>
+              {{-- <li>
                 <a class="dropdown-item" href="{{ route('user.my.reviews') }}">My reviews</a>
             </li> --}}
               <li>

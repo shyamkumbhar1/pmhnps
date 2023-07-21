@@ -21,7 +21,9 @@
 
       <div class="mb-4 row">
         <div class="text-center col-md-12">
-          <button type="submit" class="mb-4 btn btn-lg btn-primary">Join us now</button>
+          {{-- <button type="submit" class="mb-4 btn btn-lg btn-primary"><a href="{{ route('register.step.one') }}  " >Join us now</a></button> --}}
+          <a href="{{ route('register.step.one') }}" class="mb-4 btn btn-lg btn-primary">Join us now</a>
+
         </div>
       </div>
 

@@ -1,11 +1,13 @@
-@extends('layouts.app')
+@extends('layouts2.app')
 
 @section('content')
+<div class="page-height">
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">{{ __('Dashboard') }}</div>
+
+
+        <div class="mt-5 mb-4 row">
+            <div class="col-md-12">
+                   
 
                     <div class="card-body">
                         @if (session('status'))
@@ -13,7 +15,7 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-                        <h1><strong>My Subscription :</strong> </h1>
+                        <h1><strong> My Subscription :</strong> </h1>
 
                         {{-- {{ $subscriptions }} --}}
 
@@ -23,7 +25,7 @@
                                     <thead>
                                         <tr>
                                             <th scope="col">Plan Name</th>
-                                            <th scope="col">Subscription Name</th>
+                                           
                                             <th scope="col">Amount </th>
                                             <th scope="col">Trial Start At</th>
                                             <th scope="col">Status</th>
@@ -34,9 +36,8 @@
 
                                         @foreach ($subscriptions as $subscription)
                                             <tr>
-                                                <th scope="row">{{ $subscription->plan->name }}</th>
-                                                <th scope="row">{{ $subscription->name }}</th>
-                                                <th scope="row">{{ $subscription->plan->amount }}</th>
+                                                <th scope="row">{{ $plan->name }}</th>
+                                                <th scope="row">{{ $plan->amount }}</th>
                                                 <th scope="row">{{ $subscription->created_at }}</th>
                                                 <th scope="row">Active</th>
 

@@ -11,6 +11,7 @@ use App\Models\Country;
 use Illuminate\Http\Request;
 use App\Models\RemainingDetails;
 use Laravel\Cashier\Subscription;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -61,16 +62,18 @@ class UserDashboardController extends Controller
         $states = State::where("country_id", 254)
         ->get(["name", "id"]);
         $state_of_licensures = json_decode($states,true);
+        $old_country = Country::where('id', $user->country)->first();
+        $old_state = State::where('id', $user->state)->first();
+        $old_city = City::where('id', $user->city)->first();
 
+// dd($old_state);
+    
 
-        // dd($remaining_filed[0]);
-
-        $cities = City::where("state_id", $request->state_id)
-            ->get(["name", "id"]);
+        $cities = City::where("state_id", $request->state_id) ->get(["name", "id"]);
         $states = State::where("country_id", $request->country_id)
             ->get(["name", "id"]);
         $countries= Country::get(["name", "id"]);
-        return view('user.user-Dashboard-edit', compact('user', 'remaining_filed','cities','states','countries','state_of_licensures'));
+        return view('user.user-Dashboard-edit', compact('user', 'remaining_filed','cities','states','countries','state_of_licensures','old_country','old_state','old_city'));
     }
 
 
@@ -99,8 +102,10 @@ class UserDashboardController extends Controller
         $profile_picture_name = $request->file('profile_picture')->getClientOriginalName();
 
 
-        $ImagePath = $request->file('profile_picture')->storeAs('public/Profile-Picture',$profile_picture_name);
-
+         $request->file('profile_picture')->storeAs('public/Profile-Picture',$profile_picture_name);
+         $ImagePath = 'storage/Profile-Picture/' . $profile_picture_name;
+        // //  $ImagePath = 'storage/Profile-Picture/Test-cards-Stripe-Documentation.png';
+        // dd($ImagePath);
        }
        $defaultImagePath = '';
 
@@ -134,8 +139,13 @@ class UserDashboardController extends Controller
 
     public function mySubscription()
     {
+        $user = auth()->user();
         $subscriptions = Subscription::where('user_id', auth()->id())->get();
-        return view('user.my-subscription', compact('subscriptions'));
+        $plan = DB::table('plans')->select('*')->where('plan_id','=','plan_OAMVLXAQNjx2Wp')->first(); 
+
+        // dd($user->id,$plan->amount);
+
+        return view('user.my-subscription', compact('subscriptions','plan'));
     }
     public function myReviews()
     {
@@ -143,5 +153,12 @@ class UserDashboardController extends Controller
         // dd($user_id);
         $reviews = Review::where('user_id',$user_id)->get();
         return view('user.my-reviews',compact('reviews'));
+    }  
+     public function myProfile()
+    {
+        $user_id = auth()->user()->id;
+        // dd($user_id);
+        $reviews = Review::where('user_id',$user_id)->get();
+        return view('user.my-profile',compact('reviews'));
     }
 }

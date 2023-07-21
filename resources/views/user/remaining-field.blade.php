@@ -31,11 +31,10 @@
                                 @endif --}}
                             </div>
 
-                            <form class="padding" method="POST" action="{{ route('remaining.details.post') }}"
-                                enctype="multipart/form-data">
+                            <form class="padding" method="POST" action="{{ route('remaining.details.post') }}" autocomplete="on"                      enctype="multipart/form-data">
                                 @csrf
                                 <div>
-                                    <input type="hidden" value="{{ Auth::user()->id }}" name="user_id">
+                                    <input type="hidden" value="{{ Auth::user()->id }}" name="user_id" autofocus>
                                 </div>
 
                                 <div class="mb-4 form-outline">
@@ -57,7 +56,7 @@
                                 <div class="mb-4 form-outline">
                                     <x-input id="professional_license_number" class="block w-full mt-1 form-control"
                                         type="text" name="professional_license_number" :value="old('professional_license_number')"
-                                        placeholder="Professional License Number" required />
+                                        placeholder="Professional License Number" required autofocus />
                                     <x-label for="professional_license_number" class="form-label">Professional License Number<span class="mandatory">*</span></x-label>
                                     @if ($errors->has('professional_license_number'))
                                         <div class="alert alert-danger">
@@ -73,7 +72,7 @@
 
                                 <div class="mb-4 ">
                                     <select id="state_of_licensure" class="form-select form-control"
-                                        name="state_of_licensure" required>
+                                        name="state_of_licensure" required autofocus >
                                         <option value="other">Select State Of Licensure</option>
 
                                         @foreach ($state_of_licensures as $state_of_licensure )
@@ -109,7 +108,7 @@
                                                     <input id="area_of_expertise{{ $index }}"
                                                         class="form-check-input" type="checkbox"
                                                         name="areas_of_expertise[]" value="{{ $expertise }}">
-                                                    <label for="area_of_expertise{{ $index }}"
+                                                    <label for="area_of_expertise{{ $index }} autofocus"
                                                         class="form-check-label">{{ $expertise }}</label>
                                                 </div>
                                             </div>
@@ -117,11 +116,11 @@
                                         
                                         <div class="mb-2 col-lg-6 col-md-6">
                                             <div class="form-check">
-                                                <input id="area_of_expertise_other" class="form-check-input" type="checkbox">
+                                                <input id="area_of_expertise_other" class="form-check-input" type="checkbox" autofocus>
                                                 <label for="area_of_expertise_other">Other</label>
                                             </div>
                                             <div id="otherInputContainer" style="display: none;" class="mt-2">
-                                                <input type="text" class="form-control-check" name="areas_of_expertise[]" id="otherInput">
+                                                <input type="text" class="form-control-check" name="areas_of_expertise[]" id="otherInput" autofocus>
                                                 @if ($errors->has('areas_of_expertise'))
                                                 <div class="alert alert-danger">
                                                     <ul>
@@ -162,7 +161,7 @@
                                           
                                         <div class="fileuploadpic">
                                             <span>Upload Photo</span>
-                                            <input id="profile_picture" class="form-control" type="file" name="profile_picture" onchange="previewImage(event)" />
+                                            <input id="profile_picture" class="form-control" type="file" name="profile_picture" onchange="previewImage(event)" autofocus />
                                         </div>
 
                                     </div>
@@ -193,7 +192,7 @@
                                     <div class="mb-4 col-sm-6">
                                         <x-label for="country-dropdown" >Country<span class="mandatory">*</span></x-label>
                                         {{-- {{ dd($countries )}} --}}
-                                        <select id="country-dropdown" id="country" class="form-select form-control" name="country">
+                                        <select id="country-dropdown" id="country" class="form-select form-control" name="country" autofocus>
                                             <option value="">-- Select Country --</option>
                                             @foreach ($countries as $data)
                                                 <option value="{{ $data->id }}">
@@ -207,7 +206,7 @@
                                     </div>
                                     <div class="mb-4 col-sm-6">
                                         <x-label for="state-dropdown" >State<span class="mandatory">*</span></x-label>
-                                        <select id="state-dropdown" id="state" class="form-select form-control" name="state">
+                                        <select id="state-dropdown" id="state" class="form-select form-control" name="state" autofocus >
                                         <option selected>--Select State--</option>
                                         </select>
                                         @if ($errors->has('state'))
@@ -220,7 +219,7 @@
                                 <div class="row">
                                     <div class="mb-4 col-sm-6">
                                         <x-label for="city-dropdown" >City<span class="mandatory">*</span></x-label>
-                                        <select id="city-dropdown" class="form-select form-control" name="city">
+                                        <select id="city-dropdown" class="form-select form-control" name="city" autofocus>
                                         <option selected>--Select City--</option>
                                         </select>
                                         @if ($errors->has('city'))
@@ -231,7 +230,7 @@
                                         <label for=""></label>
                                         <div class="form-outline">                                        
                                             <x-input id="postal_code" class="form-control" type="text"
-                                                name="postal_code" :value="old('postal_code')" placeholder="Postal Code" required />  
+                                                name="postal_code" :value="old('postal_code')" placeholder="Postal Code" required autofocus />  
                                                 <x-label for="postal_code" class="form-label" >Postal Code<span class="mandatory">*</span></x-label>                                     
                                             @if ($errors->has('postal_code'))
                                                 <span class="text-danger">{{ $errors->first('postal_code') }}</span>

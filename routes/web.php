@@ -40,10 +40,10 @@ Route::post('register-step-one-post',[TempRegisterController::class,'postRegiste
 
 // Route::view('thankyou','strip.thankyou')->name('thankyou');
 Route::view('dashboard1','dashboard1')->name('dashboard1');
-Route::post('single-charge',[SubscriptionController::class,'singleCharge'])->name('single.charge');
-Route::get('single-charge',[SubscriptionController::class,'singleChargeGet'])->name('single.charge');
-Route::get('plans/create',[SubscriptionController::class,'showPlanForm'])->name('plans.create');
-Route::post('plans/store',[SubscriptionController::class,'savePlan'])->name('plans.store');
+// Route::post('single-charge',[SubscriptionController::class,'singleCharge'])->name('single.charge');
+// Route::get('single-charge',[SubscriptionController::class,'singleChargeGet'])->name('single.charge');
+// Route::get('plans/create',[SubscriptionController::class,'showPlanForm'])->name('plans.create');
+// Route::post('plans/store',[SubscriptionController::class,'savePlan'])->name('plans.store');
 Route::get('plans',[SubscriptionController::class,'allPlan'])->name('plans.all');
 Route::get('plans/checkout/{planId}',[SubscriptionController::class,'checkout'])->name('plans.checkout');
 Route::post('plans/save-remaning-data',[SubscriptionController::class,'SaveRemainingData'])->name('plans.save.remaning.data');
@@ -67,6 +67,7 @@ Route::get('user-Dashboard-edit',[UserDashboardController::class,'edit'])->name(
 Route::put('user-Dashboard-update',[UserDashboardController::class,'update'])->name('user.Dashboard.update');
 Route::get('my-subscription',[UserDashboardController::class,'mySubscription'])->name('user.my.subscription');
 Route::get('my-reviews',[UserDashboardController::class,'myReviews'])->name('user.my.reviews');
+Route::get('my-profile',[UserDashboardController::class,'myProfile'])->name('user.Dashboard.my.profile');
 
 //State Country city Dropdown
 Route::get('dropdown', [DropdownController::class, 'index']);
@@ -97,10 +98,13 @@ Route::prefix('admin')->group(function () {
     Route::get('dashboard', [HomeController::class, 'adminHome'])->name('admin.dashboard')->middleware('is_admin');
     Route::get('pmhnps', [HomeController::class, 'adminPmhnps'])->name('admin.pmhnps')->middleware('is_admin');
     Route::get('patients', [HomeController::class, 'adminPatients'])->name('admin.patients')->middleware('is_admin');
-    Route::resource('pmhnps',PmhnpsController::class);
+    Route::resource('pmhnps',PmhnpsController::class)->middleware('is_admin');
+    Route::resource('temp-pmhnps',TempRegisterController::class)->middleware('is_admin');
 
-    // Route::get('temp-pmhnps-index',[TempRegisterController::class,'tempPmhnpsIndex'])->name('temp.pmhnps.index');
-    Route::resource('temp-pmhnps',TempRegisterController::class);
+   Route::post('single-charge',[SubscriptionController::class,'singleCharge'])->name('single.charge')->middleware('is_admin');
+Route::get('single-charge',[SubscriptionController::class,'singleChargeGet'])->name('single.charge')->middleware('is_admin');
+Route::get('plans/create',[SubscriptionController::class,'showPlanForm'])->name('plans.create')->middleware('is_admin');
+Route::post('plans/store',[SubscriptionController::class,'savePlan'])->name('plans.store')->middleware('is_admin');
 
 });
 

@@ -2,7 +2,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="{{ route('admin.dashboard') }}" class="brand-link">
-        <img src="{{ asset('dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
+        <img src="{{ asset('src/img/logo.jpg') }}" alt="AdminLTE Logo"
             class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light">Admin Dashboard</span>
     </a>
@@ -35,14 +35,14 @@
                 <li class="nav-item menu-open">
                     <a href="{{ route('pmhnps.index') }}" class="nav-link active">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
-                        <p> PMHNPS Section </p>
+                        <p> All PMHNPS  </p>
                     </a>
                    
 
                 </li>   <li class="nav-item menu-open">
                     <a href="{{ route('temp-pmhnps.index') }}" class="nav-link active">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
-                        <p> Temerory Registor </p>
+                        <p> Temporary User </p>
                     </a>
                    
 
@@ -51,6 +51,20 @@
                     <a href="{{ route('admin.patients') }}" class="nav-link active">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p> Patients  </p>
+                    </a>
+
+                </li>  --}}
+                {{-- <li class="nav-item menu-open">
+                    <a href="#" class="nav-link active">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p> All Plans  </p>
+                    </a>
+
+                </li>  --}}
+                {{-- <li class="nav-item menu-open">
+                    <a href="{{ route('plans.create') }}" class="nav-link active">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p> Create Plans  </p>
                     </a>
 
                 </li> --}}

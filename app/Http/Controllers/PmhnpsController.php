@@ -52,9 +52,9 @@ class PmhnpsController extends Controller
 
     public function edit( Request $request , $id)
     {
-        $pmhnp = User::findOrFail($id);
+        $user = User::findOrFail($id);
         $id = Auth::user()->id;
-        $user = Auth::user();
+        // $user = Auth::user();
         $data = RemainingDetails::where('user_id', $id)->get();
         $remaining_filed = json_decode($data, true);
         // $remaining_filed =  $remaining_filed[0];
@@ -71,25 +71,66 @@ class PmhnpsController extends Controller
             ->get(["name", "id"]);
         $countries= Country::get(["name", "id"]);
         // return view('Admin.pmhnps.edit',['pmhnp'=>$pmhnp]);
-        return view('Admin.pmhnps.edit', compact('pmhnp','user', 'remaining_filed','cities','states','countries','state_of_licensures'));
+        return view('Admin.pmhnps.edit', compact('user', 'remaining_filed','cities','states','countries','state_of_licensures'));
 
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  PmhnpRequest  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function update(PmhnpRequest $request, $id)
+ 
+    public function update(Request $request)
     {
-        $pmhnp = User::findOrFail($id);
-		$pmhnp->name = $request->input('name');
-		$pmhnp->email = $request->input('email');
-        $pmhnp->save();
+        // dd($request->all());
 
-        return to_route('pmhnps.index');
+        $validator=  $request->validate([
+            'address_line1' => 'required',
+           'address_line2'=> 'required ',
+           'country'=> 'required ',
+           'state'=> 'required ',
+           'city'=> 'required ',
+           'city'=> 'required ',
+           'postal_code'=> 'required | digits:5',
+
+        ]);
+
+        $user = Auth::user();
+
+
+
+
+          // Image Upload
+       if ($request->hasFile('profile_picture')) {
+        $profile_picture_name = $request->file('profile_picture')->getClientOriginalName();
+
+
+        $ImagePath = $request->file('profile_picture')->storeAs('public/Profile-Picture',$profile_picture_name);
+
+       }
+       $defaultImagePath = '';
+
+        $user->name = $request->name;
+        $user->professional_title = $request->professional_title;
+        $user->phone_number = $request->phone_number;
+        $user->professional_license_number = $request->professional_license_number;
+        $user->state_of_licensure = $request->state_of_licensure;
+        $user->areas_of_expertise = implode(', ',$request->areas_of_expertise); 
+        $user->bio = $request->bio;
+        $user->profile_picture = ($request->hasFile('profile_picture'))?$ImagePath :$defaultImagePath;
+        $user->work_address = $request->work_address;
+        $user->address_line1 = $request->address_line1;
+        $user->address_line2 = $request->address_line2;
+        $user->country = $request->country;
+        $user->state = $request->state;
+        $user->city = $request->city;
+        $user->postal_code = $request->postal_code;
+
+
+
+        $user->save();
+
+        // dd($user->profile_picture);
+
+
+        return to_route('pmhnps.index')
+            ->with('success', 'User updated successfully');
     }
 
     /**
