@@ -33,6 +33,11 @@
                                 <form class="padding" method="POST" action="{{ route('user.Dashboard.update') }}" enctype="multipart/form-data">
                                     @csrf
                                     @method('PUT')
+
+                                    <div class="mb-4 form-outline">  
+                                        <input type="hidden" name="user_id" value="{{ $user->id }}">
+                                    </div>
+
                                     <!-- Name -->
             
                                     <div class="mb-4 form-outline">  
