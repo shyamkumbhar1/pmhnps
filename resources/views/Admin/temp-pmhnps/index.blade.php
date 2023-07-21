@@ -39,12 +39,14 @@
 														{!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
 													{!! Form::close() !!} --}}
 
-													<form action="{{ route('temp-pmhnps.destroy',$pmhnp->id) }}" method="Post">
-														{{-- <a class="btn btn-primary" href="{{ route('companies.edit',$company->id) }}">Edit</a> --}}
+													<form id="deleteForm" action="{{ route('temp-pmhnps.destroy', $pmhnp->id) }}" method="POST">
 														@csrf
 														@method('DELETE')
-														<button type="submit" class="btn btn-danger">Delete</button>
+														<button type="submit" class="btn btn-danger" onclick="return confirmDelete()">Delete</button>
 													</form>
+													
+													
+													
 												</div>
 											</td>
 										</tr>
@@ -63,4 +65,9 @@
 
 
 @section('scripts')
+<script>
+	function confirmDelete() {
+		return confirm('Are you sure you want to delete this item?');
+	}
+</script>
 
