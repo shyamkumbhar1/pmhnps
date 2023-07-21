@@ -8,7 +8,7 @@
 
         <div class="mt-5 mb-4 row">
             <div class="col-md-12">
-                <h2 class="mb-4 text-center">Update your Profile</h2>
+                <h2 class="mb-4 text-center">Update your Profile </h2>
                 <!-- Collapsible wrapper -->
 
                 <div class="row">
@@ -87,7 +87,7 @@
                                     <select id="state_of_licensure" class="form-select form-control" name="state_of_licensure" required>
                                         <option value="">Select State of Licensure</option>
                                         @foreach ($state_of_licensures as $state_of_licensure )
-                                        <option value="{{ $state_of_licensure['name'] }}" selected>{{ $state_of_licensure['name'] }} </option>                                                 --}}
+                                        <option value="{{ $state_of_licensure['name'] }}">{{ $state_of_licensure['name'] }} </option>                                                 --}}
                                          @endforeach
                                     </select>            
                                     @if ($errors->has('state_of_licensure'))
@@ -189,42 +189,40 @@
                                     @endif
                                 </div>
 
+<input type="hidden" value="{{ $user->state }}" id="editstate">
+<input type="hidden" value="{{ $user->city }}" id="editcity">
                                 <div class="row">
-                                    <div class="mb-4 col-sm-12">
-                                        <h6>[Note : Please choose country once more if you updated your state, city, or country.]</h6>
-                                    </div>
                                     <div class="mb-4 col-sm-6">
                                         <x-label for="country-dropdown" :value="__('Country')" />
                                         <select id="country-dropdown" id="country" class="form-select form-control" name="country">
-                                          
-                                                
                                             <option value="">-- Select Country --</option>
-                                               
-                                             
-                                                                                       
-                                            @foreach ($countries as $data)
-                                         
-                                            <option value="{{ $data->id }}" @if ($data->id == $user->country) selected @endif>{{ $data->name }}</option>
-                                            @endforeach
+                                             @php
+                                             $old=$user->country;
+                                             @endphp
+                        @foreach ($countries as $value =>$data)
+
+                             <option value="{{ $data->id }}" 
+                                {{ $old == $data->id ? 'selected' : 'ddd' }}>
+                                {{ $data->name }}
+                            </option>
+                        @endforeach
+
+
+                                            
                                         </select>
                                         @if ($errors->has('country'))
                                             <span class="text-danger">{{ $errors->first('country') }}</span>
                                         @endif
                                     </div>
                                     <div class="mb-4 col-sm-6">
-                                        {{-- {{ dd($old_state->name) }} --}}
                                         <x-label for="state-dropdown" :value="__('State')" />
                                         <select id="state-dropdown" id="state" class="form-select form-control" name="state">
-                                        <option value="{{$user->state  }}" >{{ $old_state->name }}</option>
-                                        
+                                        <option selected>--Select State--</option>
                                         </select>
                                         @if ($errors->has('state'))
                                             <span class="text-danger">{{ $errors->first('state') }}</span>
                                         @endif
                                     </div>
-                                    
-
-                                    
                                 </div>
         
                                 
@@ -232,8 +230,7 @@
                                     <div class="mb-4 col-sm-6">
                                         <x-label for="city-dropdown" :value="__('City')" />
                                         <select id="city-dropdown" class="form-select form-control" name="city">
-                                        <option value="{{ $user->city }}"  selected>{{ $old_city->name }}</option>
-                                
+                                        <option selected>--Select City--</option>
                                         </select>
                                         @if ($errors->has('city'))
                                             <span class="text-danger">{{ $errors->first('city') }}</span>
@@ -295,7 +292,9 @@
 </script>
 <script>
     $(document).ready(function() {
-
+        setTimeout(function() {
+        $("#country-dropdown").trigger('change');
+        }, 1000);
         /*------------------------------------------
         --------------------------------------------
         Country Dropdown Change Event
@@ -313,11 +312,17 @@
                 },
                 dataType: 'json',
                 success: function(result) {
+
+                    var editstate = $("#editstate").val();
                     $('#state-dropdown').html(
                         '<option value="">-- Select State --</option>');
                     $.each(result.states, function(key, value) {
+                        var sel = '';
+                        if(editstate==value.id){ var sel = 'selected';
+                        setTimeout(function() {
+                        $("#state-dropdown").trigger('change'); }, 1000); }
                         $("#state-dropdown").append('<option value="' + value
-                            .id + '">' + value.name + '</option>');
+                            .id + '" '+sel+'>' + value.name + '</option>');
                     });
                     $('#city-dropdown').html('<option value="">-- Select City --</option>');
                 }
@@ -341,10 +346,14 @@
                 },
                 dataType: 'json',
                 success: function(res) {
+                    var editcity = $("#editcity").val();
+                    console.log('editcity',editcity)
                     $('#city-dropdown').html('<option value="">-- Select City --</option>');
                     $.each(res.cities, function(key, value) {
+                        var sel = '';
+                        if(editcity==value.id){ var sel = 'selected'; }
                         $("#city-dropdown").append('<option value="' + value
-                            .id + '">' + value.name + '</option>');
+                            .id + '" '+sel+' >' + value.name + '</option>');
                     });
                 }
             });
