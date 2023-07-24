@@ -60,8 +60,11 @@ class PmhnpsController extends Controller
 
     public function edit( Request $request , $id)
     {
+        
+
         $user = User::findOrFail($id);
-        $id = Auth::user()->id;
+        // dd($user->id);
+        // $id = Auth::user()->id;
         // $user = Auth::user();
         $data = RemainingDetails::where('user_id', $id)->get();
         $remaining_filed = json_decode($data, true);

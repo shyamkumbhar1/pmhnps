@@ -86,10 +86,12 @@
                                     {{-- <label for="state_of_licensure">State of Licensure</label> --}}            
                                     <select id="state_of_licensure" class="form-select form-control" name="state_of_licensure" required>
                                         <option value="">Select State of Licensure</option>
-                                        @foreach ($state_of_licensures as $state_of_licensure )
-                                        <option value="{{ $state_of_licensure['name'] }}">{{ $state_of_licensure['name'] }} </option>                                                 --}}
-                                         @endforeach
-                                    </select>            
+                                        @foreach ($state_of_licensures as $state_of_licensure)
+                                            <option value="{{ $state_of_licensure['name'] }}">{{ $state_of_licensure['name'] }}</option>
+                                        @endforeach
+                                        <option value="Other">Other</option>
+                                    </select>
+                                              
                                     @if ($errors->has('state_of_licensure'))
                                         <span class="text-danger">{{ $errors->first('state_of_licensure') }}</span>
                                     @endif

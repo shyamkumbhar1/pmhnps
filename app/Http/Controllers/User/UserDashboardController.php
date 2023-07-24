@@ -53,8 +53,11 @@ class UserDashboardController extends Controller
 
     public function edit(Request $request)
     {
-
+        
+       
+        
         $id = Auth::user()->id;
+
         $user = Auth::user();
         $data = RemainingDetails::where('user_id', $id)->get();
         $remaining_filed = json_decode($data, true);
@@ -79,8 +82,9 @@ class UserDashboardController extends Controller
 
     public function update(Request $request)
     {
-        // dd($request->all());
-
+       
+      
+     
         $validator=  $request->validate([
             'address_line1' => 'required',
            'address_line2'=> 'required ',
@@ -91,12 +95,20 @@ class UserDashboardController extends Controller
            'postal_code'=> 'required | digits:5',
 
         ]);
+      
+        if ($request->user_id) {
+            // return "admin";
+        $user = User::where('id',$request->user_id)->first();
 
+
+        } else {
+            // return "user";
         $user = Auth::user();
 
 
 
-
+        }
+        
           // Image Upload
        if ($request->hasFile('profile_picture')) {
         $profile_picture_name = $request->file('profile_picture')->getClientOriginalName();
@@ -130,10 +142,19 @@ class UserDashboardController extends Controller
         $user->save();
 
         // dd($user->profile_picture);
+        // dd($user);
+        if ($request->user_id) {
+        
+            return to_route('pmhnps.index')->with('success', 'User updated successfully');
+
+        } else {
+      
+            return to_route('user.Dashboard')->with('success', 'User updated successfully');
 
 
-        return to_route('user.Dashboard')
-            ->with('success', 'User updated successfully');
+        }
+    
+        
     }
 
 

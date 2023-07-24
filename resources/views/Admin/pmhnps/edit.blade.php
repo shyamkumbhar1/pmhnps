@@ -33,6 +33,11 @@
                                 <form class="padding" method="POST" action="{{ route('user.Dashboard.update') }}" enctype="multipart/form-data">
                                     @csrf
                                     @method('PUT')
+
+                                    <div class="mb-4 form-outline">  
+                                        <input type="hidden" name="user_id" value="{{ $user->id }}">
+                                    </div>
+
                                     <!-- Name -->
             
                                     <div class="mb-4 form-outline">  
@@ -83,13 +88,18 @@
 
             
                                     <div class="mb-4 ">
-                                        {{-- <label for="state_of_licensure">State of Licensure</label> --}}            
+                                        <label for="state_of_licensure">State of Licensure</label>            
                                         <select id="state_of_licensure" class="form-select form-control" name="state_of_licensure" required>
                                             <option value="">Select State of Licensure</option>
-                                            @foreach ($state_of_licensures as $state_of_licensure )
-                                            <option value="{{ $state_of_licensure['name'] }}">{{ $state_of_licensure['name'] }} </option>                                                 --}}
+                                            @foreach ($state_of_licensures as $state_of_licensure)
+                                                {{-- <option value="{{ $state_of_licensure['name'] }}" selected >{{ $state_of_licensure['name'] }}</option> --}}
+                                                <option value="{{ $state_of_licensure['name'] }}" @if ($state_of_licensure['name'] === $user->state_of_licensure) selected @endif>
+                                                    {{ $state_of_licensure['name'] }}
+                                                </option>
                                             @endforeach
-                                        </select>            
+                                            <option value="Other">Other</option>
+                                        </select>
+                                                  
                                         @if ($errors->has('state_of_licensure'))
                                             <span class="text-danger">{{ $errors->first('state_of_licensure') }}</span>
                                         @endif
@@ -140,7 +150,12 @@
                                             <span class="text-danger">{{ $errors->first('bio') }}</span>
                                         @endif
                                     </div>
-
+                                    
+                                    <div class="d-flex justify-content-center">
+                                        <div class="mb-4 form-outline">
+                                          <img src="{{ asset($user->profile_picture) }}" alt="profile Image" class="rounded-circle" height="100" alt="" loading="lazy">
+                                        </div>
+                                      </div>
 
                                     <div class="row">
                                         <div class="mb-4 col-sm-6">
