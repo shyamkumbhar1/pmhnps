@@ -33,13 +33,29 @@ use Illuminate\Support\Facades\Crypt;
          // $users = DB::table('users')->paginate(4) ;
 
 
-        //$users = DB::select("SELECT u.*,(SELECT AVG(rating) FROM reviews WHERE user_id=u.id) as reviews,(SELECT count(id) FROM reviews WHERE user_id=u.id) as reviewcnt FROM `users` u"); 
+        //$users = DB::select("SELECT u.*,(SELECT AVG(rating) FROM reviews WHERE user_id=u.id) as reviews,(SELECT count(id) FROM reviews WHERE user_id=u.id) as reviewcnt FROM `users` u")->paginate(4); 
 
-$users = DB::table('users as u')
-    ->selectRaw('u.*, (SELECT AVG(rating) FROM reviews WHERE user_id = u.id) as reviews, 
-                (SELECT COUNT(id) FROM reviews WHERE user_id = u.id) as reviewcnt')
-    ->paginate(4);
+// $users = DB::table('users as u')
+//     ->selectRaw('u.*, (SELECT AVG(rating) FROM reviews WHERE user_id = u.id) as reviews, 
+//                 (SELECT COUNT(id) FROM reviews WHERE user_id = u.id) as reviewcnt')
+//     ->paginate(4);
         
+
+$usersx = DB::table('users as u')
+    ->select('u.*')
+    ->selectSub(function ($query) {
+        $query->from('reviews')
+            ->whereRaw('user_id = u.id')
+            ->selectRaw('AVG(rating)');
+    }, 'reviews')
+    ->selectSub(function ($query) {
+        $query->from('reviews')
+            ->whereRaw('user_id = u.id')
+            ->selectRaw('COUNT(id)');
+    }, 'reviewcnt')->where('is_admin','=' ,"0");
+ 
+$paginatedResults = $usersx->paginate(5);
+
 
 //        echo  $users[0]->id;
 // die;
@@ -103,7 +119,7 @@ $users = DB::table('users as u')
       //   $reviews = Review::where('user_id','78')->get();
       //   $reviewsCount = $reviews->count();
 
-    return view('home.find_pmhnps', compact('states','users'));
+    return view('home.find_pmhnps', compact('states','paginatedResults'));
     }
 
     public function getCitiesByState($state)

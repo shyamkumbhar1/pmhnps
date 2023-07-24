@@ -121,7 +121,7 @@
 
         <!-- PMHNP list -->
           
-         @foreach($users as $user)
+         @foreach($paginatedResults as $user)
         <div class="pmhnplist">
           <div class="pmhnp-probox">
             <div class="pmhnppicbox">
@@ -181,7 +181,7 @@
 
           <nav aria-label="Page navigation example">
             <ul class="pagination pg-blue justify-content-end">
-              <li class="page-item"><a class="page-link">   ..
+              <li class="page-item"><a class="page-link">{{ $paginatedResults->links() }}  
 
 </a></li>
                

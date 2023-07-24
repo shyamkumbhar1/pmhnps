@@ -124,6 +124,10 @@ Route::post('/register', [ListingPmhnpsController::class, 'review_insert']);
 // route::view('home/home.how_it_work','home/home.how_it_work')->name('home.home.how_it_work');
 route::view('home/about','home/about')->name('home.about');
 route::view('home/contact','home/contact')->name('home.contact');
+route::view('home/terms','home/terms')->name('home.terms');
+route::view('home/privacy','home/privacy')->name('home.privacy');
+
+
 
 
 Route::view('test','test');

@@ -55,7 +55,7 @@
           
             <div class="mb-4 form-row form-outline">
                 <label for="card-element form-label">Credit or debit card</label>
-                <div id="card-element"  class="form-control">
+                <div id="card-element" style="border: 1px solid #d7cfcf;" class="form-control">
                 </div>
                 <!-- Used to display form errors. -->
                 <div id="card-errors" role="alert"></div>

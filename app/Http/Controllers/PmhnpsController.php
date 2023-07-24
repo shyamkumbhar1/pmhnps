@@ -12,6 +12,8 @@ use App\Models\RemainingDetails;
 use App\Http\Requests\PmhnpRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Review;
+
 
 class PmhnpsController extends Controller
 {
@@ -20,7 +22,7 @@ class PmhnpsController extends Controller
     {
         // $pmhnps= User::all();
         // $pmhnps = User::orderBy('id','desc')->paginate(5);
-        $pmhnps = User::where('is_admin', null)->orderBy('id', 'desc')->paginate(10);
+        $pmhnps = User::where('is_admin', 0)->orderBy('id', 'desc')->paginate(10);
         // dd($pmhnps);
         return view('Admin.pmhnps.index', compact('pmhnps'));
     }
@@ -46,7 +48,13 @@ class PmhnpsController extends Controller
     public function show($id)
     {
         $pmhnp = User::findOrFail($id);
-        return view('Admin.pmhnps.show',['pmhnp'=>$pmhnp]);
+        $reviews = Review::where('user_id', $id)->get();
+
+
+   
+            $reviewsCount = $reviews->count();
+
+        return view('Admin.pmhnps.show',['pmhnp'=>$pmhnp,'reviews'=>$reviews,'reviewsCount'=>$reviewsCount]);
     }
 
 

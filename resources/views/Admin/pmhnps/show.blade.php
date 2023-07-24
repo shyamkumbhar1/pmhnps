@@ -1,7 +1,14 @@
-@extends('default')
+@extends('Admin.layouts.app')
 
 @section('content')
+ hi
+@endsection
 
-	{{ $pmhnp->id }}
 
-@stop
+@section('scripts')
+<script>
+	function confirmDelete() {
+		return confirm('Are you sure you want to delete this item?');
+	}
+</script>
+

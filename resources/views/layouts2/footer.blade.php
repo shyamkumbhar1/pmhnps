@@ -5,7 +5,7 @@
         <div class="text-center d-sm-block text-sm-center">
           <span> © 2023 </span> <a class="text-dark" href="#">PMHNP.com</a>
         </div>
-        <div class="text-center d-sm-block text-sm-center"> | <a href="#">PRIVACY POLICY</a> | <a  href="#">TERMS OF USE</a>
+        <div class="text-center d-sm-block text-sm-center"> | <a href="{{ route('home.privacy') }}">PRIVACY POLICY</a> | <a  href="{{ route('home.terms') }}">TERMS OF USE</a>
           
         </div>
       </div>

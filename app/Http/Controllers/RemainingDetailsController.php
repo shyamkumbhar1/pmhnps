@@ -70,13 +70,13 @@ class RemainingDetailsController extends Controller
        }
 
         $defaultImagePath = "storage/Profile-Picture/default-image.jfif";
-<<<<<<< HEAD
+// <<<<<<< HEAD
         $value_areas_of_expertise=$request->areas_of_expertise;
          $implode_areas_of_expertise=implode(', ',$value_areas_of_expertise);
           $trim_areas_of_expertis=rtrim($implode_areas_of_expertise, ', ');
-=======
+// =======
 
->>>>>>> f0475ebe9c5b48cc175b0ec7d851ed00e3193311
+// >>>>>>> f0475ebe9c5b48cc175b0ec7d851ed00e3193311
         $RemainingDetails = RemainingDetails::create(
             [
                 'user_id' => $request->user_id,

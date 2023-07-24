@@ -14,7 +14,10 @@
                             </li>
                             <li><i class="fa fa-chevron-right" aria-hidden="true"></i></li>
                             <li>
-                                <a href="{{ route('plans.all') }}"> <span><i class="fa fa-check"
+                               <!--  <a href="{{ route('plans.all') }}"> <span><i class="fa fa-check"
+                                            aria-hidden="true"></i></span> Step 2 </a> -->
+
+                                             <a href="#"> <span><i class="fa fa-check"
                                             aria-hidden="true"></i></span> Step 2 </a>
                             </li>
                             <li><i class="fa fa-chevron-right" aria-hidden="true"></i></li>
