@@ -30,7 +30,7 @@
                                 </div><br />
                             @endif
 
-                            <form class="padding" method="POST" action="{{ route('user.Dashboard.update') }}" enctype="multipart/form-data">
+                            <form class="padding" method="Post" action="{{ route('user.Dashboard.update') }}" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 <!-- Name -->
@@ -86,11 +86,19 @@
                                     {{-- <label for="state_of_licensure">State of Licensure</label> --}}            
                                     <select id="state_of_licensure" class="form-select form-control" name="state_of_licensure" required>
                                         <option value="">Select State of Licensure</option>
+                                        @php
+                                             $old=$user->state_of_licensure;
+                                             @endphp
                                         @foreach ($state_of_licensures as $state_of_licensure)
-                                            <option value="{{ $state_of_licensure['name'] }}">{{ $state_of_licensure['name'] }}</option>
+                                            <option value="{{ $state_of_licensure['name'] }}"
+                                {{ $old == $state_of_licensure['name'] ? 'selected' : 'ddd' }}
+
+                                            >{{ $state_of_licensure['name'] }}</option>
                                         @endforeach
                                         <option value="Other">Other</option>
                                     </select>
+
+
                                               
                                     @if ($errors->has('state_of_licensure'))
                                         <span class="text-danger">{{ $errors->first('state_of_licensure') }}</span>
@@ -145,7 +153,26 @@
                                 <div class="row">
                                     <div class="mb-4 col-sm-6">
                                         <x-label for="profile_picture" :value="__('Profile Picture')" />
-                                        <img class="imgpreview" id="preview" src="#" alt="Preview" style="display: none; ">
+                                          
+ @php
+$img_call = $user->profile_picture;
+if($img_call=='')
+{
+@endphp
+ 
+  <img class="imgpreview" id="preview" src="{{asset('storage/Profile-Picture/default-image.jfif')  }}" alt="Preview"  style="display: block;">
+
+@php
+}else{
+@endphp
+  <img class="imgpreview" id="preview" src="{{asset($user->profile_picture)  }}" alt="Preview"  style="display: block;">
+  @php
+}
+@endphp
+
+
+
+                                      
                                         @if ($errors->has('profile_picture'))
                                             <span class="text-danger">{{ $errors->first('profile_picture') }}</span>
                                         @endif
@@ -156,7 +183,8 @@
                                           
                                         <div class="fileuploadpic">
                                             <span>Upload Photo</span>
-                                            <input id="profile_picture" class="form-control" type="file" name="profile_picture" onchange="previewImage(event)" />
+                                            <input id="profile_picture" class="form-control" type="file" name="profile_picture"   onchange="previewImage(event)" />
+                                            <input   class="form-control" type="hidden" name="profile_picture1" value="{{asset($user->profile_picture)  }}" onchange="previewImage(event)" />
                                         </div>
 
                                     </div>
@@ -241,9 +269,10 @@
                                     <div class="mb-4 col-sm-6">
                                         <label for=""></label>
                                         <div class="form-outline">           
-                                            <x-input id="postal_code" class="form-control" type="text" name="postal_code"
-                                                :value="old('postal_code', $user->postal_code)" placeholder="Postal Code" required />
-                                                <x-label for="postal_code" :value="__('Postal Code')" class="form-label"/> 
+                                            <x-input id="inputField" class="form-control" type="text" name="postal_code"
+                                                :value="old('postal_code', $user->postal_code)" placeholder="Postal Code" required maxlength="5"   />
+
+                                                <x-label for="postal_code" :value="__('Postal Code')" class="form-label"/>  <span>5 Digit Only</span>
                                                 @if ($errors->has('postal_code'))
                                                     <span class="text-danger">{{ $errors->first('postal_code') }}</span>
                                                 @endif
@@ -375,4 +404,5 @@
     }
 </script>
 
+ 
 @endsection

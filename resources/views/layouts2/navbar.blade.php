@@ -46,7 +46,28 @@
           <a class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#" id="navbarDropdownMenuAvatar"
               role="button" data-mdb-toggle="dropdown" aria-expanded="false">
               {{-- <img src="{{ asset('src/img/profilpic.jpg') }}" class="rounded-circle" height="25" alt="" loading="lazy" /> --}}
-            <img src="{{ asset(auth()->user()->profile_picture) }}" alt="profile Image" class="rounded-circle" height="25" alt="" loading="lazy">
+
+
+           @php
+$img_call = auth()->user()->profile_picture;
+if($img_call=='')
+{
+@endphp
+ 
+  <img src="{{asset('storage/Profile-Picture/default-image.jfif')  }}" alt="profile Image" class="rounded-circle" height="25" alt="" loading="lazy">
+@php
+}else{
+@endphp
+ <img src="{{ asset(auth()->user()->profile_picture) }}" alt="profile Image" class="rounded-circle" height="25" alt="" loading="lazy">
+
+  
+  @php
+}
+@endphp
+
+
+
+            
             {{-- <img src="{{ asset('storage/Profile-Picture\1.jfif') }}" alt="dfggg"> --}}
               {{-- <h1>{{ dd(Auth::user()->profile_picture,Auth::user()->name) }}</h1> --}}
               

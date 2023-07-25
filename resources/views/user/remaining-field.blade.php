@@ -150,6 +150,23 @@
                                 <div class="row">
                                     <div class="mb-4 col-sm-6">
                                         <x-label for="profile_picture" :value="__('Profile Picture')" />
+                                          @php
+$img_call = auth()->user()->profile_picture;
+if($img_call=='')
+{
+@endphp
+ 
+  <img class="imgpreview" id="preview" src="{{asset('storage/Profile-Picture/default-image.jfif')  }}" alt="Preview"  style="display: block;">
+@php
+}else{
+@endphp
+ 
+  <img class="imgpreview" id="preview" src="{{ asset(auth()->user()->profile_picture) }}" alt="Preview"  style="display: block;">
+  
+  @php
+}
+@endphp
+
                                         <img class="imgpreview" id="preview" src="#" alt="Preview" style="display: none; ">
                                         @if ($errors->has('profile_picture'))
                                             <span class="text-danger">{{ $errors->first('profile_picture') }}</span>
@@ -230,8 +247,8 @@
                                         <label for=""></label>
                                         <div class="form-outline">                                        
                                             <x-input id="postal_code" class="form-control" type="text"
-                                                name="postal_code" :value="old('postal_code')" placeholder="Postal Code" required autofocus />  
-                                                <x-label for="postal_code" class="form-label" >Postal Code<span class="mandatory">*</span></x-label>                                     
+                                                name="postal_code" :value="old('postal_code')" placeholder="Postal Code" required autofocus maxlength="5" />  
+                                                <x-label for="postal_code" class="form-label" >Postal Code<span class="mandatory">*</span></x-label> <span>5 Digit Only</span>                                    
                                             @if ($errors->has('postal_code'))
                                                 <span class="text-danger">{{ $errors->first('postal_code') }}</span>
                                             @endif

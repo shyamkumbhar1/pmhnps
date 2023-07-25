@@ -128,7 +128,8 @@ class UserDashboardController extends Controller
         $user->state_of_licensure = $request->state_of_licensure;
         $user->areas_of_expertise = implode(', ',$request->areas_of_expertise); 
         $user->bio = $request->bio;
-        $user->profile_picture = ($request->hasFile('profile_picture'))?$ImagePath :$defaultImagePath;
+        $profile_picture1 = $request->profile_picture1;
+        $user->profile_picture = ($request->hasFile('profile_picture'))?$ImagePath :$profile_picture1;
         $user->work_address = $request->work_address;
         $user->address_line1 = $request->address_line1;
         $user->address_line2 = $request->address_line2;
