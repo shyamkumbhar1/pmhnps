@@ -272,7 +272,7 @@ if($img_call=='')
                                             <x-input id="inputField" class="form-control" type="text" name="postal_code"
                                                 :value="old('postal_code', $user->postal_code)" placeholder="Postal Code" required maxlength="5"   />
 
-                                                <x-label for="postal_code" :value="__('Postal Code')" class="form-label"/>  <span>5 Digit Only</span>
+                                                <x-label for="postal_code" :value="__('Postal Code')" class="form-label"/>   
                                                 @if ($errors->has('postal_code'))
                                                     <span class="text-danger">{{ $errors->first('postal_code') }}</span>
                                                 @endif

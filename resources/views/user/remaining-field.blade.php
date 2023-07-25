@@ -248,7 +248,7 @@ if($img_call=='')
                                         <div class="form-outline">                                        
                                             <x-input id="postal_code" class="form-control" type="text"
                                                 name="postal_code" :value="old('postal_code')" placeholder="Postal Code" required autofocus maxlength="5" />  
-                                                <x-label for="postal_code" class="form-label" >Postal Code<span class="mandatory">*</span></x-label> <span>5 Digit Only</span>                                    
+                                                <x-label for="postal_code" class="form-label" >Postal Code<span class="mandatory">*</span></x-label>                                      
                                             @if ($errors->has('postal_code'))
                                                 <span class="text-danger">{{ $errors->first('postal_code') }}</span>
                                             @endif

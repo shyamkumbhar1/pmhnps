@@ -71,13 +71,13 @@ d) Use the Software in any manner that violates applicable laws or regulations o
 4.2. Support: We may provide customer support for the Software as described on our website or through other communication channels.
            </p>
  <p>Disclaimer of Warranty<Br>
-5.1. AS IS: THE SOFTWARE IS PROVIDED "AS IS" WITHOUT WARRANTIES OF ANY KIND, WHETHER EXPRESS OR IMPLIED. [COMPANY NAME] DISCLAIMS ALL WARRANTIES, INCLUDING, BUT NOT LIMITED TO, IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.
+5.1. AS IS: THE SOFTWARE IS PROVIDED "AS IS" WITHOUT WARRANTIES OF ANY KIND, WHETHER EXPRESS OR IMPLIED. PMHNP DISCLAIMS ALL WARRANTIES, INCLUDING, BUT NOT LIMITED TO, IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.
            </p>
  <p>Limitation of Liability<br>
-6.1. No Consequential Damages: IN NO EVENT SHALL [COMPANY NAME] BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES ARISING OUT OF OR IN CONNECTION WITH THE USE OF THE SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+6.1. No Consequential Damages: IN NO EVENT SHALL PMHNP BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES ARISING OUT OF OR IN CONNECTION WITH THE USE OF THE SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
            </p>
 <p>Indemnification<br>
-7.1. Indemnity: You agree to indemnify, defend, and hold harmless [Company Name], its officers, directors, employees, and affiliates from and against any and all claims, liabilities, damages, losses, or expenses, including reasonable attorneys' fees and costs, arising out of or in any way connected with your use of the Software or violation of these Terms of Use.
+7.1. Indemnity: You agree to indemnify, defend, and hold harmless PMHNP, its officers, directors, employees, and affiliates from and against any and all claims, liabilities, damages, losses, or expenses, including reasonable attorneys' fees and costs, arising out of or in any way connected with your use of the Software or violation of these Terms of Use.
 
 </p>
 <p>Changes to the Terms of Use<br>

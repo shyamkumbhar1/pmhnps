@@ -1,8 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
-
 use Exception;
 use Stripe\Plan;
 use Stripe\Stripe;

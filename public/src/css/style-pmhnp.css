@@ -152,6 +152,15 @@ x-input[required]::after{ color: #f00; content: "*";}
 .popular{ display: inline-block; padding: 6px 10px; border-radius: 16px; background-color: #2bcad6; color: #000; font-size: 14px;
     font-weight: normal; position: relative; top: -5px;
 }
+.supcl{ display: inline-block;
+    padding: 9px 8px;
+    border-radius: 16px;
+    background-color: #2bcad6;
+    color: #000;
+    font-size: 15px;
+    font-weight: normal;
+    position: relative;
+}
 .compair-plan ul{ margin: 0px; padding: 0; list-style: none; }
 .compair-plan ul li { display:block; margin: 10px 0px; text-align: center; min-height: 45px; white-space: nowrap; vertical-align: middle;}
 .checkcircle{ display: inline-block; vertical-align: middle; width: 40px; height: 40px; border-radius: 50%; text-align: center;

@@ -31,7 +31,7 @@
       <div class="row">
         <div class="mb-4 col-lg-6 col-md-6">
           <div class="benefitbox">
-            <h3 class="mb-3 text-center">
+            <h3 class="mb-3 " style="margin-left: 35px;">
               Benefits for Patients 
             </h3>
             <ul>
@@ -46,7 +46,7 @@
         </div>
         <div class="mb-4 col-lg-6 col-md-6">
           <div class="benefitbox">
-            <h3 class="mb-3 text-center">
+            <h3 class="mb-3 " style="margin-left: 35px;">
               Benefits for PMHNPs
             </h3>
             <ul>
@@ -63,7 +63,7 @@
 
 
       <!-- How It Works for PMHNPs -->
-      <div class="mt-5 mb-4 row">
+      <div class="mt-5 mb-4 row" id="How-It-Works">
         <div class="col-md-12">
           <h3 class="text-center title-pmhnp">How It Works for PMHNPs</h2>          
         </div>
@@ -129,7 +129,7 @@
           </div>  
           <h4 class="text-center">Find Your PMHNP</h4>        
           <h6 class="text-center">
-            Search PMHNPs by specialization, location, etc
+            Search PMHNPs by specialization, location, etc.
           </h6>
         </div>
 
@@ -139,7 +139,7 @@
           </div>  
           <h4 class="text-center">Find Your PMHNP</h4>        
           <h6 class="text-center">
-            Search PMHNPs by specialization, location, etc
+            Search PMHNPs by specialization, location, etc.
           </h6>
         </div>
 

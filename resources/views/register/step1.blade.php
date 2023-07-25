@@ -17,12 +17,12 @@
                                <!--  <a href="{{ route('plans.all') }}"> <span><i class="fa fa-check"
                                             aria-hidden="true"></i></span> Step 2 </a> -->
 
-                                             <a href="#"> <span><i class="fa fa-check"
+                                             <a  > <span><i class="fa fa-check"
                                             aria-hidden="true"></i></span> Step 2 </a>
                             </li>
                             <li><i class="fa fa-chevron-right" aria-hidden="true"></i></li>
                             <li>
-                                <a href="#"> <span><i class="fa fa-check" aria-hidden="true"></i> </span> Step 3 </a>
+                                <a  > <span><i class="fa fa-check" aria-hidden="true"></i> </span> Step 3 </a>
                             </li>
                         </ul>
                     </div>

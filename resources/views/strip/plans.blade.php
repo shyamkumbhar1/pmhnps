@@ -10,7 +10,8 @@
         <div class="steps-row">
           <ul>
             <li >
-              <a href="{{ route('register.step.one') }}"> <span>1</span> Step 1 </a>
+            <!--   <a href="{{ route('register.step.one') }}"> <span>1</span> Step 1 </a> -->
+               <a  > <span>1</span> Step 1 </a>
             </li>
             <li><i class="fa fa-chevron-right" aria-hidden="true"></i></li>
             <li class="active">
@@ -18,7 +19,7 @@
             </li>
             <li><i class="fa fa-chevron-right" aria-hidden="true"></i></li>
             <li>
-              <a href="#"> <span><i class="fa fa-check" aria-hidden="true"></i> </span> Step 3 </a>
+              <a  > <span><i class="fa fa-check" aria-hidden="true"></i> </span> Step 3 </a>
             </li>
           </ul>
         </div>
@@ -66,7 +67,7 @@
             </div>
 
             <div class="col3">
-              <H3>ANNUAL <span class="popular">Popular</span></H3>
+              <H3>ANNUAL <sup class="supcl">Popular</sup></H3>
               <h5>$500/ <small>year</small></h5>
               <div class="mt-3 mb-4 text-center">
                 <button type="submit" class="btn btn-lg btn-plan-select btn-md">

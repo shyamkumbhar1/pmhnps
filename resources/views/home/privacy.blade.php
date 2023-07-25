@@ -60,7 +60,7 @@ You have the right to access, update, and delete your personal information. If y
 
         </p>
           <p>Children's Privacy<br>
-Our Software is not intended for use by individuals under the age of [minimum age]. We do not knowingly collect personal information from children under this age. If we become aware that we have inadvertently collected personal information from a child, we will take steps to delete such information as soon as possible.
+Our Software is not intended for use by individuals under the age of 21. We do not knowingly collect personal information from children under this age. If we become aware that we have inadvertently collected personal information from a child, we will take steps to delete such information as soon as possible.
 
         </p>
         <p>Changes to this Privacy Policy<br>

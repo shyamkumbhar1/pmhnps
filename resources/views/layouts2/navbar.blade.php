@@ -26,7 +26,7 @@
                <a class="nav-link" href="#">Find PMHNPs</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">How it Works</a>
+              <a class="nav-link" href="/#How-It-Works">How It Works</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{ route('home.about') }}">About Us</a>
@@ -67,7 +67,7 @@ if($img_call=='')
 
 
 
-            
+
             {{-- <img src="{{ asset('storage/Profile-Picture\1.jfif') }}" alt="dfggg"> --}}
               {{-- <h1>{{ dd(Auth::user()->profile_picture,Auth::user()->name) }}</h1> --}}
               
@@ -107,9 +107,10 @@ if($img_call=='')
           <a class="text-reset nav-link-singin me-3" href="{{ route('login') }}">
             PMHNP Sign in
           </a>
-          <a class="btn btn-primary btn-md" href="{{ route('register.step.one') }}">
+          <a class="btn btn-primary" href="{{ route('register.step.one') }}">
             PMHNP Sign up
           </a>
+         
         </div>
         @endif        
       
