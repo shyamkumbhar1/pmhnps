@@ -13,9 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-			$table=tinyint('is_admin')=>default(0)=>change();
-            //
+        Schema::create('posts', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('title')->nullable();
+            $table->longText('description')->nullable();
+            $table->timestamps();
         });
     }
 
@@ -26,8 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-           $table=tinyint('is_admin')=>default(1)=>change();
-        });
+        Schema::dropIfExists('posts');
     }
 };

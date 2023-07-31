@@ -274,7 +274,7 @@
                                         </td>
                                     </tr>
                                 </tbody>
-                            </table> 
+                            </table>
 
                           </div>
 
@@ -308,14 +308,14 @@
                 Anything you want
             </div>
             <!-- Default to the left -->
-            <strong>Copyright &copy; 2023-2024 
+            <strong>Copyright &copy; 2023-2024
                 {{-- <a href="https://adminlte.io">AdminLTE.io</a>. --}}
             </strong> All rights reserved.
         </footer>
 
 
 
-                          
+
     </div>
 
 

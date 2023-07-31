@@ -8,15 +8,17 @@ use App\Http\Controllers\PmhnpsController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DropdownController;
+use App\Http\Controllers\PostAjaxController;
 use App\Http\Controllers\FindPmhnpsController;
 use App\Http\Controllers\ReviewRatingController;
 use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\TempRegisterController;
 use App\Http\Controllers\ContactUsFormController;
+use App\Http\Controllers\ListingPmhnpsController;
 use App\Http\Controllers\CaptchaServiceController;
 use App\Http\Controllers\RemainingDetailsController;
 use App\Http\Controllers\User\UserDashboardController;
-use App\Http\Controllers\ListingPmhnpsController;
+
 
 
 
@@ -118,7 +120,7 @@ Route::post('home/contact', [ListingPmhnpsController::class,'store'])->name('con
 //
 
 Route::post('/register', [ListingPmhnpsController::class, 'review_insert']);
- 
+
 // Home Page
 //route::view('home/find_pmhnps','home/find_pmhnps')->name('home.find_pmhnps');
 // route::view('home/home.how_it_work','home/home.how_it_work')->name('home.home.how_it_work');
@@ -132,5 +134,7 @@ route::view('home/privacy','home/privacy')->name('home.privacy');
 
 Route::view('test','test');
 
+// Ajax Crud
+Route::resource('ajaxposts','PostAjaxController');
 
 
