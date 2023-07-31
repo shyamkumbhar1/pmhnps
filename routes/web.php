@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
+use App\Http\Controllers\DataController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PmhnpsController;
 use App\Http\Controllers\ReviewController;
@@ -136,5 +137,11 @@ Route::view('test','test');
 
 // Ajax Crud
 Route::resource('ajaxposts','PostAjaxController');
+
+// Ajax Call
+
+Route::get('/fetch-index', [DataController::class,'index'])->name('index');
+Route::get('/fetch-data', [DataController::class,'fetchData'])->name('fetch.data');
+
 
 
