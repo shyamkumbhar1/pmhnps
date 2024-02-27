@@ -19,6 +19,8 @@ use App\Http\Controllers\ListingPmhnpsController;
 use App\Http\Controllers\CaptchaServiceController;
 use App\Http\Controllers\RemainingDetailsController;
 use App\Http\Controllers\User\UserDashboardController;
+use App\Http\Controllers\StripeWebhookController;
+use App\Http\Controllers\StripePaymentController;
 
 
 
@@ -143,5 +145,12 @@ Route::resource('ajaxposts','PostAjaxController');
 Route::get('/fetch-index', [DataController::class,'index'])->name('index');
 Route::get('/fetch-data', [DataController::class,'fetchData'])->name('fetch.data');
 
+// Strip Webhook
+Route::get('/stripe/webhook', [StripeWebhookController::class,'handleWebhook'])->name('fetch.data');
 
+// Strip Paymnent Getway
 
+Route::controller(StripePaymentController::class)->group(function(){
+    Route::get('stripe', 'stripe');
+    Route::post('stripe', 'stripePost')->name('stripe.post');
+});
