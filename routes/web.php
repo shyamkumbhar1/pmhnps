@@ -23,6 +23,7 @@ use App\Http\Controllers\StripeWebhookController;
 use App\Http\Controllers\StripePaymentController;
 use App\Http\Controllers\PracticeController;
 use App\Http\Controllers\PostController;
+use App\Mail\MyCustomEmail;
 
 
 
@@ -169,3 +170,25 @@ Route::get('/practice', [PracticeController::class,'practice'])->name('practice'
 // Event And Listener for User Create
 
 Route::get('/user-created', [PostController::class,'userCreated'])->name('user.created');
+
+
+// Send Mail 
+Route::get('mail-send',function(){
+    $data = [
+        'name' => 'John Doe',
+        'message' => 'This is a test email.',
+        'subject' => 'Test Email Subject', // Make sure 'subject' key is included
+
+    ];
+    
+// // Create a Mailable instance
+// $mail = new MyCustomEmail($data);
+
+// // Render the Mailable as a raw string
+// $rawEmailContent = $mail->render();
+
+// // Output the raw email content for preview
+// echo $rawEmailContent;
+Mail::to('recipient@example.com')->send(new MyCustomEmail($data));
+
+});
