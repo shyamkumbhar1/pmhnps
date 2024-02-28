@@ -22,6 +22,7 @@ use App\Http\Controllers\User\UserDashboardController;
 use App\Http\Controllers\StripeWebhookController;
 use App\Http\Controllers\StripePaymentController;
 use App\Http\Controllers\PracticeController;
+use App\Http\Controllers\PostController;
 
 
 
@@ -163,3 +164,8 @@ Route::controller(StripePaymentController::class)->group(function(){
 Route::get('/stripe/webhook', [StripeWebhookController::class,'handleWebhook'])->name('fetch.data');
 // Practice
 Route::get('/practice', [PracticeController::class,'practice'])->name('practice');
+
+
+// Event And Listener for User Create
+
+Route::get('/user-created', [PostController::class,'userCreated'])->name('user.created');
