@@ -23,6 +23,7 @@ use App\Http\Controllers\StripeWebhookController;
 use App\Http\Controllers\StripePaymentController;
 use App\Http\Controllers\PracticeController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\UserController;
 use App\Mail\MyCustomEmail;
 
 
@@ -192,3 +193,6 @@ Route::get('mail-send',function(){
 Mail::to('recipient@example.com')->send(new MyCustomEmail($data));
 
 });
+
+Route::get('/user-register', [UserController::class, 'register']);
+
