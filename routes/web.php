@@ -196,6 +196,3 @@ Mail::to('recipient@example.com')->send(new MyCustomEmail($data));
 
 Route::get('/user-register', [UserController::class, 'register']);
 
-// Testing 
-Route::get('/user-register', [UserController::class, 'register']);
-
