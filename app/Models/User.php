@@ -20,6 +20,8 @@ class User extends Authenticatable
         'is_admin',
         'professional_title',
         'email',
+        'verification_token',
+        'is_verified',
         'password',
         'status'
     ];

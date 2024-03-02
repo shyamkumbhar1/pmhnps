@@ -173,7 +173,7 @@ Route::get('/practice', [PracticeController::class,'practice'])->name('practice'
 Route::get('/user-created', [PostController::class,'userCreated'])->name('user.created');
 
 
-// Send Mail 
+// Send Mail
 Route::get('mail-send',function(){
     $data = [
         'name' => 'John Doe',
@@ -181,7 +181,7 @@ Route::get('mail-send',function(){
         'subject' => 'Test Email Subject', // Make sure 'subject' key is included
 
     ];
-    
+
 // // Create a Mailable instance
 // $mail = new MyCustomEmail($data);
 
@@ -196,6 +196,11 @@ Mail::to('recipient@example.com')->send(new MyCustomEmail($data));
 
 Route::get('/user-register', [UserController::class, 'register']);
 
-// Testing 
+// Testing
 Route::get('/user-register', [UserController::class, 'register']);
+
+//Send User verification link to user using service provider
+Route::get('/user-register-provider', [UserController::class, 'registerUsingServiceProvider']);
+Route::get('/verify', [UserController::class, 'verify']);
+
 
