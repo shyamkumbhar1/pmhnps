@@ -88,5 +88,15 @@ class UserController extends Controller
 
         return response()->json(['message' => 'User verified successfully']);
     }
+    public function userRegisterEvent(Request $request)
+    {
+        // Assuming $userData is retrieved from the request
+        $userData = $request->all();
+        $user = User::create($userData);
+
+        // Dispatch the UserRegistered event
+        event(new \App\Events\UserRegistered($user));
+        return 'User Register Sucessfully';
+    }
 
 }

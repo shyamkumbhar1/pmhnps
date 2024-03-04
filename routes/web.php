@@ -204,3 +204,5 @@ Route::get('/user-register-provider', [UserController::class, 'registerUsingServ
 Route::get('/verify', [UserController::class, 'verify']);
 
 
+// when user is register verification mail is send using using event and listner 
+Route::get('/user-register-event', [UserController::class, 'userRegisterEvent']);

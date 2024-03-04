@@ -11,7 +11,9 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use App\Events\PostCreated;
+use App\Events\UserRegistered;
 use App\Listeners\NotifyUser;
+use App\Listeners\SendWelcomeEmail;
 
 
 class EventServiceProvider extends ServiceProvider
@@ -30,6 +32,9 @@ class EventServiceProvider extends ServiceProvider
         
         PostCreated::class => [
             NotifyUser::class,
+        ],
+        UserRegistered::class => [
+            SendWelcomeEmail::class,
         ],
 
        
