@@ -206,3 +206,9 @@ Route::get('/verify', [UserController::class, 'verify']);
 
 // when user is register verification mail is send using using event and listner 
 Route::get('/user-register-event', [UserController::class, 'userRegisterEvent']);
+
+// Welcome Mail Snd Using Obeserver
+Route::get('/test-observer', function () {
+    $user = factory(User::class)->create();
+    return "User created successfully!";
+});
