@@ -1,30 +1,31 @@
 <?php
 
+use App\Mail\MyCustomEmail;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\DataController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\PmhnpsController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DropdownController;
 use App\Http\Controllers\PostAjaxController;
+use App\Http\Controllers\PracticeController;
 use App\Http\Controllers\FindPmhnpsController;
 use App\Http\Controllers\ReviewRatingController;
 use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\TempRegisterController;
 use App\Http\Controllers\ContactUsFormController;
 use App\Http\Controllers\ListingPmhnpsController;
+use App\Http\Controllers\StripePaymentController;
+use App\Http\Controllers\StripeWebhookController;
 use App\Http\Controllers\CaptchaServiceController;
 use App\Http\Controllers\RemainingDetailsController;
 use App\Http\Controllers\User\UserDashboardController;
-use App\Http\Controllers\StripeWebhookController;
-use App\Http\Controllers\StripePaymentController;
-use App\Http\Controllers\PracticeController;
-use App\Http\Controllers\PostController;
-use App\Http\Controllers\UserController;
-use App\Mail\MyCustomEmail;
 
 
 
@@ -204,7 +205,7 @@ Route::get('/user-register-provider', [UserController::class, 'registerUsingServ
 Route::get('/verify', [UserController::class, 'verify']);
 
 
-// when user is register verification mail is send using using event and listner 
+// when user is register verification mail is send using using event and listner
 Route::get('/user-register-event', [UserController::class, 'userRegisterEvent']);
 
 // Welcome Mail Snd Using Obeserver
@@ -212,3 +213,9 @@ Route::get('/test-observer', function () {
     $user = factory(User::class)->create();
     return "User created successfully!";
 });
+
+// Welcome Mail Snd Using Obeserver
+Route::get('/cache', function () {
+   return Cache::get('name1213');
+});
+

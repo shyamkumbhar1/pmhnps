@@ -16,6 +16,8 @@ return [
     */
 
     'default' => env('CACHE_DRIVER', 'file'),
+    // 'lifetime' => 60, // Default expiry time in minutes
+
 
     /*
     |--------------------------------------------------------------------------
