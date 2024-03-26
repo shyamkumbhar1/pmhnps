@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class VueUser extends Model
 {
     use HasFactory;
+    protected $table = 'vue_users';
     protected $fillable = [
         'full_name',
         'email',
